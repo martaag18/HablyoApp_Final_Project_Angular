@@ -1,1 +1,32 @@
-<p>navbar works!</p>
+<nav class="bg-white px-4 py-8">
+    <div class="flex justify-between">
+      <!-- Main Links -->
+      <div class="hidden lg:flex justify-start  gap-3">
+        <a routerLink="/" class="title-link font-bold text-primary cursor-pointer">INICIO</a>
+        <a routerLink="/Exercices" class="title-link font-bold text-primary cursor-pointer">EJERCICIOS</a>
+        <a routerLink="/Progress" class="title-link font-bold text-primary cursor-pointer">PROGRESO</a>
+      </div>
+       <!-- LOGO -->
+        <img src="assets/Logos/hablyo_red_logo.png" alt="Hablyo Logo" class="h-12">
+      <!-- Authentication -->
+      <div class="hidden lg:flex gap-4">
+        <a routerLink="/login" class="title-link font-bold text-primary cursor-pointer"><i class="fas fa-user mr-4"></i> ÁREA PERSONAL </a>
+        <a routerLink="/signup" class="title-link font-bold text-primary cursor-pointer"><i class="fas fa-user mr-4"></i> REGISTRO </a>
+      </div>
+      <!-- Menú hamburguesa para pantallas pequeñas -->
+      <div class="lg:hidden dropdown hamburger-menu">
+        <label tabindex="0" class="btn btn-square  bg-white hover:bg-tertiary"><i class="fas fa-bars text-primary"></i></label>
+        <ul tabindex="0" class="dropdown-content menu p-4 shadow-lg bg-white rounded-box w-52">
+          <li><a routerLink="/" class="title-link text-lg text-primary hover:bg-tertiary">Inicio</a></li>
+          <li><a routerLink="/calendar" class="title-link text-lg text-primary hover:bg-tertiary">Ejercicios</a></li>
+          <li><a routerLink="/map" class="title-link text-lg text-primary hover:bg-tertiary">Progreso</a></li>
+          <li><a routerLink="/login" class="title-link text-lg text-primary hover:bg-tertiary"><i class="fas fa-user"></i> Acceder</a></li>
+          <li><a routerLink="/Registro" class="title-link text-lg text-primary hover:bg-tertiary"><i class="fas fa-user"></i> Registro</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  
+  
+  
