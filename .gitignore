@@ -1,0 +1,8 @@
+# Ignorar archivos de sistema
+.DS_Store
+
+# Ignorar todo lo que está fuera del proyecto
+/*
+!/backend
+!/frontend
+!/.gitignore
