@@ -1,15 +1,78 @@
-<section class="bg-gradient-to-r from-gray-100 to-gray-200 py-12 px-6">
+<section class="py-12 px-6 bg-slate-50">
     <div class="max-w-6xl mx-auto text-center">
-      <h2 class="text-2xl md:text-3xl font-bold mb-4 text-primary">
-        ¿Listo para empezar a practicar <i class="fas fa-bolt text-yellow-400"></i>?
+      <!-- Título -->
+      <h2 class="text-3xl md:text-4xl font-bold text-primary mb-8">
+        ¿CÓMO EMPEZAR?
       </h2>
-      <p class="text-gray-600 mb-8 text-sm md:text-base">
-        Comienza tu camino hacia una mayor confianza al hablar con los ejercicios diseñados 
-        por <strong>Savio Mascolo</strong>, ex-tartamudo y logopeda experimentado.
-      </p>
-      <a routerLink="/signup"
-         class="btn bg-primary text-white font-bold rounded-full px-8 py-3 cursor-pointer hover:bg-red-600 transition-all duration-300">
-        ÚNETE
-      </a>
+      <!-- Contenedor -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Tarjeta 1: Unirse al webinar -->
+        <article class="bg-white border border-gray-200 shadow p-6 rounded-lg flex flex-col text-left">
+          <div class="mb-4 flex items-center gap-2">
+            <span class="w-8 h-8 flex items-center justify-center text-white font-bold text-sm rounded" style="background-color: #ff5757">
+              1
+            </span>
+            <h3 class="text-xl font-bold text-slate-800">Unirse al webinar</h3>
+          </div>
+          <p class="text-sm md:text-base text-slate-600 flex-grow">
+            <strong>Si todavía no has realizado el curso</strong>, únete al Webinar para conocer la <strong>experiencia de Savio Mascolo</strong> en directo y descubrir 
+            cómo dar tu primer paso para superar la tartamudez.
+          </p>
+          <a
+            routerLink="/webinars"
+            style="background-color: #ff5757"
+            class="mt-4 inline-block text-white font-bold px-4 py-2 rounded-full hover:scale-105 transition-transform duration-300 cursor-pointer text-center"
+          >
+            Ver Webinars
+          </a>
+        </article>
+        <!-- Tarjeta 2: Registrarse -->
+        <article class="bg-white border border-gray-200 shadow p-6 rounded-lg flex flex-col text-left">
+          <div class="mb-4 flex items-center gap-2">
+            <span class="w-8 h-8 flex items-center justify-center text-white font-bold text-sm rounded" style="background-color: #ffcc00">
+              2
+            </span>
+            <h3 class="text-xl font-bold text-slate-800">Registrarse</h3>
+          </div>
+          <p class="text-sm md:text-base text-slate-600 flex-grow">
+            Crea tu cuenta para acceder a los <strong>ejercicios</strong> y 
+            seguir el método de Savio para hablar con mayor confianza.
+          </p>
+          <a
+            routerLink="/signup"
+            style="background-color: #ffcc00"
+            class="mt-4 inline-block text-white font-bold px-4 py-2 rounded-full hover:scale-105 transition-transform duration-300 cursor-pointer text-center"
+          >
+            Registrarse
+          </a>
+        </article>
+        <!-- Tarjeta 3: Empezar a practicar -->
+        <article class="bg-white border border-gray-200 shadow p-6 rounded-lg flex flex-col text-left">
+          <div class="mb-4 flex items-center gap-2">
+            <span class="w-8 h-8 flex items-center justify-center text-white font-bold text-sm rounded" style="background-color: #40e0d0">
+              3
+            </span>
+            <h3 class="text-xl font-bold text-slate-800">Ejercicios</h3>
+          </div>
+          <p class="text-sm md:text-base text-slate-600 flex-grow">
+            Explora los <strong>ejercicios dinámicos</strong> y 
+            ¡empieza a practicar para dejar atrás la tartamudez!
+          </p>
+          <a
+            routerLink="/exercices"
+            style="background-color: #40e0d0"
+            class="mt-4 inline-block text-white font-bold px-4 py-2 rounded-full hover:scale-105 transition-transform duration-300 cursor-pointer text-center"
+          >
+            Practicar
+          </a>
+        </article>
+  
+      </div>
     </div>
-</section>
+  </section>
+  
+  
+  
+  
+  
+  
