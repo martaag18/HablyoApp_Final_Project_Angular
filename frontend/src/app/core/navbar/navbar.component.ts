@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener } from '@angular/core';
+import { inject } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -8,4 +9,22 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+  private elementRef = inject(ElementRef);
+
+  isOpen = false;
+
+  toggleMenu() {
+    this.isOpen = !this.isOpen;
+  }
+
+  closeMenu() {
+    this.isOpen = false;
+  }
+
+  @HostListener('document:click', ['$event'])
+  clickOutside(event: Event) {
+    if (this.isOpen && !this.elementRef.nativeElement.contains(event.target)) {
+      this.isOpen = false;
+    }
+  }
 }
