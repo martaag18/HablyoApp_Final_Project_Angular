@@ -1,0 +1,122 @@
+<div class="min-h-screen flex items-center justify-center bg-white">
+    <div class="w-full max-w-lg p-4 md:p-6">
+      <!-- Tarjeta de aviso -->
+      <div class="bg-gray-100 p-4 mb-4 rounded-xl shadow-md animate-fadeInDown">
+        <h3 class="text-md font-bold text-gray-800 mb-2">
+        IMPORTANTE:
+        </h3>
+        <p class="text-sm text-gray-700">
+        Solo se aceptan correos autorizados por Hablyo. Si aún no has realizado
+        el curso con Savio Mascolo, tu email no podrá registrarse en la plataforma.
+        </p>
+      </div>
+      <!-- Card -->
+      <div class="bg-gradient-to-r from-primary to-red-300 rounded-3xl shadow-2xl overflow-hidden">
+        <div class="p-6 md:p-8">
+          <!-- Barra de Progreso -->
+          <div class="mb-6">
+            <div class="flex items-center justify-between">
+              <div class="flex-1 h-2 bg-gray-600 rounded-full">
+                <div [ngStyle]="{'width': (currentStep / 3 * 100) + '%'}" class="h-2 bg-gradient-to-r from-teal-500 to-teal-200 rounded-full transition-all duration-300"></div>
+              </div>
+              <div class="ml-3 text-sm text-white">Paso {{ currentStep }} de 3</div>
+            </div>
+          </div>
+          <!-- FORM -->
+          <form [formGroup]="registerForm" (ngSubmit)="submitRegister()">
+            <!-- PASO 1 -->
+            @if(currentStep === 1){
+              <div class="animate-fadeInDown">
+                <h2 class="text-2xl font-bold text-center mb-4 text-white flex items-center justify-center gap-2">¡EMPECEMOS!✅</h2>
+              </div>
+              <div class="mb-4">
+                <input type="text" placeholder="Nombre" formControlName="firstName" class="form-control input input-bordered h-12 px-4 text-base bg-white rounded-md w-full focus:ring-2 focus:ring-teal-400 focus:outline-none transition-all duration-200"/>
+                @if(registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched){
+                  <div class="bg-red-50 border-l-4 border-red-400 text-red-700 p-2 rounded-md mt-1 text-sm font-semibold">
+                    @if(registerForm.get('firstName')?.errors?.['required']) { El nombre es requerido }
+                  </div>
+                }
+              </div>
+              <div class="mb-6">
+                <input type="text" placeholder="Apellido" formControlName="lastName" class="form-control input input-bordered h-12 px-4 text-base bg-white rounded-md w-full focus:ring-2 focus:ring-teal-400 focus:outline-none transition-all duration-200"/>
+                @if(registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched){
+                  <div class="bg-red-50 border-l-4 border-red-400 text-red-700 p-2 rounded-md mt-1 text-sm font-semibold">
+                    @if(registerForm.get('lastName')?.errors?.['required']) { El apellido es requerido }
+                  </div>
+                }
+              </div>
+              <!-- Botón Siguiente (deshabilitado si firstName o lastName están inválidos) -->
+              <button type="button" (click)="goToNextStep()" [disabled]="registerForm.get('firstName')?.invalid || registerForm.get('lastName')?.invalid" class="w-full py-3 bg-teal-400 text-white hover:bg-teal-600 font-bold rounded-md flex items-center justify-center gap-2 transition-all duration-300 uppercase">
+                <span>Siguiente</span>
+              </button>
+            }
+            <!-- PASO 2 -->
+            @if(currentStep === 2){
+              <div class="animate-fadeInDown">
+                <h2 class="text-2xl font-bold text-center mb-4 text-white flex items-center justify-center gap-2">¿CUÁNTOS AÑOS TIENES?🎂</h2>
+              </div>
+              <div class="mb-6">
+                <input type="number" placeholder="Edad" formControlName="age" class="form-control input input-bordered h-12 px-4 text-base bg-white rounded-md w-full focus:ring-2 focus:ring-teal-400 focus:outline-none transition-all duration-200"/>
+                @if(registerForm.get('age')?.invalid && registerForm.get('age')?.touched){
+                  <div class="bg-red-50 border-l-4 border-red-400 text-red-700 p-2 rounded-md mt-1 text-sm font-semibold">
+                    @if(registerForm.get('age')?.errors?.['required']) { La edad es requerida }
+                  </div>
+                }
+              </div>
+              <div class="flex justify-between gap-2">
+                <button type="button" (click)="goToPreviousStep()" class="w-1/2 py-3 bg-teal-400 text-white hover:bg-teal-600 font-bold rounded-md flex items-center justify-center gap-2 transition-all duration-300 uppercase"><i class="fa-solid fa-arrow-left"></i><span>Atrás</span></button>
+                <!-- Botón Siguiente (deshabilitado si age está inválido) -->
+                <button type="button" (click)="goToNextStep()" [disabled]="registerForm.get('age')?.invalid" class="w-1/2 py-3 bg-teal-400 text-white hover:bg-teal-600 font-bold rounded-md flex items-center justify-center gap-2 transition-all duration-300 uppercase"><span>Siguiente</span><i class="fa-solid fa-arrow-right"></i></button>
+              </div>
+            }
+            <!-- PASO 3 -->
+            @if(currentStep === 3){
+              <div class="animate-fadeInDown">
+                <h2 class="text-2xl font-bold text-center mb-4 text-white flex items-center justify-center gap-2">ÚLTIMO PASO!📝</h2>
+              </div>
+              <div class="mb-4">
+                <input type="email" placeholder="Email" formControlName="email" class="form-control input input-bordered h-12 px-4 text-base bg-white rounded-md w-full focus:ring-2 focus:ring-teal-400 focus:outline-none transition-all duration-200"/>
+                @if(registerForm.get('email')?.invalid && registerForm.get('email')?.touched){
+                  <div class="bg-red-50 border-l-4 border-red-400 text-red-700 p-2 rounded-md mt-1 text-sm font-semibold">
+                    @if(registerForm.get('email')?.errors?.['required']) { El email es requerido }
+                    @if(registerForm.get('email')?.errors?.['email']) { Ingresa un email válido }
+                  </div>
+                }
+              </div>
+            <!-- Mensaje de error si no está permitido -->
+               @if(emailNotAllowed){
+                <div>
+                    <p class="bg-red-50 border-l-4 border-red-400 text-red-700 p-2 rounded-md mt-1 text-sm font-semibold"> Lo siento, este email no está autorizado para registrarse</p>
+                </div>
+               }
+              <div class="mb-4">
+                <input type="password" placeholder="Contraseña" formControlName="password" class="form-control input input-bordered h-12 px-4 text-base bg-white rounded-md w-full focus:ring-2 focus:ring-teal-400 focus:outline-none transition-all duration-200"/>
+                @if(registerForm.get('password')?.invalid && registerForm.get('password')?.touched){
+                  <div class="bg-red-50 border-l-4 border-red-400 text-red-700 p-2 rounded-md mt-1 text-sm font-semibold">
+                    @if(registerForm.get('password')?.errors?.['required']) { La contraseña es requerida }
+                  </div>
+                }
+              </div>
+              <div class="mb-6">
+                <input type="password" placeholder="Repetir Contraseña" formControlName="repeatPassword" class="form-control input input-bordered h-12 px-4 text-base bg-white rounded-md w-full focus:ring-2 focus:ring-teal-400 focus:outline-none transition-all duration-200"/>
+                @if(registerForm.get('repeatPassword')?.invalid && registerForm.get('repeatPassword')?.touched){
+                  <div class="bg-red-50 border-l-4 border-red-400 text-red-700 p-2 rounded-md mt-1 text-sm font-semibold">
+                    @if(registerForm.get('repeatPassword')?.errors?.['required']) { Repite la contraseña }
+                    @if(registerForm.get('repeatPassword')?.errors?.['mismatch']) { Las contraseñas no coinciden }
+                  </div>
+                }
+              </div>
+              <div class="flex justify-between gap-2">
+                <button type="button" (click)="goToPreviousStep()" class="w-1/2 py-3 bg-teal-400 text-white hover:bg-teal-600 font-bold rounded-md flex items-center justify-center gap-2 transition-all duration-300 uppercase"><i class="fa-solid fa-arrow-left"></i><span>Atrás</span></button>
+                <!-- Botón de Registro (deshabilitado si el formulario completo es inválido) -->
+                <button type="submit" [disabled]="!registerForm.valid" class="w-1/2 py-3 bg-teal-400 text-white hover:bg-teal-600 font-bold rounded-md flex items-center justify-center gap-2 transition-all duration-300 uppercase"><span>Listo</span><i class="fa-solid fa-arrow-right"></i></button>
+              </div>
+            }
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
