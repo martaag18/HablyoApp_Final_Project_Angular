@@ -30,23 +30,23 @@
                 <h2 class="text-2xl font-bold text-center mb-4 text-white flex items-center justify-center gap-2">¡EMPECEMOS!✅</h2>
               </div>
               <div class="mb-4">
-                <input type="text" placeholder="Nombre" formControlName="firstName" class="form-control input input-bordered h-12 px-4 text-base bg-white rounded-md w-full focus:ring-2 focus:ring-teal-400 focus:outline-none transition-all duration-200"/>
-                @if(registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched){
+                <input type="text" placeholder="Nombre" formControlName="name" class="form-control input input-bordered h-12 px-4 text-base bg-white rounded-md w-full focus:ring-2 focus:ring-teal-400 focus:outline-none transition-all duration-200"/>
+                @if(registerForm.get('name')?.invalid && registerForm.get('name')?.touched){
                   <div class="bg-red-50 border-l-4 border-red-400 text-red-700 p-2 rounded-md mt-1 text-sm font-semibold">
-                    @if(registerForm.get('firstName')?.errors?.['required']) { El nombre es requerido }
+                    @if(registerForm.get('name')?.errors?.['required']) { El nombre es requerido }
                   </div>
                 }
               </div>
               <div class="mb-6">
-                <input type="text" placeholder="Apellido" formControlName="lastName" class="form-control input input-bordered h-12 px-4 text-base bg-white rounded-md w-full focus:ring-2 focus:ring-teal-400 focus:outline-none transition-all duration-200"/>
-                @if(registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched){
+                <input type="text" placeholder="Apellido" formControlName="surname" class="form-control input input-bordered h-12 px-4 text-base bg-white rounded-md w-full focus:ring-2 focus:ring-teal-400 focus:outline-none transition-all duration-200"/>
+                @if(registerForm.get('surname')?.invalid && registerForm.get('surname')?.touched){
                   <div class="bg-red-50 border-l-4 border-red-400 text-red-700 p-2 rounded-md mt-1 text-sm font-semibold">
-                    @if(registerForm.get('lastName')?.errors?.['required']) { El apellido es requerido }
+                    @if(registerForm.get('surname')?.errors?.['required']) { El apellido es requerido }
                   </div>
                 }
               </div>
-              <!-- Botón Siguiente (deshabilitado si firstName o lastName están inválidos) -->
-              <button type="button" (click)="goToNextStep()" [disabled]="registerForm.get('firstName')?.invalid || registerForm.get('lastName')?.invalid" class="w-full py-3 bg-teal-400 text-white hover:bg-teal-600 font-bold rounded-md flex items-center justify-center gap-2 transition-all duration-300 uppercase">
+              <!-- Botón Siguiente (deshabilitado si name o surname están inválidos) -->
+              <button type="button" (click)="goToNextStep()" [disabled]="registerForm.get('name')?.invalid || registerForm.get('surname')?.invalid" class="w-full py-3 bg-teal-400 text-white hover:bg-teal-600 font-bold rounded-md flex items-center justify-center gap-2 transition-all duration-300 uppercase">
                 <span>Siguiente</span>
               </button>
             }
