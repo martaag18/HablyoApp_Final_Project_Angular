@@ -5,16 +5,25 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Habilitar CORS para permitir solicitudes de dominios específicos
   app.enableCors({
-    origin: '*', // Permite solicitudes desde cualquier origen (en desarrollo)
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Métodos permitidos
-    allowedHeaders: 'Content-Type, Accept, Authorization', // Encabezados permitidos
-    credentials: true, // Permite el envío de credenciales (cookies, tokens)
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: 'Content-Type, Accept, Authorization',
+    credentials: true,
   });
 
-  // Usa ValidationPipe globalmente para validar todos los DTOs
-  app.useGlobalPipes(new ValidationPipe());
+  // Usa ValidationPipe globalmente
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transform: true,
+      validationError: {
+        target: false,
+        value: false,
+      },
+    }),
+  );
 
   console.log('MONGO_URI:', process.env.MONGO_URI ? 'Cargado' : 'No cargado');
   console.log('JWT_SECRET:', process.env.JWT_SECRET ? 'Cargado' : 'No cargado');

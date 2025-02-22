@@ -83,6 +83,10 @@ export class UsersService {
     return this.userModel.find().exec();
   }
 
+  async findById(userId: string): Promise<User | null> {
+    return this.userModel.findById(userId).exec();
+  }
+
   /**
    * Elimina un usuario por su ID (ejemplo).
    */
