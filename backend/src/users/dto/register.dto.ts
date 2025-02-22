@@ -1,8 +1,10 @@
 import {
   IsEmail,
+  IsInt,
   IsNotEmpty,
   Matches,
   MaxLength,
+  Min,
   MinLength,
 } from 'class-validator';
 
@@ -22,4 +24,11 @@ export class RegisterDto {
   // Por si quieres mensajes en "name" también
   @MaxLength(100, { message: 'El nombre no puede exceder 100 caracteres' })
   name: string;
+
+  @MaxLength(100, { message: 'El apellido no puede exceder 100 caracteres' })
+  surname?: string;
+
+  @IsInt({ message: 'La edad debe ser un número entero' })
+  @Min(1, { message: 'La edad mínima es 1' })
+  age: number;
 }

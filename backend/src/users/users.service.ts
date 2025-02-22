@@ -47,7 +47,8 @@ export class UsersService {
       email: normalizedEmail,
       password: hashedPassword,
       name: dto.name,
-      // Otros campos que desees
+      surname: dto.surname,
+      age: dto.age,
     });
 
     return newUser.save();

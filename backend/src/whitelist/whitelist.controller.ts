@@ -11,12 +11,12 @@ import {
 import { WhitelistService } from './whitelist.service';
 import { AdminGuard } from 'src/guards/admin.guard';
 
-@UseGuards(AdminGuard) // Aplica el guard a TODOS los endpoints de este controlador
 @Controller('whitelist')
 export class WhitelistController {
   constructor(private readonly whitelistService: WhitelistService) {}
 
   // Añadir un email a la whitelist
+  @UseGuards(AdminGuard)
   @Post()
   async add(@Body('email') email: string) {
     if (!email) {
@@ -26,6 +26,7 @@ export class WhitelistController {
   }
 
   // Eliminar un email de la whitelist
+  @UseGuards(AdminGuard)
   @Delete()
   async remove(@Body('email') email: string) {
     if (!email) {
