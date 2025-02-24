@@ -1,0 +1,57 @@
+<div class="px-4 py-12 mt-11 bg-gradient-to-r from-primary to-red-300">
+    <h1 class="text-4xl font-extrabold mb-10 mt-11 text-center text-white uppercase tracking-wide flex items-center justify-center gap-3">
+      <i class="fa-solid fa-calendar-check"></i>
+      Próximos Webinars
+    </h1>
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 cursor-pointer">
+      <!-- Iterar sobre upcomingDates -->
+    @for(item of upcomingDates; track $index){
+        <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-transform transform hover:scale-105">
+            <div class="card-body text-center">
+                <!-- Título -->
+                <h2 class="card-title text-2xl font-bold uppercase mb-2 flex items-center justify-center gap-2 text-primary">
+                <i class="fa-solid fa-microphone-lines text-teal-400"></i>
+                {{ item.label }}
+                </h2>
+                <!-- Descripción -->
+                <div class="flex flex-col items-center gap-2 mb-3">
+                  <div class="flex items-center gap-2">
+                    <p class="italic">
+                      {{ item.description }}
+                    </p>
+                  </div>
+                </div>
+                <!-- Fecha y hora-->
+                <div class="flex flex-col items-center gap-2 mb-4">
+                  <!-- Fecha -->
+                  <div class="inline-flex items-center gap-2 bg-gray-200 text-black px-3 py-1 rounded-full">
+                    <i class="fa-solid fa-calendar-day text-teal-400"></i>
+                    <span class="font-semibold text-sm">
+                      {{ item.date | date:'EEEE, d MMMM yyyy' }}
+                    </span>
+                  </div>
+                  <!-- Hora -->
+                  <div class="inline-flex items-center gap-2 bg-gray-200 text-black px-3 py-1 rounded-full">
+                    <i class="fa-solid fa-clock text-teal-400"></i>
+                    <span class="font-semibold text-sm">
+                      {{ item.date | date:'HH:mm' }}
+                    </span>
+                  </div>
+                </div>
+                <!-- GRATIS -->
+                <div class="flex items-center justify-center gap-2 text-success font-bold mb-4">
+                  <i class="fa-solid fa-check"></i>
+                  <span>GRATIS</span>
+                </div>
+                <!-- CTA -->
+                <div class="card-actions justify-center">
+                  <button class="btn btn-accent px-8 py-2 font-bold uppercase" (click)="onSignup(item)">
+                    ¡Inscribirse!
+                  </button>
+                </div>
+              </div>
+        </div>
+    }
+    </div>
+</div>
+  
