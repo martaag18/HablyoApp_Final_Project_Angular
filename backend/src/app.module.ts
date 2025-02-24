@@ -5,6 +5,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
 import { WhitelistModule } from './whitelist/whitelist.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { WhitelistModule } from './whitelist/whitelist.module';
     }),
     UsersModule,
     WhitelistModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

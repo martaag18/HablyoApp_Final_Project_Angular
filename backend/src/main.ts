@@ -1,18 +1,21 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
+import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  app.use(cookieParser());
+
   app.enableCors({
-    origin: '*',
+    origin: 'http://localhost:4200', // O el dominio real de tu frontend
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: 'Content-Type, Accept, Authorization',
     credentials: true,
   });
 
-  // Usa ValidationPipe globalmente
+  // 3. Usa ValidationPipe globalmente
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
