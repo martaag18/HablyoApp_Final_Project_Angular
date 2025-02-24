@@ -1,0 +1,76 @@
+<div class="min-h-screen flex items-center justify-center bg-white">
+    <div class="w-full max-w-md p-4 md:p-6">
+      <div class="bg-gradient-to-r from-primary to-red-300 rounded-3xl shadow-2xl overflow-hidden">
+        <div class="p-6 md:p-8">
+          <h2 class="text-2xl font-bold text-center mb-6 text-white uppercase">
+            👤 Iniciar Sesión
+          </h2>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
+            <!-- Email -->
+            <div class="mb-4">
+              <input
+                type="email"
+                formControlName="email"
+                placeholder="Email"
+                class="form-control input input-bordered h-12 px-4 text-base bg-white rounded-md w-full
+                       focus:ring-2 focus:ring-teal-400 focus:outline-none transition-all duration-200"
+              />
+              @if(loginForm.get('email')?.invalid && loginForm.get('email')?.touched){
+                <div class="bg-red-50 border-l-4 border-red-400 text-red-700 p-2 rounded-md mt-1 text-sm font-semibold">
+                  @if(loginForm.get('email')?.errors?.['required']) {
+                    El email es obligatorio
+                  }
+                  @if(loginForm.get('email')?.errors?.['email']) {
+                    Ingresa un email válido
+                  }
+                </div>
+              }
+            </div>
+            <!-- Password -->
+            <div class="mb-4">
+              <input
+                type="password"
+                formControlName="password"
+                placeholder="Contraseña"
+                class="form-control input input-bordered h-12 px-4 text-base bg-white rounded-md w-full
+                       focus:ring-2 focus:ring-teal-400 focus:outline-none transition-all duration-200"
+              />
+              @if(loginForm.get('password')?.invalid && loginForm.get('password')?.touched){
+                <div class="bg-red-50 border-l-4 border-red-400 text-red-700 p-2 rounded-md mt-1 text-sm font-semibold">
+                  @if(loginForm.get('password')?.errors?.['required']) {
+                    La contraseña es obligatoria
+                  }
+                </div>
+              }
+            </div>
+            <!-- Botón de Login -->
+            <button
+              type="submit"
+              [disabled]="loginForm.invalid"
+              class="w-full py-3 bg-teal-400 text-white cursor-pointer hover:bg-teal-600 font-bold rounded-md
+                     flex items-center justify-center gap-2 transition-all duration-300 uppercase"
+            >
+              Acceder
+            </button>
+          </form>
+          <!-- Error de login (por ejemplo, credenciales incorrectas) -->
+          @if(loginError){
+            <div class="bg-red-50 border-l-4 border-red-400 text-red-700 p-2 rounded-md mt-2">
+              {{ loginError }}
+            </div>
+          }
+          <!-- Enlaces extra (opcional) -->
+          <div class="mt-4 text-center">
+            <a routerLink="/forgot-password" class="text-white underline text-sm cursor-pointer">
+              ¿Olvidaste tu contraseña?
+            </a>
+            <p class="text-white text-sm mt-2">
+              ¿No tienes cuenta?
+              <a routerLink="/register" class="underline cursor-pointer">Regístrate</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

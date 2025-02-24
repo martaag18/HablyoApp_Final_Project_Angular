@@ -1,6 +1,8 @@
 import { Component, ElementRef, HostListener } from '@angular/core';
 import { inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-navbar',
   imports: [RouterLink],
@@ -10,6 +12,8 @@ import { RouterLink } from '@angular/router';
 export class NavbarComponent {
 
   private elementRef = inject(ElementRef);
+  private router = inject(Router);
+  authService = inject(AuthService);
 
   isOpen = false;
 
@@ -27,4 +31,18 @@ export class NavbarComponent {
       this.isOpen = false;
     }
   }
+
+  logout() {
+    this.authService.logout().subscribe({
+      next: (res) => {
+        alert("Sesión cerrada");
+        console.log('Sesión cerrada:', res.message);
+        this.router.navigate([""]);
+      },
+      error: (err) => {
+        console.error('Error al cerrar sesión:', err);
+      }
+    });
+  }
+  
 }
