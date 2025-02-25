@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { inject } from '@angular/core';
-import { WebinarService } from '../../../services/webinars.service';
+import { WebinarService } from '../../../services/webinar-info.service';
 import { Webinar } from '../../../shared/interfaces/webinar.interface';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-upcoming-webinars',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './upcoming-webinars.component.html',
   styleUrl: './upcoming-webinars.component.scss'
 })
@@ -19,9 +20,5 @@ export class UpcomingWebinarsComponent {
 
   ngOnInit() {
     this.upcomingDates = this.webinarService.getUpcomingDates();
-  }
-
-  onSignup(item: { date: Date; label: string; description: string }) {
-    alert(`Te has inscrito en: ${item.label}`);
   }
 }
