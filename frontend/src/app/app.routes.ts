@@ -1,22 +1,43 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { RegisterComponent } from './pages/auth/register/register.component';
-import { LoginComponent } from './pages/auth/login/login.component';
-import { UpcomingWebinarsComponent } from './pages/webinars/upcoming-webinars/upcoming-webinars.component';
-import { WebinarSignupComponent } from './pages/webinars/webinar-signup/webinar-signup.component';
 
 export const routes: Routes = [
-    { path: "", component: HomeComponent},
-    { path: "register", component: RegisterComponent},
-    { path: "login", component: LoginComponent},
-    { path: "webinars", component: UpcomingWebinarsComponent},
-    { path: "webinar-signup", component: WebinarSignupComponent},
   {
-    path: 'exercise',
+    path: '',
     loadComponent: () =>
-      import('./pages/exercises/components/exercise-container/exercise-container.component').then(
-        m => m.ExerciseContainerComponent
-      ),
+      import('./layout/layout.component').then(m => m.LayoutComponent),
+    children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import('./pages/home/home.component').then(c => c.HomeComponent),
+      },
+      {
+        path: 'register',
+        loadComponent: () =>
+          import('./pages/auth/register/register.component').then(c => c.RegisterComponent),
+      },
+      {
+        path: 'login',
+        loadComponent: () =>
+          import('./pages/auth/login/login.component').then(c => c.LoginComponent),
+      },
+      {
+        path: 'webinars',
+        loadComponent: () =>
+          import('./pages/webinars/upcoming-webinars/upcoming-webinars.component').then(c => c.UpcomingWebinarsComponent),
+      },
+      {
+        path: 'webinar-signup',
+        loadComponent: () =>
+          import('./pages/webinars/webinar-signup/webinar-signup.component').then(c => c.WebinarSignupComponent),
+      },
+      {
+        path: 'exercise',
+        loadComponent: () =>
+          import('./pages/exercises/components/exercise-container/exercise-container.component')
+            .then(c => c.ExerciseContainerComponent),
+      },
+    ]
   },
-
 ];
+
