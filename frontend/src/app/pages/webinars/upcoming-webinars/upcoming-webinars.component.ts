@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { inject } from '@angular/core';
-import { WebinarService } from '../../../services/webinar-info.service';
 import { Webinar } from '../../../shared/interfaces/webinar.interface';
 import { RouterLink } from '@angular/router';
+import { WebinarService } from '../../../services/webinars.service';
 
 
 @Component({
