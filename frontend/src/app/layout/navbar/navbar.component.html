@@ -1,0 +1,85 @@
+<nav class="bg-white px-6 py-4 border-b fixed top-0 left-0 w-full z-50">
+  <!-- Pantallas pequeñas -->
+  <div class="flex w-full items-center lg:hidden">
+    <!-- Menú hamburguesa -->
+    <div class="mr-auto">
+      <!-- Botón para abrir/cerrar menú -->
+      <button (click)="toggleMenu()" class="btn bg-primary cursor-pointer hover:bg-teal-400">
+        <i class="fas fa-bars text-white"></i>
+      </button>
+      <!-- Menú desplegable -->
+       @if(isOpen){
+        <ul class="absolute bg-white rounded-box shadow p-4 w-52 mt-2 space-y-4">
+          <li>
+            <a routerLink="/" class="title-link text-lg text-primary hover:border-b-2 hover:border-teal-400 pb-1 transition-all duration-100 cursor-pointer">
+              Inicio
+            </a>
+          </li>
+          <li>
+            <a routerLink="/webinars" class="title-link text-lg text-primary hover:border-b-2 hover:border-teal-400 pb-1 transition-all duration-100 cursor-pointer">
+              Webinars
+            </a>
+          </li>
+          <li>
+            <a routerLink="/exercise" class="title-link text-lg text-primary hover:border-b-2 hover:border-teal-400 pb-1 transition-all duration-100 cursor-pointer">
+              Ejercicios
+            </a>
+          </li>
+          <li>
+            <a routerLink="/progress" class="title-link text-lg text-primary hover:border-b-2 hover:border-teal-400 pb-1 transition-all duration-100 cursor-pointer">
+              Progreso
+            </a>
+          </li>
+          <li>
+            <a routerLink="/login" class="title-link text-lg text-primary hover:border-b-2 hover:border-teal-400 pb-1 transition-all duration-100 cursor-pointer">
+              <i class="fa-solid fa-arrow-right-to-bracket"></i> Área personal
+            </a>
+          </li>
+          <li>
+            <a routerLink="/register" class="title-link text-lg text-primary hover:border-b-2 hover:border-teal-400 pb-1 transition-all duration-100 cursor-pointer">
+              <i class="fas fa-user"></i> Registrarse
+            </a>
+          </li>
+        </ul>
+       }
+    </div>
+    <!-- Logo -->
+    <div class="ml-auto">
+      <img src="assets/Logos/hablyo_red_logo.png" alt="Hablyo Logo" class="h-12" />
+    </div>
+  </div>
+
+  <!-- Pantallas grandes -->
+  <div class="hidden lg:flex w-full items-center justify-between">
+    <!-- Main Links -->
+    <div class="flex gap-6">
+      <a routerLink="/" class="title-link font-bold text-primary hover:border-b-2 hover:border-teal-400 pb-1 transition-all duration-100 cursor-pointer">INICIO</a>
+      <a routerLink="/webinars" class="title-link font-bold text-primary hover:border-b-2 hover:border-teal-400 pb-1 transition-all duration-100 cursor-pointer">WEBINARS</a>
+      <a routerLink="/exercise" class="title-link font-bold text-primary hover:border-b-2 hover:border-teal-400 pb-1 transition-all duration-100 cursor-pointer">EJERCICIOS</a>
+      <a routerLink="/progress" class="title-link font-bold text-primary hover:border-b-2 hover:border-teal-400 pb-1 transition-all duration-100 cursor-pointer">PROGRESO</a>
+    </div>
+    <!-- Logo -->
+    <div>
+      <img src="assets/Logos/hablyo_red_logo.png" alt="Hablyo Logo" class="h-12" />
+    </div>
+    <!-- Auth Links -->
+    <div class="flex gap-6">
+      @if(authService.isLoggedSignal()){
+        <a class="title-ling font-bold text-primary hover:border-b-2 hover:border-teal-400 pb-1 transition-all duration-100 cursor-pointer" (click)="logout()">CERRAR SESIÓN</a>
+      }@else {
+        <a routerLink="/login" class="title-link font-bold text-primary hover:border-b-2 hover:border-teal-400 pb-1 transition-all duration-100 cursor-pointer">
+          <i class="fa-solid fa-arrow-right-to-bracket mr-2"></i> INICIAR SESIÓN
+        </a>
+      }
+      <a routerLink="/register" class="title-link font-bold text-primary hover:border-b-2 hover:border-teal-400 pb-1 transition-all duration-100 cursor-pointer">
+        <i class="fas fa-user mr-2"></i> REGISTRO
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+  
+  
+  
+  
