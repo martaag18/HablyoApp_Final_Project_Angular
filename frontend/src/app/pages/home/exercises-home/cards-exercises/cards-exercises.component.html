@@ -1,0 +1,21 @@
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+  @for(card of exerciseCards; track $index){
+    <div class="bg-gray-100 rounded-lg p-6 shadow w-full h-full flex flex-col text-center hover:shadow-lg transition-shadow duration-300">
+      <!-- Icono -->
+      <i [class]="card.icon + ' text-3xl text-teal-400 mb-4'"></i>
+      <!-- Título -->
+      <h3 class="font-bold text-2xl text-primary mb-2">
+        {{ card.title }}
+      </h3>
+      <!-- Lista de puntos -->
+      <ul class="text-md text-gray-600 space-y-4 mb-4">
+        @for(item of card.items; track $index){
+          <li>
+           <i class="fas fa-check-circle text-teal-400 mr-2"></i>
+            {{ item }}
+          </li>
+        }
+      </ul>
+    </div>
+    }
+</div>
