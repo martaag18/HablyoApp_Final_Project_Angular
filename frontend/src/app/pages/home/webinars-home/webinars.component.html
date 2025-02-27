@@ -1,0 +1,54 @@
+<section class="py-12 px-6 bg-slate-700 text-white text-center">
+  <div class="max-w-6xl mx-auto">
+    <!-- Título y descripción -->
+    <h2 class="text-3xl md:text-4xl font-bold mb-4">WEBINARS</h2>
+    <p class="text-sm md:text-base text-gray-300 max-w-xl mx-auto mb-8">
+      Conéctate en vivo con el logopeda <strong>Savio Mascolo</strong> y
+      descubre su experiencia para superar la tartamudez y hablar sin bloqueos.
+    </p>
+    <p>¡Apúntate GRATIS!</p>
+    <i class="fa-solid fa-coins text-yellow-400 text-2xl"></i>
+
+    <!-- Contenedor -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-6">
+      <!-- Imagen -->
+      <div class="flex justify-center">
+        <img
+          ngOptimizedImage
+          [src]="savioWebinarImg"
+          alt="Savio Mascolo explicando su método"
+          class="rounded-xl shadow-lg w-full md:w-auto max-w-md"
+        />
+      </div>
+      <!-- Columna targetas -->
+      <div class="flex flex-col gap-6 text-left mb-11">
+        <!-- CARDS -->
+        @for(card of webinarCards; track $index){
+        <div
+          class="bg-slate-800 p-6 rounded-lg shadow flex flex-col items-center"
+        >
+          <!-- Icono -->
+          <i [class]="card.icon"></i>
+          <!-- Título -->
+          <h3 class="text-xl font-bold mb-3">{{ card.title }}</h3>
+          <!-- Lista puntos cards -->
+          <ul class="space-y-2 text-gray-300 text-sm md:text-base">
+            @for(item of card.items; track $index){
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-check text-yellow-400 mt-1"></i>
+              <p [innerHTML]="item"></p>
+            </li>
+            }
+          </ul>
+        </div>
+        }
+      </div>
+    </div>
+    <!-- Botón CTA -->
+    <app-my-button
+      [label]="'¡RESERVA TU LUGAR!'"
+      color="primary"
+      [routerLink]="['/webinars', 'registro-webinar']"
+    ></app-my-button>
+  </div>
+</section>
