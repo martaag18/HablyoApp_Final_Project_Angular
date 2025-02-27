@@ -1,0 +1,22 @@
+<!-- Si tenemos routerLink, usamos <a [routerLink]="routerLink"> -->
+    <a
+    *ngIf="routerLink; else normalButton"
+    [routerLink]="routerLink"
+    [ngClass]="computeClasses()"
+    [class.pointer-events-none]="disabled" 
+    (click)="onClick()"
+  >
+    {{ label }}
+  </a>
+  
+  <!-- Si NO tenemos routerLink, usamos un <button> normal -->
+  <ng-template #normalButton>
+    <button
+      [disabled]="disabled"
+      [ngClass]="computeClasses()"
+      (click)="onClick()"
+    >
+      {{ label }}
+    </button>
+  </ng-template>
+  
