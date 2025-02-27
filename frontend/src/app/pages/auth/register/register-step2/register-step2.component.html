@@ -1,0 +1,33 @@
+<div class="animate-fadeInDown">
+    <h2 class="text-2xl font-bold text-center mb-4 text-white">
+      ¿CUÁNTOS AÑOS TIENES? 🎂
+    </h2>
+  </div>
+  <app-text-input
+    [control]="parentForm.controls['age']"
+    label="Edad"
+    placeholder="Edad"
+    type="number"
+  ></app-text-input>
+  
+  <div class="flex justify-between gap-2">
+    <app-my-button
+      label="Atrás"
+      color="secondary"
+      (clicked)="goPrevious()"
+      class="w-1/2"
+    >
+      <i class="fa-solid fa-arrow-left"></i>
+    </app-my-button>
+  
+    <app-my-button
+      label="Siguiente"
+      color="secondary"
+      [disabled]="parentForm.controls['age'].invalid"
+      (clicked)="goNext()"
+      class="w-1/2"
+    >
+      <i class="fa-solid fa-arrow-right"></i>
+    </app-my-button>
+  </div>
+  

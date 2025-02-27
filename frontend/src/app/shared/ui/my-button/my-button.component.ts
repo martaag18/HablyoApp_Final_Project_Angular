@@ -24,12 +24,12 @@ export class MyButtonComponent {
   }
 
   computeClasses(): string {
-    const baseClasses = 'cursor-pointer text-white px-6 py-3 rounded-full font-bold transition-all duration-300';
+    const baseClasses ='mx-auto cursor-pointer text-white px-6 py-3 rounded-md font-bold transition-all duration-300';
   
     if (this.color === 'primary') {
       return `${baseClasses} bg-primary hover:bg-[#d73232]`;
     } else if (this.color === 'secondary') {
-      return `${baseClasses} bg-secondary hover:bg-[#2cb8a9]`;
+      return `${baseClasses} bg-secondary w-full hover:bg-[#2cb8a9]`;
     } else if (this.color === 'tertiary') {
       return `${baseClasses} bg-tertiary hover:bg-[#d9a300]`;
     } else {

@@ -12,10 +12,13 @@ import { passwordMatchValidator } from '../../../shared/validators/custom-valida
 import { Register } from '../../../shared/interfaces/register.interface';
 import { RegisterService } from '../../../services/register.service';
 import { Router } from '@angular/router';
+import { RegisterStep1Component } from './register-step1/register-step1.component';
+import { RegisterStep2Component } from './register-step2/register-step2.component';
+import { RegisterStep3Component } from './register-step3/register-step3.component';
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, RegisterStep1Component, RegisterStep2Component, RegisterStep3Component],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
