@@ -1,43 +1,81 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
+  // Ruta raíz -> redirige a /home
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
+
+  // Layout principal con children
   {
     path: '',
     loadComponent: () =>
-      import('./layout/layout.component').then(m => m.LayoutComponent),
+      import('./layout/layout.component').then((m) => m.LayoutComponent),
     children: [
+      // Rutas planas
       {
-        path: '',
+        path: 'home',
         loadComponent: () =>
-          import('./pages/home/home.component').then(c => c.HomeComponent),
-      },
-      {
-        path: 'register',
-        loadComponent: () =>
-          import('./pages/auth/register/register.component').then(c => c.RegisterComponent),
+          import('./pages/home/home.component').then((c) => c.HomeComponent),
       },
       {
         path: 'login',
         loadComponent: () =>
-          import('./pages/auth/login/login.component').then(c => c.LoginComponent),
+          import('./pages/auth/login/login.component').then((c) => c.LoginComponent),
       },
+      {
+        path: 'registro-usuario',
+        loadComponent: () =>
+          import('./pages/auth/register/register.component').then((c) => c.RegisterComponent),
+      },
+
+      // Webinars -> children
       {
         path: 'webinars',
-        loadComponent: () =>
-          import('./pages/webinars/upcoming-webinars/upcoming-webinars.component').then(c => c.UpcomingWebinarsComponent),
+        children: [
+          {
+            path: '',
+            loadComponent: () =>
+              import('./pages/webinars/upcoming-webinars/upcoming-webinars.component')
+                .then((c) => c.UpcomingWebinarsComponent),
+          },
+          {
+            path: 'registro-webinar',
+            loadComponent: () =>
+              import('./pages/webinars/webinar-signup/webinar-signup.component')
+                .then((c) => c.WebinarSignupComponent),
+          },
+        ],
       },
+
+      // Ejercicios -> children
       {
-        path: 'webinar-signup',
-        loadComponent: () =>
-          import('./pages/webinars/webinar-signup/webinar-signup.component').then(c => c.WebinarSignupComponent),
+        path: 'ejercicios',
+        children: [
+          {
+            // /ejercicios => ExercisesIndexComponent
+            path: '',
+            loadComponent: () =>
+              import('./pages/exercises/components/exercises-index/exercises-index.component')
+                .then((c) => c.ExercisesIndexComponent),
+          },
+          {
+            // /ejercicios/vocal-home
+            path: 'vocal-home',
+            loadComponent: () =>
+              import('./pages/exercises/components/exercise-vocal/exercise-vocal-home/vocal-home.component')
+                .then((c) => c.VocalHomeComponent),
+          },
+          {
+            path: 'vocal-final-vocal-inicial',
+            loadComponent: () =>
+              import('./pages/exercises/components/exercise-vocal/exercise-vocal-container/exercise-container.component')
+                .then((c) => c.ExerciseContainerComponent),
+          },
+        ],
       },
-      {
-        path: 'exercise',
-        loadComponent: () =>
-          import('./pages/exercises/components/exercise-container/exercise-container.component')
-            .then(c => c.ExerciseContainerComponent),
-      },
-    ]
+    ],
   },
 ];
-
