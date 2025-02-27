@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CTAComponent } from './cta.component';
 
 describe('CTAComponent', () => {
