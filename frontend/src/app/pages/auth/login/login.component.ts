@@ -7,22 +7,21 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
-import { RouterLink
-
- } from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { MyButtonComponent } from '../../../shared/ui/my-button/my-button.component';
+import { TextInputComponent } from '../../../shared/components/text-input/text-input.component';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ ReactiveFormsModule, RouterLink],
+  imports: [ ReactiveFormsModule, RouterLink, MyButtonComponent, TextInputComponent],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  // Inyección de servicios
+
   private authService = inject(AuthService);
   private router = inject(Router);
 
-  // FormGroup sin FormBuilder
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
