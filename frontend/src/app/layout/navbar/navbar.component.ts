@@ -3,6 +3,7 @@ import { inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { MAIN_LINKS, MOBILE_MENU_LINKS } from '../../shared/constants/navbar-links.constants';
 @Component({
   selector: 'app-navbar',
   imports: [RouterLink],
@@ -11,24 +12,28 @@ import { AuthService } from '../../services/auth.service';
 })
 export class NavbarComponent {
 
+  logoUrl = 'assets/Logos/hablyo_red_logo.png';
+  mobileMenuLinks = MOBILE_MENU_LINKS;
+  mainLinks = MAIN_LINKS;
+
   private elementRef = inject(ElementRef);
   private router = inject(Router);
   authService = inject(AuthService);
 
-  isOpen = false;
+  isMenuOpen = false;
 
   toggleMenu() {
-    this.isOpen = !this.isOpen;
+    this.isMenuOpen = !this.isMenuOpen;
   }
 
   closeMenu() {
-    this.isOpen = false;
+    this.isMenuOpen = false;
   }
 
   @HostListener('document:click', ['$event'])
   clickOutside(event: Event) {
-    if (this.isOpen && !this.elementRef.nativeElement.contains(event.target)) {
-      this.isOpen = false;
+    if (this.isMenuOpen && !this.elementRef.nativeElement.contains(event.target)) {
+      this.isMenuOpen = false;
     }
   }
 
