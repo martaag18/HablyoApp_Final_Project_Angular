@@ -1,0 +1,16 @@
+<span
+  class="boundary-dropzone"
+  (dragover)="onDragOver($event)"
+  (drop)="onDrop($event)"
+  [ngClass]="{
+    'correct-arc': resultState === 'correct',
+    'wrong-arc': resultState === 'wrong',
+    'missed-arc': resultState === 'missed'
+  }"
+>
+  @if (arcValue === 'arc') {
+    <svg class="arc-svg">
+      <path d="M0,0 Q30,30 60,0" stroke="black" stroke-width="3" fill="none" />
+    </svg>
+  }
+</span>
