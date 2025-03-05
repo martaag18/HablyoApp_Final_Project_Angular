@@ -1,0 +1,122 @@
+
+.letter-container {
+  width: 40px;
+  height: 80px;
+  border: 1px solid #ddd;
+  margin: 0 2px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background-color: #fff;
+}
+
+.the-letter {
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+.mark-above {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.4rem;
+  color: #000;
+}
+
+/* Validaciones en letras */
+.correct-letter {
+  background-color: #a7f3d0; 
+}
+.wrong-letter {
+  background-color: #fecaca; 
+}
+.missed-letter {
+  background-color: #fff8c5; 
+}
+
+/* Dropzone de arcos */
+.boundary-dropzone {
+  width: 60px;
+  height: 40px;
+  margin: 0 6px;
+  position: relative;
+  overflow: visible;
+  display: inline-block;
+  vertical-align: bottom;
+  pointer-events: all;
+}
+
+/* Validaciones en arcos */
+.correct-arc {
+  background-color: #a7f3d0;
+}
+.wrong-arc {
+  background-color: #fecaca;
+}
+.missed-arc {
+  background-color: #fff8c5;
+}
+
+/* El arco */
+.arc-svg {
+  width: 60px;
+  height: 40px;
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  overflow: visible;
+}
+
+.one-line-scale {
+  display: flex;
+  align-items: flex-end;
+  overflow: visible;
+  flex-wrap: nowrap;
+  transform-origin: top left; 
+  width: 100%;
+  transform: scale(0.95);
+}
+
+.no-wrap-mode {
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow-x: visible; 
+}
+
+@media (max-width: 1024px) {
+  .one-line-scale.short-phrase {
+    transform: scale(0.9);
+  }
+  .one-line-scale.long-phrase {
+    transform: scale(0.75);
+  }
+}
+@media (max-width: 768px) {
+  .one-line-scale.short-phrase {
+    transform: scale(0.40);
+  }
+  .one-line-scale.long-phrase {
+    transform: scale(0.35);
+  }
+}
+@media (max-width: 640px) {
+  .one-line-scale.short-phrase {
+    transform: scale(0.55);
+  }
+  .one-line-scale.long-phrase {
+    transform: scale(0.445);
+  }
+}
+@media (max-width: 480px) {
+  .one-line-scale {
+    transform: scale(0.25);
+  }
+}
+@media (max-width: 360px) {
+  .one-line-scale {
+    transform: scale(0.25);
+  }
+}

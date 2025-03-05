@@ -1,0 +1,58 @@
+<div class="w-full p-4 max-w-5xl mx-auto mt-6">
+  <!-- Volver (nav) -->
+  <div class="flex justify-end mb-4">
+    <a routerLink="/ejercicios" class="font-bold border-secondary hover:text-secondary"><i class="mr-2 fa-solid fa-arrow-left"></i>Volver a la lista de ejercicios</a>
+  </div>
+
+  <!-- Introducción / explicación -->
+  @if (explanation) {
+  <div
+    class="bg-gray-100 p-4 mb-6 rounded shadow"
+    [innerHTML]="explanation"
+  ></div>
+  }
+
+  <!-- Título e instrucciones -->
+  <div class="mb-4">
+    <h2 class="text-xl font-bold mb-2">
+      Ejercicio número: {{ currentExercise().id }}
+    </h2>
+    <p class="text-sm text-gray-600">
+      {{ currentExercise().instructions }}
+    </p>
+  </div>
+
+  <!-- Componente "dumb" de presentación -->
+  <div class="mb-6">
+    <app-exercise-presentation
+      [wordList]="stateService.wordList()"
+      [annotation]="stateService.annotation()"
+      [arcs]="stateService.arcs()"
+      [resultLetters]="stateService.resultLetters()"
+      [resultArcs]="stateService.resultArcs()"
+      (letterDropped)="onLetterDropped($event)"
+      (arcDropped)="onArcDropped($event)"
+    ></app-exercise-presentation>
+  </div>
+
+  <!-- Contenedor de botones (acciones + navegación) -->
+  <div class="flex flex-wrap gap-4 items-start">
+    <!-- Bloque de acciones -->
+    <div class="flex flex-wrap gap-2 sm:flex-col sm:items-stretch">
+      <app-exercise-actions
+        (complete)="onComplete()"
+        (solve)="onSolve()"
+        (restart)="onRestart()"
+      ></app-exercise-actions>
+    </div>
+
+    <!-- Bloque de navegación -->
+    <div class="flex flex-wrap gap-2 sm:flex-col sm:items-stretch">
+      <app-exercise-navigation
+        [showPrevious]="navigatorService.currentIndex() > 0"
+        (next)="onNextExercise()"
+        (previous)="onPreviousExercise()"
+      ></app-exercise-navigation>
+    </div>
+  </div>
+</div>
