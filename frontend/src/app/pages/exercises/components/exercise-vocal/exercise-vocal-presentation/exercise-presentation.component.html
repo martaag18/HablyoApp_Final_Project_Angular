@@ -1,12 +1,17 @@
 <div class="bg-gray-50 w-full p-4 rounded shadow overflow-visible">
   <!-- Barra de iconos: Tilde + Arc -->
   <div class="mb-4 flex items-center gap-4">
-
-    <!-- TILDE ICON -->
-    <app-tilde-icon (dragStarted)="onDragStart($event, '´')"></app-tilde-icon>
-
-    <!-- ARC ICON -->
-    <app-arc-icon (dragStarted)="onDragStart($event, 'arc')"></app-arc-icon>
+    <app-tilde-icon 
+      (dragStarted)="onDragStart($event, '´')" 
+      aria-label="Icono de tilde"
+      role="button">
+    </app-tilde-icon>
+    
+    <app-arc-icon 
+      (dragStarted)="onDragStart($event, 'arc')" 
+      aria-label="Icono de arco"
+      role="button">
+    </app-arc-icon>
   </div>
 
   <!-- PALABRAS y DROPZONES -->
@@ -19,32 +24,31 @@
   >
     <!-- Bucle de palabras -->
     @for (word of wordList; track $index) {
+      <!-- LETRAS DE LA PALABRA -->
+      <span class="inline-flex items-end">
+        @for (letter of word.letters; track $index) {
+          <app-letter-container
+            [char]="letter.char"
+            [globalIndex]="letter.globalIndex"
+            [resultStateTilde]="resultTilde[letter.globalIndex]"
+            [hasTilde]="tildeMark[letter.globalIndex] === '´'"
+            (droppedOnTilde)="onDropTilde($event, letter.globalIndex)"
+          ></app-letter-container>
+        }
+      </span>
 
-    <!-- LETRAS DE LA PALABRA -->
-    <span class="inline-flex items-end">
-      @for (letter of word.letters; track $index) {
-      <app-letter-container
-        [char]="letter.char"
-        [globalIndex]="letter.globalIndex"
-        [resultState]="resultLetters[letter.globalIndex]"
-        [hasTilde]="annotation[letter.globalIndex] === '´'"
-        (droppedOnLetter)="onDropLetter($event, letter.globalIndex)"
-      >
-      </app-letter-container>
+      <!-- ARC DROPZONE -->
+      @if ($index < wordList.length - 1) {
+        <app-arc-dropzone
+          [arcValue]="arcMark[$index]"
+          [resultState]="resultArc[$index]"
+          (droppedOnArc)="onDropArc($event, $index)"
+          aria-label="Zona de drop para arco"
+        ></app-arc-dropzone>
       }
-    </span>
-
-    <!-- ARC DROPZONE -->
-    @if ($index < wordList.length - 1) {
-    <app-arc-dropzone
-      [arcValue]="arcs[$index]"
-      [resultState]="resultArcs[$index]"
-      (droppedOnArc)="onDropArc($event, $index)"
-    >
-    </app-arc-dropzone>
-    } }
+    }
   </div>
 
-  <!-- Instrucciones ejercicio -->
+  <!-- Instrucciones del ejercicio -->
   <app-instructions-footer></app-instructions-footer>
 </div>

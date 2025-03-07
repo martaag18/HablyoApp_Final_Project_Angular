@@ -1,15 +1,16 @@
 <div class="w-full p-4 mx-auto mt-6">
+  
   <!-- Header -->
   <app-exercise-header></app-exercise-header>
-  
+
   <!-- Sección de introducción / explicación -->
   @if (explanation) {
-    <section>
-      <div class="bg-gray-100 p-4 mb-6 rounded shadow" [innerHTML]="explanation"></div>
+    <section class="mb-6">
+      <div class="bg-gray-100 p-4 rounded shadow" [innerHTML]="explanation"></div>
     </section>
   }
 
-  <!-- Sección de título e instrucciones -->
+  <!-- Título e instrucciones del ejercicio -->
   <section class="mb-4">
     <h2 class="text-xl font-bold mb-2">
       Ejercicio número: {{ currentExercise().id }}
@@ -19,20 +20,27 @@
     </p>
   </section>
 
-  <!-- Sección de presentación del ejercicio -->
+  <!-- Componente de presentación -->
   <section class="mb-6" aria-label="Presentación del ejercicio">
-    <app-exercise-presentation
+    <app-exercise-doble-vocal-presentation
       [wordList]="stateService.wordList()"
       [tildeMark]="stateService.tildeMark()"
       [arcMark]="stateService.arcMark()"
+      [pMark]="stateService.pMark()"
+      [underlineMark]="stateService.underlineMark()"
       [resultTilde]="stateService.resultTilde()"
       [resultArc]="stateService.resultArc()"
+      [resultP]="stateService.resultP()"
+      [resultUnderline]="stateService.resultUnderline()"
+      [vdobleIndices]="vdobleIndices"
       (tildeDropped)="onTildeDropped($event)"
       (arcDropped)="onArcDropped($event)"
-    ></app-exercise-presentation>
+      (pDropped)="onPDropped($event)"
+      (underlineDropped)="onUnderlineDropped($event)"
+    ></app-exercise-doble-vocal-presentation>
   </section>
 
-  <!-- Sección de acciones y navegación -->
+  <!-- Contenedor de acciones y navegación -->
   <section aria-label="Acciones y navegación del ejercicio">
     <div class="flex flex-wrap gap-4 items-start">
       <!-- Bloque de acciones -->

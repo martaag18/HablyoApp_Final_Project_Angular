@@ -1,6 +1,6 @@
-import { ExerciseData } from "../../../../../../shared/interfaces/exercise-finalVocal-InitialVocal.interface";
+import { ExerciseData } from "../../../../../../shared/interfaces/exercise-data.interface";
 
-export const EXERCISES: ExerciseData[] = [
+export const EXERCISES_VOCAL_FINAL_VOCAL_INICIAL: ExerciseData[] = [
   {
     id: 1,
     text: "Fue agradable",

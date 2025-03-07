@@ -1,4 +1,4 @@
-export const EXERCISE_INTRODUCTION = 
+export const EXERCISE_INTRODUCTION_VOCAL_INICIAL_VOCAL_FINAL = 
 `
 <div class="relative bg-red-50 border-l-4 border-red-400 p-4 rounded-md shadow-sm overflow-hidden">
 

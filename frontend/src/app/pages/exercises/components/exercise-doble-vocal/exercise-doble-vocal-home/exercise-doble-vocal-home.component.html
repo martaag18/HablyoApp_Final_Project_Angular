@@ -24,12 +24,29 @@
     </div>
     }
 
+    <!-- Audio -->
+    <app-my-button
+      label="ESCUCHAR EJEMPLO EN AUDIO 🔊"
+      color="blue"
+      (clicked)="onLoadAudio()"
+    >
+    </app-my-button>
+
+    @if(audioUrl()){
+    <div class="text-center mt-6">
+      <audio controls>
+        <source [src]="audioUrl()" type="audio/mpeg" />
+        Tu navegador no soporta el elemento de audio.
+      </audio>
+    </div>
+    }
+
     <!-- Btn -->
     <div class="text-center mt-8">
       <app-my-button
         label="¡EMPEZAR A PRACTICAR!"
         color="primary"
-        [routerLink]="['/ejercicios', 'vocal-final-vocal-inicial']"
+        [routerLink]="['/ejercicios', 'doble-vocal']"
         class="px-6 py-3 font-bold tracking-wide"
       ></app-my-button>
     </div>

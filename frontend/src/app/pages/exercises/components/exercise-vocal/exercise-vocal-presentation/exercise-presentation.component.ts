@@ -9,7 +9,14 @@ import { WordItem } from '../../../../../shared/interfaces/word-item.interface';
 
 @Component({
   standalone: true,
-  imports: [TildeIconComponent, ArcIconComponent, LetterContainerComponent, ArcDropzoneComponent, InstructionsFooterComponent, NgClass],
+  imports: [
+    TildeIconComponent,
+    ArcIconComponent,
+    LetterContainerComponent,
+    ArcDropzoneComponent,
+    InstructionsFooterComponent,
+    NgClass
+  ],
   selector: 'app-exercise-presentation',
   templateUrl: './exercise-presentation.component.html',
   styleUrls: ['./exercise-presentation.component.scss'],
@@ -17,42 +24,58 @@ import { WordItem } from '../../../../../shared/interfaces/word-item.interface';
 export class ExercisePresentationComponent {
   @Input() wordList: WordItem[] = [];
 
-  // Tildes
-  @Input() annotation: Array<'none' | '´'> = [];
-  // Arcos
-  @Input() arcs: Array<'none' | 'arc'> = [];
+  @Input() tildeMark: Array<'none' | '´'> = [];
+  @Input() arcMark: Array<'none' | 'arc'> = [];
 
-  // Resultados => 'correct', 'wrong', 'missed', o null
-  @Input() resultLetters: Array<'correct' | 'wrong' | 'missed' | null> = [];
-  @Input() resultArcs: Array<'correct' | 'wrong' | 'missed' | null> = [];
+  @Input() resultTilde: Array<'correct' | 'wrong' | 'missed' | null> = [];
+  @Input() resultArc: Array<'correct' | 'wrong' | 'missed' | null> = [];
 
-  @Output() letterDropped = new EventEmitter<{ letterIndex: number; mark: '´' }>();
+  @Output() tildeDropped = new EventEmitter<{ letterIndex: number; mark: '´' }>();
   @Output() arcDropped = new EventEmitter<{ arcIndex: number; mark: 'arc' }>();
 
-  onDragStart(event: DragEvent, mark: string) {
+  /**
+   * Maneja el inicio del drag y añade una clase para dispositivos móviles.
+   * @param event Evento de inicio de arrastre.
+   * @param mark Marca que se está arrastrando (ej.: '´' o 'arc').
+   */
+  onDragStart(event: DragEvent, mark: string): void {
     event.dataTransfer?.setData('text/plain', mark);
     if (window.innerWidth <= 768) {
       (event.target as HTMLElement).classList.add('small-drag');
     }
   }
-  onDragOver(event: DragEvent) {
+
+  /**
+   * Permite que el elemento destino reciba el drop.
+   * @param event Evento de arrastrar sobre el elemento.
+   */
+  onDragOver(event: DragEvent): void {
     event.preventDefault();
   }
 
-  onDropLetter(event: DragEvent, letterIndex: number) {
+  /**
+   * Maneja el drop para la tilde y emite el evento correspondiente si la marca es válida.
+   * @param event Evento drop.
+   * @param letterIndex Índice de la letra donde se soltó la tilde.
+   */
+  onDropTilde(event: DragEvent, letterIndex: number): void {
     event.preventDefault();
     const mark = event.dataTransfer?.getData('text/plain');
     if (mark === '´') {
-      this.letterDropped.emit({ letterIndex, mark });
+      this.tildeDropped.emit({ letterIndex, mark });
     }
   }
 
-  onDropArc(event: DragEvent, arcIndex: number) {
+  /**
+   * Maneja el drop para el arco y emite el evento correspondiente si la marca es válida.
+   * @param event Evento drop.
+   * @param arcIndex Índice del arco donde se soltó el elemento.
+   */
+  onDropArc(event: DragEvent, arcIndex: number): void {
     event.preventDefault();
     const mark = event.dataTransfer?.getData('text/plain');
     if (mark === 'arc') {
       this.arcDropped.emit({ arcIndex, mark });
     }
   }
-
 }

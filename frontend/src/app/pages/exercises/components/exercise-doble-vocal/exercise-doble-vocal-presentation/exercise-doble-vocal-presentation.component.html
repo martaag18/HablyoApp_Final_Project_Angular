@@ -1,0 +1,61 @@
+<div class="bg-gray-50 w-full p-4 rounded shadow overflow-visible">
+  <!-- Barra de iconos: Tilde, Arc, P y Underline -->
+  <header class="mb-4">
+    <div class="flex items-center gap-4" role="toolbar" aria-label="Barra de iconos de marcas">
+      <app-tilde-icon (dragStarted)="onDragStart($event, '´')" aria-label="Icono de tilde"></app-tilde-icon>
+      <app-arc-icon (dragStarted)="onDragStart($event, 'arc')" aria-label="Icono de arco"></app-arc-icon>
+      <app-p-icon (dragStarted)="onDragStart($event, 'P')" aria-label="Icono de P"></app-p-icon>
+      <app-underline-icon (dragStarted)="onDragStart($event, 'underline')" aria-label="Icono de subrayado"></app-underline-icon>
+    </div>
+  </header>
+
+  <!-- Palabras y dropzones -->
+  <section
+    class="flex gap-2 w-full overflow-visible one-line-scale"
+    [ngClass]="{
+      'short-phrase': wordList.length <= 3,
+      'long-phrase': wordList.length > 3
+    }"
+    aria-label="Palabras y zonas de drop"
+  >
+    <!-- Bucle de palabras -->
+    @for (word of wordList; track $index) {
+      <span class="inline-flex items-end">
+        <!-- Bucle de letras -->
+        @for (letter of word.letters; track $index) {
+          <app-letter-container
+            [char]="letter.char"
+            [globalIndex]="letter.globalIndex"
+            [resultStateTilde]="resultTilde[letter.globalIndex]"
+            [hasTilde]="tildeMark[letter.globalIndex] === '´'"
+            (droppedOnTilde)="onDropTilde($event, letter.globalIndex)"
+
+            [resultStateP]="resultP[letter.globalIndex]"
+            [hasP]="pMark[letter.globalIndex] === 'P'"
+            (droppedOnP)="onDropP($event, letter.globalIndex)"
+
+            [underlineValue]="underlineMark[letter.globalIndex]"
+            [resultUnderline]="resultUnderline[letter.globalIndex]"
+            [showUnderlineDropzone]="vdobleIndices.includes(letter.globalIndex)"
+            (droppedOnUnderline)="onDropUnderline($event, letter.globalIndex)"
+          ></app-letter-container>
+        }
+      </span>
+
+      <!-- ARC DROPZONE entre palabras -->
+      @if ($index < wordList.length - 1) {
+        <app-arc-dropzone
+          [arcValue]="arcMark[$index]"
+          [resultState]="resultArc[$index]"
+          (droppedOnArc)="onDropArc($event, $index)"
+          aria-label="Zona de drop para arco"
+        ></app-arc-dropzone>
+      }
+    }
+  </section>
+
+  <!-- Instrucciones del ejercicio -->
+  <footer class="mt-4">
+    <app-instructions-footer></app-instructions-footer>
+  </footer>
+</div>
