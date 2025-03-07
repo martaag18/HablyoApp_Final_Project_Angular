@@ -1,0 +1,30 @@
+
+/* Línea de subrayado cuando es correcta */
+.underline-line {
+  width: 100%; /* Mismo ancho que el dropzone */
+  height: 4px; /* Grosor de la línea */
+  background-color: black; /* Color de la línea (puedes ajustarlo según tu diseño) */
+}
+
+/* Underline dropzone */
+.underline-dropzone {
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  width: 40px;
+  height: 10px;
+  pointer-events: all;
+  border: 0.5px solid rgb(156, 156, 193);
+  z-index: 10; /* Para que sea visible */
+}
+
+/* Colores de fondo según el estado de validación */
+.correct-underline {
+  background-color: #a7f3d0; /* Verde */
+}
+.wrong-underline {
+  background-color: #fecaca; /* Rojo claro */
+}
+.missed-underline {
+  background-color: #fff8c5; /* Amarillo claro */
+}

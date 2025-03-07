@@ -1,18 +1,20 @@
 .letter-container {
-    width: 40px;
-    height: 80px;
-    border: 1px solid #ddd;
-    margin: 0 2px;
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    background-color: #fff;
-  }
-  .the-letter {
-    font-size: 1.2rem;
-    margin-bottom: 4px;
-  }
+  position: relative;
+  width: 40px;
+  height: 80px;
+  border: 1px solid #ddd;
+  margin: 0 2px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background-color: #fff;
+}
+
+.the-letter {
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
   .mark-above {
     position: absolute;
     top: 0;

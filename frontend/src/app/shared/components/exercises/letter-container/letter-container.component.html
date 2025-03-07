@@ -3,13 +3,25 @@
   (dragover)="onDragOver($event)"
   (drop)="onDrop($event)"
   [ngClass]="{
-    'correct-letter': resultState === 'correct',
-    'wrong-letter': resultState === 'wrong',
-    'missed-letter': resultState === 'missed'
+    'correct-letter': finalState === 'correct',
+    'wrong-letter': finalState === 'wrong',
+    'missed-letter': finalState === 'missed'
   }"
 >
-  <span class="the-letter">{{ char }}</span>
-  @if(hasTilde){
+  <span class="the-letter"> {{ char }}</span>
+
+  @if (hasTilde) {
     <span class="mark-above">´</span>
   }
+
+  @if (hasP) {
+    <span class="mark-above">P</span>
+  }
+
+    <app-underline-dropzone
+      [underlineValue]="underlineValue"
+      [resultState]="resultUnderline"
+      (droppedOnUnderline)="onDropUnderline($event)"
+    ></app-underline-dropzone>
+  
 </div>
