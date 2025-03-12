@@ -3,5 +3,7 @@ export interface ExerciseData {
     text: string;
     instructions: string;
     tildeIndices?: number[];
+    pIndices?: number[];
+    vdobleIndices?: number[];
   }
   

@@ -4,5 +4,5 @@ export interface Register {
     age:number;
     email: string;
     password:string;
-    repeatPassword:string;
+    repeatPassword?:string;
 }
