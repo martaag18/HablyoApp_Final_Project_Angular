@@ -1,0 +1,14 @@
+<span
+  class="underline-dropzone"
+  (dragover)="onDragOver($event)"
+  (drop)="onDrop($event)"
+  [ngClass]="{
+    'correct-underline': resultState === 'correct',
+    'wrong-underline': resultState === 'wrong',
+    'missed-underline': resultState === 'missed'
+  }"
+>
+  @if (underlineValue === 'underline') {
+    <div class="underline-line"></div>
+  }
+</span>

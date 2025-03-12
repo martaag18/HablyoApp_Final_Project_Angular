@@ -1,0 +1,17 @@
+<div class="flex gap-4 flex-wrap">
+  <app-my-button
+    label="Completado"
+    color="success"
+    (clicked)="complete.emit()"
+  ></app-my-button>
+  <app-my-button
+    label="Ver solución"
+    color="tertiary"
+    (clicked)="solve.emit()"
+  ></app-my-button>
+  <app-my-button
+    label="Volver a empezar"
+    color="blueLight"
+    (clicked)="restart.emit()"
+  ></app-my-button>
+</div>

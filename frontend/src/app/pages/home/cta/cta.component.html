@@ -1,0 +1,40 @@
+<section class="py-12 px-6 bg-slate-50">
+  <div class="max-w-6xl mx-auto text-center">
+    <!-- Título -->
+    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-8">
+      ¿CÓMO EMPEZAR?
+    </h2>
+    <!-- CARDS -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- PASOS -->
+      @for(step of steps; track $index){
+        <article class="bg-white border border-gray-200 shadow p-6 rounded-lg flex flex-col text-left">
+        <div class="mb-4 flex items-center gap-2">
+          <span
+            class="w-8 h-8 flex items-center justify-center text-white font-bold text-sm rounded"
+            [style.backgroundColor]="step.indexColor">
+            {{ step.index }}
+          </span>
+          <h3 class="text-xl font-bold text-slate-800">{{ step.title }}</h3>
+        </div>
+        <p class="text-sm md:text-base text-slate-600 flex-grow">
+          <span [innerHTML]="step.text"></span>
+        </p>
+
+        <!-- Boton -->
+        <app-my-button
+          class="mt-4 inline-block"
+          [label]="step.linkText"
+          [routerLink]="step.link"
+          [color]="step.color"
+        ></app-my-button>
+      </article>
+      }
+      
+    </div>
+  </div>
+</section>
+
+  
+  
+  

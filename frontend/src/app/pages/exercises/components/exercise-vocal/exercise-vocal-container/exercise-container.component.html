@@ -1,0 +1,71 @@
+<main class="w-full p-4 mx-auto mt-6">
+  <!-- Cabecera -->
+  <header aria-label="Cabecera del ejercicio" class="mb-4">
+    <app-exercise-header></app-exercise-header>
+  </header>
+
+  <!-- Sección de introducción -->
+  @if (explanation) {
+    <section aria-labelledby="exercise-explanation-title" class="mb-6">
+      <h2 id="exercise-explanation-title" class="sr-only">
+        Explicación del ejercicio
+      </h2>
+      <div class="bg-gray-100 p-4 rounded shadow" [innerHTML]="explanation"></div>
+    </section>
+  }
+
+  <!-- título e instrucciones -->
+  <section aria-labelledby="exercise-info-title" class="mb-4">
+    <h2 id="exercise-info-title" class="sr-only">
+      Información del ejercicio
+    </h2>
+    <h3 class="text-xl font-bold mb-2">
+      Ejercicio número: {{ currentExercise().id }}
+    </h3>
+    <p class="text-sm text-gray-600">
+      {{ currentExercise().instructions }}
+    </p>
+  </section>
+
+  <!-- Ejercicio -->
+  <section class="mb-6" aria-label="Presentación del ejercicio">
+    <app-exercise-presentation
+      [wordList]="stateService.wordList()" 
+      [tildeMark]="stateService.tildeMark()"
+      [arcMark]="stateService.arcMark()"
+      [resultTilde]="stateService.resultTilde()"
+      [resultArc]="stateService.resultArc()"
+      (tildeDropped)="onTildeDropped($event)"
+      (arcDropped)="onArcDropped($event)"
+    ></app-exercise-presentation>
+  </section>
+
+  <!-- Acciones y navegación -->
+  <section aria-label="Acciones y navegación del ejercicio">
+    <div class="flex flex-wrap gap-4 items-start">
+      <!-- Bloque de acciones -->
+      <div
+        class="flex flex-wrap gap-2 sm:flex-col sm:items-stretch"
+        aria-label="Acciones del ejercicio"
+      >
+        <app-exercise-actions
+          (complete)="onComplete()"
+          (solve)="onSolve()"
+          (restart)="onRestart()"
+        ></app-exercise-actions>
+      </div>
+
+      <!-- Bloque de navegación -->
+      <nav
+        class="flex flex-wrap gap-2 sm:flex-col sm:items-stretch"
+        aria-label="Navegación del ejercicio"
+      >
+        <app-exercise-navigation
+          [showPrevious]="navigatorService.currentIndex() > 0"
+          (next)="onNextExercise()"
+          (previous)="onPreviousExercise()"
+        ></app-exercise-navigation>
+      </nav>
+    </div>
+  </section>
+</main>

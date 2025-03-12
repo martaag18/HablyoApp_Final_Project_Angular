@@ -1,0 +1,58 @@
+<section class="py-12 px-6 relative">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl font-bold text-primary text-center mb-8">
+      HISTORIAS DE ÉXITO
+    </h2>
+
+    <div class="carousel w-full">
+      <!-- Iteramos sobre las reseñas con @for -->
+      @for (review of reviews; track $index) {
+        @if (currentIndex === $index) {
+          <div class="carousel-item relative w-full">
+            <div class="bg-white rounded-lg shadow p-16 md:p-2 text-center mx-auto max-w-md">
+              <i class="fas fa-user-circle text-5xl text-primary mb-4"></i>
+              <!-- Estrellas (rating) -->
+              <div class="flex justify-center mb-2">
+                @for (star of [0,1,2,3,4]; track star) {
+                  <i
+                    class="fas"
+                    [ngClass]="{
+                      'fa-star text-yellow-400': star < review.rating,
+                      'fa-star text-gray-300': star >= review.rating
+                    }"
+                  ></i>
+                }
+              </div>
+              <p class="text-gray-700 italic mb-4 text-sm">
+                {{ review.text }}
+              </p>
+              <h4 class="font-bold text-primary text-sm">
+                {{ review.author }}
+              </h4>
+            </div>
+
+            <!-- Botones de navegación (prev / next) -->
+            <div
+              class="absolute flex justify-between items-center w-full top-1/2 left-0 transform -translate-y-1/2 px-4"
+            >
+              @if (currentIndex > 0) {
+                <app-my-button
+                  [color]="'circle'"
+                  (clicked)="prev()"
+                  [label]="'❮'"
+                ></app-my-button>
+              }
+              @if (currentIndex < reviews.length - 1) {
+                <app-my-button
+                  [color]="'circle'"
+                  (clicked)="next()"
+                  [label]="'❯'"
+                ></app-my-button>
+              }
+            </div>
+          </div>
+        }
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,32 @@
+.boundary-dropzone {
+    width: 60px;
+    height: 40px;
+    margin: 0 6px;
+    position: relative;
+    overflow: visible;
+    display: inline-flex;
+    vertical-align: bottom;
+    pointer-events: all;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .correct-arc {
+    background-color: #a7f3d0;
+  }
+  .wrong-arc {
+    background-color: #fecaca;
+  }
+  .missed-arc {
+    background-color: #fff8c5;
+  }
+  
+  .arc-svg {
+    width: 60px;
+    height: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    overflow: visible;
+  }
+  

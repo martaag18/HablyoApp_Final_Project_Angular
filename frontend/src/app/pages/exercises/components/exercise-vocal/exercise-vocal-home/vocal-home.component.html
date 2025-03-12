@@ -1,0 +1,54 @@
+<section
+  class="py-12 px-6 bg-gradient-to-r from-primary to-primary-400 min-h-screen flex items-center justify-center"
+>
+  <div class="max-w-4xl w-full bg-white p-8 rounded-xl shadow-lg">
+    <!-- Título -->
+    <div class="text-center mb-6">
+      <div class="inline-block bg-gray-100 px-6 py-4 rounded-lg shadow">
+        <h1
+          class="text-3xl md:text-4xl font-extrabold text-primary flex items-center gap-3 justify-center"
+        >
+          {{ explanation().title }}
+        </h1>
+      </div>
+    </div>
+
+    <!-- Párrafos -->
+    @for(paragraph of explanation().paragraphs; track $index){
+    <div class="mb-6 flex items-start gap-3">
+      <i class="fa-solid fa-check-circle text-green-500 mt-1"></i>
+      <p
+        class="text-base md:text-lg leading-relaxed text-gray-700"
+        [innerHTML]="paragraph"
+      ></p>
+    </div>
+    }
+
+    <!-- Audio -->
+    <app-my-button
+      label="ESCUCHAR EJEMPLO EN AUDIO 🔊"
+      color="blue"
+      (clicked)="onLoadAudio()"
+    >
+    </app-my-button>
+
+    @if(audioUrl()){
+    <div class="text-center mt-6">
+      <audio controls>
+        <source [src]="audioUrl()" type="audio/mpeg" />
+        Tu navegador no soporta el elemento de audio.
+      </audio>
+    </div>
+    }
+
+    <!-- Btn -->
+    <div class="text-center mt-8">
+      <app-my-button
+        label="¡EMPEZAR A PRACTICAR!"
+        color="primary"
+        [routerLink]="['/ejercicios', 'vocal-final-vocal-inicial']"
+        class="px-6 py-3 font-bold tracking-wide"
+      ></app-my-button>
+    </div>
+  </div>
+</section>

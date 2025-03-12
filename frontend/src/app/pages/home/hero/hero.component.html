@@ -1,0 +1,45 @@
+<section
+  class="hero bg-gradient-to-r from-primary to-red-300 text-white relative overflow-hidden py-24 px-6"
+>
+  <div
+    class="hero-content w-full max-w-6xl flex flex-col md:flex-row items-center relative z-10"
+  >
+    <!-- Texto -->
+    <div class="w-full md:w-1/2 space-y-6 text-center md:text-left">
+      <h1 class="text-5xl md:text-6xl font-bold leading-tight">
+        {{ heroData.title }} <span class="text-yellow-100">{{ heroData.highlight }}</span>
+      </h1>
+
+      <p class="mt-4 text-xl md:text-2xl">
+        {{ heroData.subtitle }}
+      </p>
+
+      <!-- Beeficios -->
+      <ul class="mt-6 space-y-4 text-lg">
+        @for (benefit of heroData.benefits; track $index) {
+          <li class="flex items-center justify-center md:justify-start">
+            <i class="fa-solid fa-check-circle text-teal-300 mr-2"></i>
+            <span>{{ benefit }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <!-- Columna de imagen -->
+    <div class="w-full md:w-1/2 mt-10 md:mt-0 flex justify-center">
+      <img
+        [ngSrc]="heroData.imageSrc"
+        [alt]="heroData.imageAlt"
+        width="600"          
+        height="400"        
+        class="w-full max-w-md rounded-xl shadow-2xl"
+        [priority]="true"   
+      />
+    </div>
+  </div>
+
+  <!-- Flecha scroll  -->
+  <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <i class="fa-solid fa-chevron-down text-white text-2xl"></i>
+  </div>
+</section>

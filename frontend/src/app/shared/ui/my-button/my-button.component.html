@@ -1,0 +1,14 @@
+@if(routerLink){
+<a
+  [routerLink]="routerLink"
+  [ngClass]="computeClasses()"
+  [class.pointer-events-none]="disabled"
+  (click)="onClick()"
+>
+  {{ label }}
+</a>
+}@else {
+<button [disabled]="disabled" [ngClass]="computeClasses()" (click)="onClick()">
+  {{ label }}
+</button>
+}

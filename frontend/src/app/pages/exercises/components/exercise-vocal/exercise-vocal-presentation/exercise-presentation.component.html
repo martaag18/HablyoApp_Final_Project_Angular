@@ -1,0 +1,59 @@
+<article class="exercise-wrapper bg-gray-50 w-full p-4 rounded shadow">
+
+  <!-- Encabezado con iconos (Tilde + Arc) -->
+  <header class="mb-4 flex items-center gap-4">
+    <app-tilde-icon
+      (dragStarted)="onDragStart($event, '´')"
+      aria-label="Icono de tilde"
+      role="button">
+    </app-tilde-icon>
+
+    <app-arc-icon
+      (dragStarted)="onDragStart($event, 'arc')"
+      aria-label="Icono de arco"
+      role="button">
+    </app-arc-icon>
+  </header>
+
+  <!-- Sección principal -->
+  <section class="scroll-outer">
+    <div
+      class="letters-scale"
+      [ngClass]="{
+        'short-phrase': wordList.length <= 3,
+        'long-phrase': wordList.length > 3
+      }"
+    >
+      <!-- Bucle de palabras -->
+      @for (word of wordList; track $index) {
+        <!-- Bloque de letras de la palabra -->
+        <span class="inline-flex items-end">
+          @for (letter of word.letters; track $index) {
+            <app-letter-container
+              [char]="letter.char"
+              [globalIndex]="letter.globalIndex"
+              [resultStateTilde]="resultTilde[letter.globalIndex]"
+              [hasTilde]="tildeMark[letter.globalIndex] === '´'"
+              (droppedOnTilde)="onDropTilde($event, letter.globalIndex)"
+            ></app-letter-container>
+          }
+        </span>
+
+        <!-- ARC DROPZONE (si no es la última palabra) -->
+        @if ($index < wordList.length - 1) {
+          <app-arc-dropzone
+            [arcValue]="arcMark[$index]"
+            [resultState]="resultArc[$index]"
+            (droppedOnArc)="onDropArc($event, $index)"
+            aria-label="Zona de drop para arco"
+          ></app-arc-dropzone>
+        }
+      }
+    </div>
+  </section>
+
+  <!-- Pie con las instrucciones del ejercicio -->
+  <footer class="mt-4">
+    <app-instructions-footer></app-instructions-footer>
+  </footer>
+</article>

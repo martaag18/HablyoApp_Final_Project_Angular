@@ -1,0 +1,24 @@
+<div class="mb-4">
+    <input
+      [type]="type"
+      [formControl]="controlAsFormControl"
+      [placeholder]="placeholder"
+      class="form-control input input-bordered h-12 px-4 text-base bg-white rounded-md w-full
+             focus:ring-2 focus:ring-teal-400 focus:outline-none transition-all duration-200"
+    />
+    
+    @if(control.invalid && control.touched){
+        <div class="bg-red-50 border-l-4 border-red-400 text-red-700 p-2 rounded-md mt-1 text-sm font-semibold">
+            @if(control.errors?.['required']){
+            {{ label }} es obligatorio
+            }
+            @if(control.errors?.['email']){
+            Ingresa un {{ label.toLowerCase() }} válido
+            }
+            @if(control.errors?.["misMatch"]){
+                Las contraseñas no coinciden
+            } 
+        </div>
+    }
+  </div>
+  
