@@ -2,7 +2,7 @@ import { Component, ElementRef, HostListener } from '@angular/core';
 import { inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { MAIN_LINKS, MOBILE_MENU_LINKS } from '../../shared/constants/navbar-links.constants';
 @Component({
   selector: 'app-navbar',
