@@ -6,7 +6,6 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
 import { WhitelistModule } from './whitelist/whitelist.module';
 import { AuthModule } from './auth/auth.module';
-import { UsersWebinarModule } from './users-webinar/users-webinar.module';
 
 @Module({
   imports: [
@@ -29,7 +28,6 @@ import { UsersWebinarModule } from './users-webinar/users-webinar.module';
     UsersModule,
     WhitelistModule,
     AuthModule,
-    UsersWebinarModule,
   ],
   controllers: [AppController],
   providers: [AppService],
