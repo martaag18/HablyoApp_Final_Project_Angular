@@ -6,19 +6,19 @@ import {
   Validators,
 } from '@angular/forms';
 import { inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { WhitelistService } from '../../../services/whitelist.service';
+import { WhitelistService } from '../../../services/auth/whitelist.service';
 import { passwordMatchValidator } from '../../../shared/validators/custom-validators.component';
 import { Register } from '../../../shared/interfaces/register.interface';
-import { RegisterService } from '../../../services/register.service';
+import { RegisterService } from '../../../services/auth/register.service';
 import { Router } from '@angular/router';
 import { RegisterStep1Component } from './register-step1/register-step1.component';
 import { RegisterStep2Component } from './register-step2/register-step2.component';
 import { RegisterStep3Component } from './register-step3/register-step3.component';
+import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule, CommonModule, RegisterStep1Component, RegisterStep2Component, RegisterStep3Component],
+  imports: [ReactiveFormsModule, RegisterStep1Component, RegisterStep2Component, RegisterStep3Component, NgStyle],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
@@ -82,14 +82,12 @@ export class RegisterComponent {
       age: ageNumber,
       email: this.registerForm.value.email!,
       password: this.registerForm.value.password!,
-      repeatPassword: this.registerForm.value.repeatPassword!,
     };
     console.log('submitRegister() invocado'); 
 
     this.registerService.registerUser(data).subscribe({
       next: (response) => {
         console.log('Registro exitoso', response.message);
-        alert('¡Registro exitoso! Ahora ya te puedes loguear');
         this.router.navigate(['/login']);
       },
       error: (err) => {

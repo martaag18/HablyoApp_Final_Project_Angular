@@ -54,30 +54,10 @@ export class ExerciseDobleVocalPresentationComponent {
   @Input() vdobleIndices: number[] = [];
 
 
-
-  /**
-   * Maneja el inicio del drag.
-   * @param event Evento de arrastre.
-   * @param mark Marca que se está arrastrando ('´' | 'arc' | 'P' | 'underline').
-   */
   onDragStart(event: DragEvent, mark: '´' | 'arc' | 'P' | 'underline'): void {
     event.dataTransfer?.setData('text/plain', mark);
-    if (window.innerWidth <= 768) {
-      (event.target as HTMLElement).classList.add('small-drag');
-    }
   }
 
-  /**
-   * Permite que el elemento destino acepte el drop.
-   * @param event Evento drag over.
-   */
-  onDragOver(event: DragEvent): void {
-    event.preventDefault();
-  }
-
-  /**
-   * Maneja el drop para la tilde y emite el evento correspondiente.
-   */
   onDropTilde(event: DragEvent, letterIndex: number): void {
     event.preventDefault();
     const mark = event.dataTransfer?.getData('text/plain');
@@ -86,9 +66,6 @@ export class ExerciseDobleVocalPresentationComponent {
     }
   }
 
-  /**
-   * Maneja el drop para el arco y emite el evento correspondiente.
-   */
   onDropArc(event: DragEvent, arcIndex: number): void {
     event.preventDefault();
     const mark = event.dataTransfer?.getData('text/plain');
@@ -97,9 +74,7 @@ export class ExerciseDobleVocalPresentationComponent {
     }
   }
 
-  /**
-   * Maneja el drop para la "P" y emite el evento correspondiente.
-   */
+
   onDropP(event: DragEvent, letterIndex: number): void {
     event.preventDefault();
     const mark = event.dataTransfer?.getData('text/plain');
@@ -108,9 +83,6 @@ export class ExerciseDobleVocalPresentationComponent {
     }
   }
 
-  /**
-   * Maneja el drop para el subrayado (underline) y emite el evento correspondiente.
-   */
   onDropUnderline(event: DragEvent, letterIndex: number): void {
     event.preventDefault();
     const mark = event.dataTransfer?.getData('text/plain');

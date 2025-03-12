@@ -1,41 +1,36 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { UnderlineDropzoneComponent } from '../underline-dropzone/underline-dropzone.component';
-
-export type ValidationState = 'correct' | 'wrong' | 'missed' | null;
-
+import { ValidationState } from '../../../types/validation-state.type';
 @Component({
-  standalone: true,
   imports: [NgClass, UnderlineDropzoneComponent],
   selector: 'app-letter-container',
   templateUrl: './letter-container.component.html',
   styleUrls: ['./letter-container.component.scss']
 })
 export class LetterContainerComponent {
-  @Input() char: string = '';
-  @Input() globalIndex: number = 0;
+
+  @Input() char: string = ''; //Almacena caracter que se muestra en el contenedor
+  @Input() globalIndex: number = 0; //posicion absoluta de la letra
 
   // Tilde
-  @Input() resultStateTilde: ValidationState = null;
-  @Input() hasTilde: boolean = false;
+  @Input() resultStateTilde: ValidationState = null; //almacena estado validación tilde
+  @Input() hasTilde: boolean = false; //indica si se ha colocado tile en esa letra
 
   // P
-  @Input() resultStateP: ValidationState = null;
-  @Input() hasP: boolean = false;
+  @Input() resultStateP: ValidationState = null; //almacena estado validación p
+  @Input() hasP: boolean = false; //indica si se ha colocado p en esa letra
 
-  // Indica si esta letra debe mostrar el underline dropzone
-  @Input() showUnderlineDropzone: boolean = false;
-  
-  // Valor y resultado del subrayado (si se muestra)
-  @Input() underlineValue: 'none' | 'underline' = 'none';
-  @Input() resultUnderline: ValidationState = null;
+  // Underline
+  @Input() showUnderlineDropzone: boolean = false; // Indica si esta letra debe mostrar el underline dropzone
+  @Input() underlineValue: 'none' | 'underline' = 'none'; //Indica si letra está subrayada o no
+  @Input() resultUnderline: ValidationState = null; //estado validación underline
 
-  // Emite evento al hacer drop en el underline
+
   @Output() droppedOnTilde = new EventEmitter<DragEvent>();
   @Output() droppedOnP = new EventEmitter<DragEvent>();
   @Output() droppedOnUnderline = new EventEmitter<DragEvent>();
 
-  // Combina la validación Tilde y P en un “estado final”
   get finalState(): ValidationState {
     const t = this.resultStateTilde;
     const p = this.resultStateP;
@@ -59,7 +54,6 @@ export class LetterContainerComponent {
     }
   }
 
-  // Manejar drop en el underline
   onDropUnderline(event: DragEvent) {
     event.preventDefault();
     const mark = event.dataTransfer?.getData('text/plain');

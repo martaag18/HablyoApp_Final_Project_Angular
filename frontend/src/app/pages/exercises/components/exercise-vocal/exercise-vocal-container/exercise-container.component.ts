@@ -1,3 +1,4 @@
+//Coordina (orquesta) la lógica del ejercicio -> delega el trabajo a los servicios
 import { Component, computed, effect, inject, signal } from '@angular/core';
 
 // Interfaces
@@ -9,11 +10,11 @@ import { ExerciseNavigationComponent } from '../../../../../shared/components/ex
 import { ExerciseActionsComponent } from '../../../../../shared/components/exercises/exercise-actions/exercise-actions.component';
 
 // Servicios
-import { ExerciseNavigatorService } from '../../../../../services/exercise/navigation/exercise-navigator.service';
-import { ExerciseStateService } from '../../../../../services/exercise/exercise-state.service';
-import { ExerciseActionsService } from '../../../../../services/exercise/exercise-actions.service';
-import { DragDropService } from '../../../../../services/exercise/drag-drop.service';
-import { WordListOrchestratorService } from '../../../../../services/exercise/word-list-orchestrator.service';
+import { ExerciseNavigatorService } from '../../../../../shared/services/navigation/exercise-navigator.service';
+import { ExerciseStateService } from '../../../../../shared/services/state/exercise-state.service';
+import { ExerciseActionsService } from '../../../../../shared/services/actions/exercise-actions.service';
+import { DragDropService } from '../../../../../shared/services/drag-drop/drag-drop.service';
+import { WordListOrchestratorService } from '../../../../../shared/services/orchestration/word-list-orchestrator.service';
 
 // Mocks
 import { EXERCISES_VOCAL_FINAL_VOCAL_INICIAL } from '../data/mocks/exercise-examples.mock';
@@ -21,7 +22,6 @@ import { EXERCISE_INTRODUCTION_VOCAL_INICIAL_VOCAL_FINAL } from '../data/mocks/e
 import { ExerciseHeaderComponent } from '../../../../../shared/components/exercises/exercise-header/exercise-header.component';
 
 @Component({
-  standalone: true,
   imports: [
     ExercisePresentationComponent,
     ExerciseNavigationComponent,
@@ -49,14 +49,15 @@ export class ExerciseContainerComponent {
   });
 
   constructor() {
-    effect(() => {
+    effect(() => { //cada ve que el indice cambia, llama a loadExercise(index) -> carga ejercicio se ejecuta de forma reactiva
       const index = this.navigatorService.currentIndex();
-      this.loadExercise(index);
+      this.initializeCurrentExercise(index);
     });
   }
 
-  loadExercise(index: number) {
+  initializeCurrentExercise(index: number) {
     if (index < 0 || index >= this.allExercises().length) {
+      console.error(`Índice fuera de rango: ${index}. No se cargará ningún ejercicio.`);
       return;
     }
   
@@ -65,7 +66,7 @@ export class ExerciseContainerComponent {
     
     this.stateService.initializeExerciseState(wordList);
   }
-  // ========== Métodos que delegan en los servicios ==========
+  // ========== Métodos delegados a los servicios ==========
 
   onComplete() {
     const index = this.navigatorService.currentIndex();

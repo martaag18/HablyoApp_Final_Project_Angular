@@ -1,3 +1,5 @@
+//Responsabilidad -> mostrar información y notificar al componente contenedor (emite eventos) o a los servicios cuando se produce alguna acción del usuario. 
+
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { InstructionsFooterComponent } from '../../../../../shared/components/exercises/instructions-footer/instructions-footer.component';
 import { ArcDropzoneComponent } from '../../../../../shared/components/exercises/arc-dropzone/arc-dropzone.component';
@@ -8,7 +10,6 @@ import { NgClass } from '@angular/common';
 import { WordItem } from '../../../../../shared/interfaces/word-item.interface';
 
 @Component({
-  standalone: true,
   imports: [
     TildeIconComponent,
     ArcIconComponent,
@@ -22,6 +23,7 @@ import { WordItem } from '../../../../../shared/interfaces/word-item.interface';
   styleUrls: ['./exercise-presentation.component.scss'],
 })
 export class ExercisePresentationComponent {
+
   @Input() wordList: WordItem[] = [];
 
   @Input() tildeMark: Array<'none' | '´'> = [];
@@ -33,31 +35,13 @@ export class ExercisePresentationComponent {
   @Output() tildeDropped = new EventEmitter<{ letterIndex: number; mark: '´' }>();
   @Output() arcDropped = new EventEmitter<{ arcIndex: number; mark: 'arc' }>();
 
-  /**
-   * Maneja el inicio del drag y añade una clase para dispositivos móviles.
-   * @param event Evento de inicio de arrastre.
-   * @param mark Marca que se está arrastrando (ej.: '´' o 'arc').
-   */
+
+  //Manejo inicio del drag
+  //Objeto dataTransfer forma parte de la API de drag & drop de JS -> para almacenar datos mientras se realiza el arrastre(drag). Se guarda info (como el tipo de marca) para recuperarla cuando se suelte el elemento (drop)
   onDragStart(event: DragEvent, mark: string): void {
     event.dataTransfer?.setData('text/plain', mark);
-    if (window.innerWidth <= 768) {
-      (event.target as HTMLElement).classList.add('small-drag');
-    }
   }
 
-  /**
-   * Permite que el elemento destino reciba el drop.
-   * @param event Evento de arrastrar sobre el elemento.
-   */
-  onDragOver(event: DragEvent): void {
-    event.preventDefault();
-  }
-
-  /**
-   * Maneja el drop para la tilde y emite el evento correspondiente si la marca es válida.
-   * @param event Evento drop.
-   * @param letterIndex Índice de la letra donde se soltó la tilde.
-   */
   onDropTilde(event: DragEvent, letterIndex: number): void {
     event.preventDefault();
     const mark = event.dataTransfer?.getData('text/plain');
@@ -66,11 +50,7 @@ export class ExercisePresentationComponent {
     }
   }
 
-  /**
-   * Maneja el drop para el arco y emite el evento correspondiente si la marca es válida.
-   * @param event Evento drop.
-   * @param arcIndex Índice del arco donde se soltó el elemento.
-   */
+
   onDropArc(event: DragEvent, arcIndex: number): void {
     event.preventDefault();
     const mark = event.dataTransfer?.getData('text/plain');

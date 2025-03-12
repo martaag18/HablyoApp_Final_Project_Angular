@@ -1,39 +1,44 @@
 <section
-  class="hero bg-gradient-to-r from-primary to-red-300 text-white relative overflow-hidden py-24 px-6">
-  <div class="hero-content w-full max-w-6xl flex flex-col md:flex-row items-center relative z-10 animate-fadeInUp">
-    <!-- Columna de texto -->
+  class="hero bg-gradient-to-r from-primary to-red-300 text-white relative overflow-hidden py-24 px-6"
+>
+  <div
+    class="hero-content w-full max-w-6xl flex flex-col md:flex-row items-center relative z-10"
+  >
+    <!-- Texto -->
     <div class="w-full md:w-1/2 space-y-6 text-center md:text-left">
-      <!-- Título -->
-      <h1 class="text-5xl md:text-6xl font-bold leading-tight animate-slideInDown">
-        TUS PALABRAS <span class="text-yellow-100">LIBRES</span>
+      <h1 class="text-5xl md:text-6xl font-bold leading-tight">
+        {{ heroData.title }} <span class="text-yellow-100">{{ heroData.highlight }}</span>
       </h1>
-      <!-- Subtítulo en una sola línea y ex-tartamudo con fondo -->
+
       <p class="mt-4 text-xl md:text-2xl">
-        Diseñado por Savio Mascolo, <br />logopeda
-        <strong class="text-yellow-100">ex-tartamudo</strong>.
+        {{ heroData.subtitle }}
       </p>
-      <!-- Lista de beneficios -->
+
+      <!-- Beeficios -->
       <ul class="mt-6 space-y-4 text-lg">
-        <li class="flex items-center justify-center md:justify-start">
-          <i class="fa-solid fa-check-circle text-teal-300 mr-2"></i>
-          <span>Supera la tartamudez con ejercicios dinámicos.</span>
-        </li>
-        <li class="flex items-center justify-center md:justify-start">
-          <i class="fa-solid fa-check-circle text-teal-300 mr-2"></i>
-          <span>Descubre nuestros Webinars gratuitos.</span>
-        </li>
+        @for (benefit of heroData.benefits; track $index) {
+          <li class="flex items-center justify-center md:justify-start">
+            <i class="fa-solid fa-check-circle text-teal-300 mr-2"></i>
+            <span>{{ benefit }}</span>
+          </li>
+        }
       </ul>
     </div>
+
     <!-- Columna de imagen -->
     <div class="w-full md:w-1/2 mt-10 md:mt-0 flex justify-center">
       <img
-        src="assets/Images/hablyo_hero.jpg"
-        alt="Ejemplo de persona practicando"
-        class="w-full max-w-md rounded-xl shadow-2xl animate-slideInRight delay-200"
+        [ngSrc]="heroData.imageSrc"
+        [alt]="heroData.imageAlt"
+        width="600"          
+        height="400"        
+        class="w-full max-w-md rounded-xl shadow-2xl"
+        [priority]="true"   
       />
     </div>
   </div>
-  <!-- Flecha scroll -->
+
+  <!-- Flecha scroll  -->
   <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
     <i class="fa-solid fa-chevron-down text-white text-2xl"></i>
   </div>

@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { TextInputComponent } from '../../../../shared/components/text-input/text-input.component';
+import { TextInputComponent } from '../../../../shared/components/forms/text-input/text-input.component';
 import { MyButtonComponent } from '../../../../shared/ui/my-button/my-button.component';
 
 @Component({

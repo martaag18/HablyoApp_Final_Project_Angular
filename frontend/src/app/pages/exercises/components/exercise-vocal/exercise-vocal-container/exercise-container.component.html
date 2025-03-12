@@ -1,28 +1,36 @@
-<div class="w-full p-4 mx-auto mt-6">
-  <!-- Header -->
-  <app-exercise-header></app-exercise-header>
-  
-  <!-- Sección de introducción / explicación -->
+<main class="w-full p-4 mx-auto mt-6">
+  <!-- Cabecera -->
+  <header aria-label="Cabecera del ejercicio" class="mb-4">
+    <app-exercise-header></app-exercise-header>
+  </header>
+
+  <!-- Sección de introducción -->
   @if (explanation) {
-    <section>
-      <div class="bg-gray-100 p-4 mb-6 rounded shadow" [innerHTML]="explanation"></div>
+    <section aria-labelledby="exercise-explanation-title" class="mb-6">
+      <h2 id="exercise-explanation-title" class="sr-only">
+        Explicación del ejercicio
+      </h2>
+      <div class="bg-gray-100 p-4 rounded shadow" [innerHTML]="explanation"></div>
     </section>
   }
 
-  <!-- Sección de título e instrucciones -->
-  <section class="mb-4">
-    <h2 class="text-xl font-bold mb-2">
-      Ejercicio número: {{ currentExercise().id }}
+  <!-- título e instrucciones -->
+  <section aria-labelledby="exercise-info-title" class="mb-4">
+    <h2 id="exercise-info-title" class="sr-only">
+      Información del ejercicio
     </h2>
+    <h3 class="text-xl font-bold mb-2">
+      Ejercicio número: {{ currentExercise().id }}
+    </h3>
     <p class="text-sm text-gray-600">
       {{ currentExercise().instructions }}
     </p>
   </section>
 
-  <!-- Sección de presentación del ejercicio -->
+  <!-- Ejercicio -->
   <section class="mb-6" aria-label="Presentación del ejercicio">
     <app-exercise-presentation
-      [wordList]="stateService.wordList()"
+      [wordList]="stateService.wordList()" 
       [tildeMark]="stateService.tildeMark()"
       [arcMark]="stateService.arcMark()"
       [resultTilde]="stateService.resultTilde()"
@@ -32,11 +40,14 @@
     ></app-exercise-presentation>
   </section>
 
-  <!-- Sección de acciones y navegación -->
+  <!-- Acciones y navegación -->
   <section aria-label="Acciones y navegación del ejercicio">
     <div class="flex flex-wrap gap-4 items-start">
       <!-- Bloque de acciones -->
-      <div class="flex flex-wrap gap-2 sm:flex-col sm:items-stretch" aria-label="Acciones del ejercicio">
+      <div
+        class="flex flex-wrap gap-2 sm:flex-col sm:items-stretch"
+        aria-label="Acciones del ejercicio"
+      >
         <app-exercise-actions
           (complete)="onComplete()"
           (solve)="onSolve()"
@@ -45,13 +56,16 @@
       </div>
 
       <!-- Bloque de navegación -->
-      <div class="flex flex-wrap gap-2 sm:flex-col sm:items-stretch" aria-label="Navegación del ejercicio">
+      <nav
+        class="flex flex-wrap gap-2 sm:flex-col sm:items-stretch"
+        aria-label="Navegación del ejercicio"
+      >
         <app-exercise-navigation
           [showPrevious]="navigatorService.currentIndex() > 0"
           (next)="onNextExercise()"
           (previous)="onPreviousExercise()"
         ></app-exercise-navigation>
-      </div>
+      </nav>
     </div>
   </section>
-</div>
+</main>

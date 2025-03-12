@@ -1,25 +1,17 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MyButtonComponent } from '../../../../shared/ui/my-button/my-button.component';
-
-
-interface ExerciseCard {
-  title: string;
-  subtitle: string;
-  image: string;
-  route: string; // Ruta relativa dentro de la sección ejercicios
-}
-
+import { ExerciseCard } from '../../../../shared/interfaces/exercise-card.interface';
 @Component({
   selector: 'app-exercises-index',
-  imports: [CommonModule, RouterLink, MyButtonComponent],
+  imports: [RouterLink, MyButtonComponent],
   templateUrl: './exercises-index.component.html',
   styleUrl: './exercises-index.component.scss'
 })
 export class ExercisesIndexComponent {
 
   exercises: ExerciseCard[] = [
+
     {
       title: 'Vocal final y vocal inicial',
       subtitle: 'Subraya la vocal final de una palabra y la inicial de la siguiente',

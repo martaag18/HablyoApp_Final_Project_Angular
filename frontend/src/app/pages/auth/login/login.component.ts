@@ -6,10 +6,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../services/auth.service';
+import { AuthService } from '../../../services/auth/auth.service';
 import { RouterLink } from '@angular/router';
 import { MyButtonComponent } from '../../../shared/ui/my-button/my-button.component';
-import { TextInputComponent } from '../../../shared/components/text-input/text-input.component';
+import { TextInputComponent } from '../../../shared/components/forms/text-input/text-input.component';
 @Component({
   selector: 'app-login',
   standalone: true,

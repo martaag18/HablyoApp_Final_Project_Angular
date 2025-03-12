@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class WhitelistService {
 
   private http = inject(HttpClient)
-  private API_URL = "http://localhost:3000/whitelist";
+  private API_URL = "https://localhost:3000/whitelist";
 
   checkEmail(email: string): Observable <{ email: string; whitelisted: boolean }> {
     const query = `?email=${encodeURIComponent(email.trim().toLowerCase())}`;

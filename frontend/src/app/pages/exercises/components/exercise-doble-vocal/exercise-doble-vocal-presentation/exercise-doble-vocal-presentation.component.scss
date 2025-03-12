@@ -1,54 +1,73 @@
+.exercise-wrapper {
+  width: 100%;
+  background-color: #f9fafb;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 
-  
-  .one-line-scale {
+  .scroll-outer {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
     display: flex;
     align-items: flex-end;
-    overflow: visible;
-    flex-wrap: nowrap;
-    transform-origin: top left; 
-    width: 100%;
+    box-sizing: content-box;
+    padding-bottom: 2.5rem; 
+  }
+}
+
+.letters-scale {
+  transform: scale(1);
+  transform-origin: top left;
+
+  &.short-phrase {
     transform: scale(0.95);
   }
-  
-  .no-wrap-mode {
-    display: flex;
-    flex-wrap: nowrap;
-    white-space: nowrap;
-    overflow-x: visible; 
+  &.long-phrase {
+    transform: scale(0.9);
   }
-  
-  @media (max-width: 1024px) {
-    .one-line-scale.short-phrase {
+
+  @media (min-width: 1440px) {
+    &.short-phrase {
+      transform: scale(1);    
+    }
+    &.long-phrase {
+      transform: scale(0.95);
+    }
+  }
+
+  @media (min-width: 1024px) and (max-width: 1439px) {
+    &.short-phrase {
+      transform: scale(0.95);
+    }
+    &.long-phrase {
       transform: scale(0.9);
     }
-    .one-line-scale.long-phrase {
-      transform: scale(0.75);
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    &.short-phrase {
+      transform: scale(0.8);
+    }
+    &.long-phrase {
+      transform: scale(0.7);
     }
   }
-  @media (max-width: 768px) {
-    .one-line-scale.short-phrase {
-      transform: scale(0.40);
+
+  @media (min-width: 414px) and (max-width: 767px) {
+    &.short-phrase {
+      transform: scale(0.7);
     }
-    .one-line-scale.long-phrase {
-      transform: scale(0.35);
+    &.long-phrase {
+      transform: scale(0.6);
     }
   }
-  @media (max-width: 640px) {
-    .one-line-scale.short-phrase {
+
+  @media (max-width: 413px) {
+    &.short-phrase {
+      transform: scale(0.6);
+    }
+    &.long-phrase {
       transform: scale(0.55);
     }
-    .one-line-scale.long-phrase {
-      transform: scale(0.445);
-    }
   }
-  @media (max-width: 480px) {
-    .one-line-scale {
-      transform: scale(0.25);
-    }
-  }
-  @media (max-width: 360px) {
-    .one-line-scale {
-      transform: scale(0.25);
-    }
-  }
-  
+}

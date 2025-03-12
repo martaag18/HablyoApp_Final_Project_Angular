@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MyButtonComponent } from '../../../../shared/ui/my-button/my-button.component';
-import { TextInputComponent } from '../../../../shared/components/text-input/text-input.component';
+import { TextInputComponent } from '../../../../shared/components/forms/text-input/text-input.component';
 
 @Component({
   selector: 'app-register-step2',

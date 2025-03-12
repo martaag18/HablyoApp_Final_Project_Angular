@@ -1,52 +1,73 @@
-
-.one-line-scale {
-  display: flex;
-  align-items: flex-end;
-  overflow: visible;
-  flex-wrap: nowrap;
-  transform-origin: top left; 
+.exercise-wrapper {
   width: 100%;
-  transform: scale(0.95);
+  background-color: #f9fafb;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+
+  .scroll-outer {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    display: flex;
+    align-items: flex-end;
+    box-sizing: content-box;
+    padding-bottom: 2.5rem; 
+  }
 }
 
-.no-wrap-mode {
-  display: flex;
-  flex-wrap: nowrap;
-  white-space: nowrap;
-  overflow-x: visible; 
-}
+.letters-scale {
+  transform: scale(1);
+  transform-origin: top left;
 
-@media (max-width: 1024px) {
-  .one-line-scale.short-phrase {
+  &.short-phrase {
+    transform: scale(0.95);
+  }
+  &.long-phrase {
     transform: scale(0.9);
   }
-  .one-line-scale.long-phrase {
-    transform: scale(0.75);
+
+  @media (min-width: 1440px) {
+    &.short-phrase {
+      transform: scale(1);    
+    }
+    &.long-phrase {
+      transform: scale(0.95);
+    }
   }
-}
-@media (max-width: 768px) {
-  .one-line-scale.short-phrase {
-    transform: scale(0.40);
+
+  @media (min-width: 1024px) and (max-width: 1439px) {
+    &.short-phrase {
+      transform: scale(0.95);
+    }
+    &.long-phrase {
+      transform: scale(0.9);
+    }
   }
-  .one-line-scale.long-phrase {
-    transform: scale(0.35);
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    &.short-phrase {
+      transform: scale(0.8);
+    }
+    &.long-phrase {
+      transform: scale(0.7);
+    }
   }
-}
-@media (max-width: 640px) {
-  .one-line-scale.short-phrase {
-    transform: scale(0.55);
+
+  @media (min-width: 414px) and (max-width: 767px) {
+    &.short-phrase {
+      transform: scale(0.7);
+    }
+    &.long-phrase {
+      transform: scale(0.6);
+    }
   }
-  .one-line-scale.long-phrase {
-    transform: scale(0.445);
-  }
-}
-@media (max-width: 480px) {
-  .one-line-scale {
-    transform: scale(0.25);
-  }
-}
-@media (max-width: 360px) {
-  .one-line-scale {
-    transform: scale(0.25);
+
+  @media (max-width: 413px) {
+    &.short-phrase {
+      transform: scale(0.6);
+    }
+    &.long-phrase {
+      transform: scale(0.55);
+    }
   }
 }

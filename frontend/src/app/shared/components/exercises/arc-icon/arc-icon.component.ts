@@ -8,12 +8,13 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./arc-icon.component.scss']
 })
 export class ArcIconComponent {
-  @Output() dragStarted = new EventEmitter<DragEvent>();
+
+  @Output() dragStarted = new EventEmitter<DragEvent>(); 
 
 
   onDragStart(event: DragEvent) {
     event.dataTransfer?.setData('text/plain', 'arc');
-    this.dragStarted.emit(event);
+    this.dragStarted.emit(event); //emitimos evento para notificar al componente padre ("dumb") que se inició el arrastre. 
   }
 
 }

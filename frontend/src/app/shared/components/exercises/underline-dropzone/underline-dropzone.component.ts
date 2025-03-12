@@ -1,7 +1,6 @@
 import { NgClass } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-
-type ValidationState = 'correct' | 'wrong' | 'missed' | null;
+import { ValidationState } from '../../../types/validation-state.type';
 
 @Component({
   standalone: true,

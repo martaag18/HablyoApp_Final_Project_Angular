@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { MyButtonComponent } from '../../../shared/ui/my-button/my-button.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cta',
-  imports: [MyButtonComponent],
+  imports: [MyButtonComponent, RouterLink],
   templateUrl: './cta.component.html',
   styleUrls: ['./cta.component.css']
 })
@@ -28,7 +29,7 @@ export class CTAComponent {
       title: 'Registrarse',
       text: `Crea tu cuenta para acceder a los <strong>ejercicios</strong> 
              y seguir el método de Savio para hablar con mayor confianza.`,
-      link: '/signup',
+      link: '/registro-usuario',
       linkText: 'Registrarse'
     },
     {
@@ -38,7 +39,7 @@ export class CTAComponent {
       title: 'Ejercicios',
       text: `Explora los <strong>ejercicios dinámicos</strong> y 
              ¡empieza a practicar para dejar atrás la tartamudez!`,
-      link: '/exercices',
+      link: '/ejercicios',
       linkText: 'Practicar'
     }
   ];
