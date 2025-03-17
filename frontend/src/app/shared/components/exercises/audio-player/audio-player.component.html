@@ -1,0 +1,17 @@
+<!-- Botón para cargar / mostrar el audio -->
+<app-my-button
+  label="ESCUCHAR EJEMPLO EN AUDIO 🔊"
+  color="blue"
+  (clicked)="onLoadAudio()"
+>
+</app-my-button>
+
+<!-- Reproductor (condicional) -->
+@if (isAudioVisible()) {
+  <div class="text-center mt-6">
+    <audio controls>
+      <source [src]="audioSource" type="audio/mpeg" />
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+  </div>
+}

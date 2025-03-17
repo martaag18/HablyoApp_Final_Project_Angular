@@ -8,6 +8,7 @@ import { ExerciseData } from '../../../../../shared/interfaces/exercise-data.int
 import { ExercisePresentationComponent } from '../exercise-vocal-presentation/exercise-presentation.component';
 import { ExerciseNavigationComponent } from '../../../../../shared/components/exercises/exercise-navigation/exercise-navigation.component';
 import { ExerciseActionsComponent } from '../../../../../shared/components/exercises/exercise-actions/exercise-actions.component';
+import { Exercise1IntroductionComponent } from './exercise-1-introduction/exercise-1-introduction.component';
 
 // Servicios
 import { ExerciseNavigatorService } from '../../../../../shared/services/navigation/exercise-navigator.service';
@@ -18,15 +19,13 @@ import { WordListOrchestratorService } from '../../../../../shared/services/orch
 
 // Mocks
 import { EXERCISES_VOCAL_FINAL_VOCAL_INICIAL } from '../data/mocks/exercise-examples.mock';
-import { EXERCISE_INTRODUCTION_VOCAL_INICIAL_VOCAL_FINAL } from '../data/mocks/exercise-introducion.mock';
-import { ExerciseHeaderComponent } from '../../../../../shared/components/exercises/exercise-header/exercise-header.component';
 
 @Component({
   imports: [
     ExercisePresentationComponent,
     ExerciseNavigationComponent,
     ExerciseActionsComponent,
-    ExerciseHeaderComponent,
+    Exercise1IntroductionComponent
   ],
   selector: 'app-exercise-container',
   templateUrl: './exercise-container.component.html',
@@ -41,15 +40,17 @@ export class ExerciseContainerComponent {
   wordListOrchestrator = inject(WordListOrchestratorService);
 
   allExercises = signal<ExerciseData[]>(EXERCISES_VOCAL_FINAL_VOCAL_INICIAL);
-  explanation = EXERCISE_INTRODUCTION_VOCAL_INICIAL_VOCAL_FINAL;
 
+  // computed() - Cada vez que cambia currentIndex(), Angular recalcula currentExercise() automáticamente, sin que tengamos que actualizarlo manualmente.
   currentExercise = computed(() => {
     const index = this.navigatorService.currentIndex();
     return this.allExercises()[index];
   });
 
+
+  // effect() se activa cada vez que currentIndex() cambia (1.Obtiene el nuevo indice / 2.Llama a initialize..)
   constructor() {
-    effect(() => { //cada ve que el indice cambia, llama a loadExercise(index) -> carga ejercicio se ejecuta de forma reactiva
+    effect(() => { 
       const index = this.navigatorService.currentIndex();
       this.initializeCurrentExercise(index);
     });

@@ -13,11 +13,7 @@ export class HeroComponent {
   heroData: HeroData = {
     title: 'TUS PALABRAS',
     highlight: 'LIBRES',
-    subtitle: 'Diseñado por Savio Mascolo, ex-tartamudo.',
-    benefits: [
-      'Supera la tartamudez con ejercicios dinámicos.',
-      'Descubre nuestros Webinars gratuitos.'
-    ],
+    subtitle: 'Diseñado por el logopeda Savio Mascolo, ex-tartamudo.',
     imageSrc: 'assets/Images/hablyo_hero.jpg',
     imageAlt: 'Ejemplo de persona practicando'
   };

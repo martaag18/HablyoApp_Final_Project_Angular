@@ -53,8 +53,8 @@ export const routes: Routes = [
             path: 'vocal-home',
             loadComponent: () =>
               import(
-                './pages/exercises/components/exercise-vocal/exercise-vocal-home/vocal-home.component'
-              ).then((c) => c.VocalHomeComponent),
+                './pages/exercises/components/exercise-vocal/exercise-1-explanation/exercise-1-explanation.component'
+              ).then((c) => c.Exercise1ExplanationComponent),
           },
           {
             path: 'vocal-final-vocal-inicial',
@@ -67,8 +67,8 @@ export const routes: Routes = [
             path: 'doble-vocal-home',
             loadComponent: () =>
               import(
-                './pages/exercises/components/exercise-doble-vocal/exercise-doble-vocal-home/exercise-doble-vocal-home.component'
-              ).then((c) => c.ExerciseDobleVocalHomeComponent),
+                './pages/exercises/components/exercise-doble-vocal/exercise-2-explanation/exercise-2-explanation.component'
+              ).then((c) => c.Exercise2ExplanationComponent),
           },
           {
             path: 'doble-vocal',

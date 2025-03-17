@@ -1,0 +1,90 @@
+<section
+  class="py-8 px-8 bg-gradient-to-r from-primary to-primary-400 min-h-screen flex items-center justify-center"
+>
+  <!-- White card with rounded corners and shadow -->
+  <div class="max-w-6xl w-full bg-white p-8 rounded-xl shadow-lg space-y-10">
+    <!-- Title block (inline-block with gray background) -->
+    <div class=" bg-gray-100 px-6 py-4 rounded-lg shadow">
+      <h1
+        class="text-2xl md:text-4xl font-extrabold text-primary flex items-center gap-3 justify-center"
+      >
+        VOCAL FINAL - VOCAL INICIAL
+      </h1>
+    </div>
+
+    <!-- Block 1: Dificultad frecuente -->
+    <article class="mb-6">
+      <h3 class="text-2xl font-bold mb-6">Dificultad frecuente</h3>
+      <p class="text-xl md:text-2xl leading-relaxed text-gray-700 space-y-6">
+        <i class="fa-solid fa-arrow-right"></i>
+        Separar rítmicamente dos vocales consecutivas cuando una palabra termina
+        en vocal y la siguiente empieza con otra (por ejemplo, "fue
+        interesante").
+        <i class="fa-solid fa-arrow-right"></i>
+        Esto suele ocurrir en dos respiraciones distintas.
+      </p>
+    </article>
+
+    <!-- Block 2: Objetivo (green check marks) -->
+    <article class="mb-6 space-y-6">
+      <h3 class="text-2xl font-bold mb-6">Objetivo</h3>
+      <p class="text-xl md:text-2xl leading-relaxed text-gray-700">
+        <i class="fa-solid fa-check-circle text-green-500 mr-2 text-lg"></i>
+        <strong>Conectar</strong> ambas vocales en una sola respiración,
+        asegurando:
+      </p>
+      <p class="text-xl md:text-2xl leading-relaxed text-gray-700">
+        <i class="fa-solid fa-check-circle text-green-500 mr-2 text-lg"></i>
+        <strong>La vocal inicial</strong> de la palabra siguiente se prolongue
+        más que la vocal final de la palabra anterior.
+      </p>
+      <p class="text-xl md:text-2xl leading-relaxed text-gray-700">
+        <i class="fa-solid fa-check-circle text-green-500 mr-2 text-lg"></i>
+        <strong>No haya interrupciones</strong> entre ambas vocales.
+      </p>
+    </article>
+
+    <!-- Block 3: Pasos (green check marks) -->
+    <article class="mb-6 space-y-6">
+      <h3 class="text-2xl font-bold mb-6">Pasos</h3>
+      <p class="text-xl md:text-2xl leading-relaxed text-gray-700">
+        <strong>1. Reconocer</strong> la necesidad de unir las vocales.
+      </p>
+      <p class="text-xl md:text-2xl leading-relaxed text-gray-700">
+        <strong>2. Emitir</strong> las vocales de forma fluida, evitando pausas.
+      </p>
+      <p class="text-xl md:text-2xl leading-relaxed text-gray-700">
+        <strong>3. Cambiar rápidamente</strong> de una vocal a la otra.
+      </p>
+      <p class="text-xl md:text-2xl leading-relaxed text-gray-700">
+        <strong>4. Prolongar</strong> la segunda vocal para que el cerebro se
+        acostumbre al sonido continuo.
+      </p>
+    </article>
+
+    <!-- Block 4: Ejemplo práctico -->
+    <article class="mb-6 space-y-6">
+      <h3 class="text-2xl font-bold">Ejemplo práctico</h3>
+      <p class="text-xl md:text-2xl leading-relaxed text-gray-700">
+        En lugar de "fue interesante" con una pausa, pronúncialo como
+        <em>"fue iiiiinteresante"</em>. Este ejercicio ayuda a corregir el ritmo
+        alterado y a lograr un habla más natural y continua.
+      </p>
+    </article>
+
+    <!-- Audio -->
+    <app-audio-player
+      [audioSource]="audioUrl()"
+    ></app-audio-player>
+
+    <!-- Practice button -->
+    <div class="text-center mt-8">
+      <app-my-button
+        label="¡EMPEZAR A PRACTICAR!"
+        color="primary"
+        [routerLink]="['/ejercicios', 'vocal-final-vocal-inicial']"
+        class="px-6 py-3 font-bold tracking-wide"
+      ></app-my-button>
+    </div>
+  </div>
+</section>

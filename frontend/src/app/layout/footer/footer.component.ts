@@ -13,9 +13,7 @@ export class FooterComponent {
   logoUrl = 'assets/Logos/hablyo_red_logo.png';
   websiteUrl = 'https://www.hablyo.com/';
   email = 'info@hablyo.com';
-  phone = '+34 611 190 499';
   instagramUrl = 'https://instagram.com/hablyo';
-  whatsappUrl = 'https://wa.me/34611190499';
 
   // links
   policyLinks = [

@@ -1,0 +1,39 @@
+.carousel-item {
+    transition: transform 0.8s ease, opacity 0.4s ease;
+  }
+  
+
+.carousel-center {
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 2;
+    opacity: 1;
+  }
+  
+  .carousel-left {
+    transform: translate(-150%, -50%) scale(0.8);
+    z-index: 1;
+    opacity: 0.7;
+  }
+  
+  .carousel-right {
+    transform: translate(50%, -50%) scale(0.8);
+    z-index: 1;
+    opacity: 0.7;
+  }
+  
+  // /* En móviles: solo mostramos la reseña central */
+  // @media (max-width: 768px) {
+  //   .carousel-left,
+  //   .carousel-right {
+  //     display: none;
+  //   }
+  //   .carousel-center {
+  //     transform: none;
+  //     margin: 0 auto;
+  //     z-index: 1;
+  //     opacity: 1;
+  //   }
+    
+  
+  // }
+  

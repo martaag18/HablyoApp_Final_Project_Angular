@@ -15,12 +15,21 @@ import { RegisterStep1Component } from './register-step1/register-step1.componen
 import { RegisterStep2Component } from './register-step2/register-step2.component';
 import { RegisterStep3Component } from './register-step3/register-step3.component';
 import { NgStyle } from '@angular/common';
+import { MyButtonComponent } from '../../../shared/ui/my-button/my-button.component';
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule, RegisterStep1Component, RegisterStep2Component, RegisterStep3Component, NgStyle],
+  standalone: true,
+  imports: [
+    ReactiveFormsModule,
+    RegisterStep1Component,
+    RegisterStep2Component,
+    RegisterStep3Component,
+    NgStyle,
+    MyButtonComponent
+  ],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.scss',
+  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
   private whitelistService = inject(WhitelistService);
@@ -42,13 +51,48 @@ export class RegisterComponent {
     { validators: [passwordMatchValidator] }
   );
 
+  // Navegar al siguiente paso
+  goToNextStep(): void {
+    // Opcional: valida campos específicos del paso actual
+    if (this.isStepValid(this.currentStep)) {
+      this.currentStep++;
+    } else {
+      this.registerForm.markAllAsTouched();
+    }
+  }
+
+  // Navegar al paso anterior
+  goToPreviousStep(): void {
+    if (this.currentStep > 1) {
+      this.currentStep--;
+    }
+  }
+
+  // Verificar validez de los campos del paso actual
+  isStepValid(step: number): boolean {
+    switch (step) {
+      case 1:
+        return this.registerForm.controls['name'].valid 
+            && this.registerForm.controls['surname'].valid;
+      case 2:
+        return this.registerForm.controls['age'].valid;
+      case 3:
+        return this.registerForm.controls['email'].valid 
+            && this.registerForm.controls['password'].valid
+            && this.registerForm.controls['repeatPassword'].valid;
+      default:
+        return false;
+    }
+  }
+
+  // Enviar registro al backend
   submitRegister(): void {
-    //Verificar si formulario es válido
+    // Valida formulario completo antes de enviar
     if (this.registerForm.invalid) {
       this.registerForm.markAllAsTouched();
-    } else {
-      this.checkWhitelist();
+      return;
     }
+    this.checkWhitelist();
   }
 
   private checkWhitelist(): void {
@@ -72,9 +116,8 @@ export class RegisterComponent {
   }
 
   private createUser(): void {
-    //Convertir age a number
     const ageValue = this.registerForm.value.age!;
-    const ageNumber = Number(ageValue); 
+    const ageNumber = Number(ageValue);
 
     const data: Register = {
       name: this.registerForm.value.name!,
@@ -83,7 +126,7 @@ export class RegisterComponent {
       email: this.registerForm.value.email!,
       password: this.registerForm.value.password!,
     };
-    console.log('submitRegister() invocado'); 
+    console.log('submitRegister() invocado');
 
     this.registerService.registerUser(data).subscribe({
       next: (response) => {
@@ -97,18 +140,4 @@ export class RegisterComponent {
       },
     });
   }
-
-  goToNextStep(): void {
-    this.currentStep++;
-  }
-
-  goToPreviousStep(): void {
-    this.currentStep--;
-  }
 }
-
-/* TEORIA
-
-- Elementos del formulario -> heredan la clase base AbstractControl -> validadores funciones genéricas, capaces de recibir cualquier tipo de control
-- Cuando llamamos a un validador -> pasamos como parámetro AbstractControl que luego puedes convertir a FormGroup.
-*/

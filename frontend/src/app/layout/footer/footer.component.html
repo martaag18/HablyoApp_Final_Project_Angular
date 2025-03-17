@@ -1,8 +1,8 @@
 <footer class="bg-slate-700 text-white py-6 px-8">
   <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
 
-    <!-- LINKS de políticas -->
-    <div class="order-3 md:order-3 flex flex-col text-xs gap-1 text-center md:text-left">
+    <!-- POLICY LINKS -->
+    <div class="order-3 md:order-3 flex flex-col gap-2 text-center md:text-left">
       @for(link of policyLinks; track $index){
         <a
           [routerLink]="link.url"
@@ -13,16 +13,16 @@
       }
     </div>
 
-    <!-- LOGO + INFO  -->
-    <div class="order-2 flex flex-col items-center gap-2">
+    <!-- LOGO + CONTACT INFO -->
+    <div class="order-2 flex flex-col items-center gap-4">
       <img
         ngOptimizedImage
         [src]="logoUrl"
         alt="Hablyo Logo"
-        class="h-14 cursor-pointer"
+        class="h-20 cursor-pointer"
       />
-      <!-- Datos de contacto -->
-      <p class="text-sm">
+      <!-- CONTACT DETAILS -->
+      <p class="text-xl">
         <a
           [href]="websiteUrl"
           class="hover:underline cursor-pointer text-white"
@@ -30,7 +30,7 @@
           {{ websiteUrl }}
         </a>
       </p>
-      <p class="text-sm">
+      <p class="text-xl">
         <a
           [href]="'mailto:' + email"
           class="hover:underline cursor-pointer text-white"
@@ -38,19 +38,9 @@
           {{ email }}
         </a>
       </p>
-      <p class="text-sm">
-        <a
-          [href]="whatsappUrl"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="hover:underline cursor-pointer text-white"
-        >
-          {{ phone }}
-        </a>
-      </p>
     </div>
 
-    <!-- REDES SOCIALES -->
+    <!-- SOCIAL MEDIA -->
     <div class="order-1 flex items-center gap-3">
       <a
         [href]="instagramUrl"
@@ -58,15 +48,7 @@
         rel="noopener noreferrer"
         class="cursor-pointer flex items-center justify-center hover:scale-110 transition-transform duration-200"
       >
-        <i class="fab fa-instagram text-3xl text-pink-400 hover:text-pink-500"></i>
-      </a>
-      <a
-        [href]="whatsappUrl"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="cursor-pointer hover:scale-110 transition-transform duration-200"
-      >
-        <i class="fab fa-whatsapp text-3xl text-green-400 hover:text-green-500"></i>
+        <i class="fab fa-instagram text-5xl text-pink-400 hover:text-pink-500"></i>
       </a>
     </div>
 

@@ -1,0 +1,66 @@
+<section
+  class="py-8 px-8 bg-gradient-to-r from-primary to-primary-400 min-h-screen flex items-center justify-center"
+>
+  <div class="max-w-6xl w-full bg-white p-8 rounded-xl shadow-lg space-y-10">
+    <!-- Título -->
+    <div class="bg-gray-100 px-6 py-4 rounded-lg shadow">
+      <h1
+        class="text-2xl md:text-4xl font-extrabold text-primary flex items-center justify-center"
+      >
+        DOBLE VOCAL
+      </h1>
+    </div>
+
+    <!-- Bloque 1: Segundo Ejercicio -->
+    <article class="mb-6">
+      <p class="mt-1 text-xl md:text-2xl leading-relaxed text-gray-700">
+        <i class="fa-solid fa-arrow-right"></i>
+        Este ejercicio está diseñado para <strong>corregir</strong> el <strong>segundo acento rítmico</strong>
+        alterado en los tartamudos, abordando una de las causas comunes del
+        bloqueo al hablar.
+      </p>
+    </article>
+
+    <!-- Bloque 2: Objetivo del ejercicio -->
+    <article class="mb-6 space-y-6">
+      <p class="text-2xl md:text-2xl leading-relaxed text-gray-700">
+        <strong>Objetivo del ejercicio:</strong>
+      </p>
+      <p class="mt-1 text-xl md:text-2xl leading-relaxed text-gray-700">
+        <i class="fa-solid fa-check-circle text-green-500 mr-2 text-lg"></i>
+        <strong>Reeducar</strong> el patrón de acentuación rítmica en palabras que presentan
+        vocales consecutivas dentro de una misma sílaba o en secuencias
+        adyacentes, como en "piano".
+      </p>
+
+      <p class="mt-1 text-xl md:text-2xl leading-relaxed text-gray-700">
+        <i class="fa-solid fa-check-circle text-green-500 mr-2 text-lg"></i>
+        <strong>Asegurar</strong> que la acentuación recaiga en la vocal inicial y no en la
+        consonante precedente.
+      </p>
+    </article>
+
+    <!-- Bloque 3: Consejo -->
+    <article class="mb-6 space-y-6">
+      <p class="text-xl md:text-2xl leading-relaxed text-gray-700">
+        <strong>Consejo:</strong>
+      </p>
+      <p class="mt-1 text-xl md:text-2xl leading-relaxed text-gray-700">
+        Puede ser útil realizarlo frente a un espejo o grabar la voz para
+        verificar el correcto cumplimiento de los pasos.
+      </p>
+    </article>
+    <!-- Audio -->
+    <app-audio-player [audioSource]="audioUrl()"></app-audio-player>
+
+    <!-- Practice button -->
+    <div class="text-center mt-8">
+      <app-my-button
+        label="¡EMPEZAR A PRACTICAR!"
+        color="primary"
+        [routerLink]="['/ejercicios', 'doble-vocal']"
+        class="px-6 py-3 font-bold tracking-wide"
+      ></app-my-button>
+    </div>
+  </div>
+</section>

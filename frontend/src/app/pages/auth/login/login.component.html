@@ -1,58 +1,59 @@
-<div class="min-h-screen flex items-center justify-center bg-white">
-  <div class="w-full max-w-md p-4 md:p-6">
-    <div class="bg-gradient-to-r from-primary to-red-300 rounded-3xl shadow-2xl overflow-hidden">
-      <div class="p-6 md:p-8">
-        <h2 class="text-2xl font-bold text-center mb-6 text-white uppercase">
-          👤 Iniciar Sesión
-        </h2>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
-          <!-- Campo Email -->
-          <app-text-input
-            [control]="loginForm.controls.email"
-            label="Email"
-            placeholder="Email"
-            type="email"
-          ></app-text-input>
+<div class="flex flex-col items-center justify-center min-h-screen bg-white p-4">
+  <div class="w-full max-w-md sm:max-w-lg md:max-w-2xl bg-gradient-to-r from-primary to-red-300 rounded-3xl shadow-2xl overflow-hidden p-6 sm:p-8 md:p-12">
+    
+    <!-- Title -->
+    <h2 class="text-xl sm:text-2xl md:text-4xl font-bold text-center mb-12 text-white uppercase">
+      👤 Iniciar Sesión
+    </h2>
 
-          <!-- Campo Password -->
-          <app-text-input
-            [control]="loginForm.controls.password"
-            label="Contraseña"
-            placeholder="Contraseña"
-            type="password"
-          ></app-text-input>
+    <!-- Login form -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
+      <!-- Email field -->
+      <app-text-input
+        [control]="loginForm.controls.email"
+        label="Email"
+        placeholder="Email"
+        type="email"
+      ></app-text-input>
 
-          <!-- Botón de Login -->
-          <app-my-button
-            label="ACCEDER"
-            color="secondary"
-            [disabled]="loginForm.invalid"
-            (clicked)="onSubmitLogin()"
-          >
-          </app-my-button>
-        </form>
+      <!-- Password field -->
+      <app-text-input
+        [control]="loginForm.controls.password"
+        label="Contraseña"
+        placeholder="Contraseña"
+        type="password"
+      ></app-text-input>
 
-        <!-- Error de login (por ejemplo, credenciales incorrectas) -->
-         @if(loginError){
-          <div
-            class="bg-red-50 border-l-4 border-red-400 text-red-700 p-2 rounded-md mt-2"
-          >
-            {{ loginError }}
-          </div>
-         }
+      <!-- Login button -->
+      <app-my-button
+        label="ACCEDER"
+        color="secondary"
+        [disabled]="loginForm.invalid"
+        (clicked)="onSubmitLogin()"
+      ></app-my-button>
+    </form>
 
-        <!-- Enlaces extra  -->
-        <div class="mt-4 text-center">
-          <a routerLink="/forgot-password" class="text-white underline text-sm cursor-pointer">
-            ¿Olvidaste tu contraseña?
-          </a>
-          <p class="text-white text-sm mt-2">
-            ¿No tienes cuenta?
-            <a routerLink="/register" class="underline cursor-pointer">Regístrate</a>
-          </p>
-        </div>
+    <!-- Error message (for example, wrong credentials) -->
+    @if(loginError){
+      <div class="bg-red-50 border-l-4 border-red-400 text-red-700 p-2 rounded-md mt-2">
+        {{ loginError }}
       </div>
+    }
+
+    <!-- Additional links -->
+    <div class="mt-4 text-center">
+      <a
+        routerLink="/forgot-password"
+        class="text-white text-xl underline cursor-pointer"
+      >
+        ¿Olvidaste tu contraseña?
+      </a>
+      <p class="text-white text-xl mt-2">
+        ¿No tienes cuenta?
+        <a routerLink="/register" class="underline text-xl cursor-pointer">
+          Regístrate
+        </a>
+      </p>
     </div>
   </div>
 </div>
-

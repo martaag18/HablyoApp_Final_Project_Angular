@@ -1,58 +1,71 @@
-<section class="py-12 px-6 relative">
+<section class="py-6 px-6">
+  <!-- Title block -->
   <div class="max-w-6xl mx-auto">
-    <h2 class="text-3xl font-bold text-primary text-center mb-8">
-      HISTORIAS DE ÉXITO
+    <h2
+      class="text-5xl font-bold text-primary text-center tracking-widest mt-6"
+    >
+      Vuestras Experiéncias Practicando
     </h2>
+    <!-- Cards block -->
+    <div class="w-full  h-[500px] relative overflow-hidden">
+      @for (idx of visibleIndexes(); track idx) { @if (idx >= 0 && idx <
+      reviews().length) {
+      <div
+        class="carousel-item absolute top-1/2 left-1/2 md:w-[500px] w-full"
+        [ngClass]="getPositionClass(idx)"
 
-    <div class="carousel w-full">
-      <!-- Iteramos sobre las reseñas con @for -->
-      @for (review of reviews; track $index) {
-        @if (currentIndex === $index) {
-          <div class="carousel-item relative w-full">
-            <div class="bg-white rounded-lg shadow p-16 md:p-2 text-center mx-auto max-w-md">
-              <i class="fas fa-user-circle text-5xl text-primary mb-4"></i>
-              <!-- Estrellas (rating) -->
-              <div class="flex justify-center mb-2">
-                @for (star of [0,1,2,3,4]; track star) {
-                  <i
-                    class="fas"
-                    [ngClass]="{
-                      'fa-star text-yellow-400': star < review.rating,
-                      'fa-star text-gray-300': star >= review.rating
-                    }"
-                  ></i>
-                }
-              </div>
-              <p class="text-gray-700 italic mb-4 text-sm">
-                {{ review.text }}
-              </p>
-              <h4 class="font-bold text-primary text-sm">
-                {{ review.author }}
-              </h4>
-            </div>
-
-            <!-- Botones de navegación (prev / next) -->
-            <div
-              class="absolute flex justify-between items-center w-full top-1/2 left-0 transform -translate-y-1/2 px-4"
-            >
-              @if (currentIndex > 0) {
-                <app-my-button
-                  [color]="'circle'"
-                  (clicked)="prev()"
-                  [label]="'❮'"
-                ></app-my-button>
-              }
-              @if (currentIndex < reviews.length - 1) {
-                <app-my-button
-                  [color]="'circle'"
-                  (clicked)="next()"
-                  [label]="'❯'"
-                ></app-my-button>
-              }
-            </div>
+      >
+        <div
+          class="bg-gray-100 rounded-lg p-8 shadow flex flex-col transition-all duration-300 ease-in-out hover:shadow-2xl hover:bg-gray-50 hover:-translate-y-1 cursor-pointer text-center mx-auto"
+        >
+          <i class="fas fa-user-circle text-5xl text-primary mb-4"></i>
+          <div class="flex justify-center mb-2">
+            @for (star of [1,2,3,4,5]; track star) {
+            <i
+              class="fas fa-star"
+              [ngClass]="{
+                'text-yellow-400': star <= reviews()[idx].rating,
+                'text-gray-300': star > reviews()[idx].rating
+              }"
+            ></i>
+            }
           </div>
+
+          <p class="text-gray-600 italic mb-4 text-base md:text-lg">
+            {{ reviews()[idx].text }}
+          </p>
+
+          <h4 class="font-bold text-primary text-base md:text-lg">
+            {{ reviews()[idx].author }}
+          </h4>
+        </div>
+      </div>
+      } }
+
+      <!-- Navigation buttons -->
+      <div
+        class="flex w-full absolute top-[70%] z-50 mt-8"
+        [ngClass]="{
+          'justify-between':
+            currentIndex() > 0 && currentIndex() < reviews().length - 1,
+          'justify-end': currentIndex() === 0,
+          'justify-start': currentIndex() === reviews().length - 1
+        }"
+      >
+        @if (currentIndex() > 0) {
+        <app-my-button
+          [color]="'circle'"
+          (clicked)="prev()"
+          [label]="'❮'"
+        ></app-my-button>
+        } @if (currentIndex() < reviews().length - 1) {
+        <app-my-button
+          [color]="'circle'"
+          (clicked)="next()"
+          [label]="'❯'"
+        ></app-my-button>
         }
-      }
+      </div>
     </div>
   </div>
 </section>

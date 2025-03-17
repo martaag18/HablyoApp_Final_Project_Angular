@@ -1,29 +1,41 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { inject } from '@angular/core';
+import { AuthService } from '../../../../services/auth/auth.service';
 
 @Component({
   selector: 'app-cards-exercises',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './cards-exercises.component.html',
-  styleUrl: './cards-exercises.component.scss'
+  styleUrls: ['./cards-exercises.component.scss']
 })
 export class CardsExercisesComponent {
 
+  authService = inject(AuthService);
+
   exerciseCards = [
     {
-      icon: 'fas fa-microphone',
-      title: 'Ejercicios de Respiración',
-      items: [
-        'Controla tu ritmo al hablar',
-        'Reduce la tensión y la ansiedad'
-      ]
+      level: 1,
+      title: 'Vocal Final - Vocal Inicial',
+      route: 'vocal-home'
     },
     {
-      icon: 'fas fa-book',
-      title: 'Vocal final y vocal inicial',
-      items: [
-        'Une vocales consecutivas sin pausas',
-        'Evita interrupciones al cambiar de palabra'
-      ]
+      level: 2,
+      title: 'Doble Vocal',
+      route: 'doble-vocal-home'
+    },
+    {
+      level: 3,
+      title: '“R” Precedida Por Consonante',
+      route: 'r-por-consonante'
     }
   ];
+
+  getCardRoute(card: { route:string; level:number }):string[]{
+    if(!this.authService.isLoggedSignal()){
+      return ['/login'];
+    }else {
+      return ['/ejercicios', card.route];
+    }
+  }
 }

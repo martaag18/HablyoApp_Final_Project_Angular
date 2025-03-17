@@ -1,1 +1,13 @@
-<small class="text-gray-400 block mt-4" [innerHTML]="instructionsText"></small>
+<small class="text-gray-400 block mt-4 text-xl">
+    <!-- Contenido compartido -->
+    <span class="inline-block">
+        <span class="bg-green-200 px-1 rounded">Verde</span> = correcto,
+        <span class="bg-red-200 px-1 rounded">rojo</span> = incorrecto,
+        <span class="bg-yellow-200 px-1 rounded">amarillo</span> = falta.
+    </span>
+    
+    <br><br>Arrastra <strong>´</strong> sobre la letra correspondiente.
+    <br>Arrastra <strong>∿</strong> debajo de la unión de palabras correspondiente.
+    <ng-content></ng-content>
+  </small>
+  

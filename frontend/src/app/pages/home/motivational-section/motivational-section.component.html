@@ -1,0 +1,26 @@
+<section
+  @slideInLeft
+  class="relative min-h-[25vh] flex flex-col justify-center items-center
+         bg-gradient-to-br from-[#264b5a] via-[#3a6471] to-[#5a8ca2] 
+         text-white py-8 px-4 overflow-hidden"
+>
+  <div class="relative z-10 w-full max-w-6xl mx-auto text-center">
+    <h2 class="text-5xl md:text-5xl font-extrabold mb-4 tracking-widest">
+      {{ sectionData.title }}
+    </h2>
+
+    <div class="mb-8">
+      <i [class]="sectionData.iconClass"></i>
+    </div>
+
+    <p class="text-xl md:text-2xl mb-12 leading-relaxed tracking-widest">
+      Entrenar <span class="text-yellow-200 font-bold">10 minutos</span> al día, <span class="text-yellow-200 font-bold"> todos los días,</span> te permitirá no olvidar los ejercicios. 
+    </p>
+
+    <app-my-button
+      [label]="sectionData.buttonLabel"
+      color="primary"
+      [routerLink]="sectionData.buttonRoute"
+    ></app-my-button>
+  </div>
+</section>

@@ -3,7 +3,6 @@ import { ExerciseDobleVocalPresentationComponent } from '../exercise-doble-vocal
 
 // Mocks
 import { EXERCISES_DOBLE_VOCAL } from '../data/mocks/exercise-examples.mock';
-import { EXERCISE_INTRODUCTION_DOBLE_VOCAL } from '../data/mocks/exercise-doble-vocal-introducion.mock';
 
 // Interfaces
 import { ExerciseData } from '../../../../../shared/interfaces/exercise-data.interface';
@@ -12,7 +11,7 @@ import { WordItem } from '../../../../../shared/interfaces/word-item.interface';
 // Componentes “hijos”
 import { ExerciseNavigationComponent } from '../../../../../shared/components/exercises/exercise-navigation/exercise-navigation.component';
 import { ExerciseActionsComponent } from '../../../../../shared/components/exercises/exercise-actions/exercise-actions.component';
-import { ExerciseHeaderComponent } from '../../../../../shared/components/exercises/exercise-header/exercise-header.component';
+import { Exercise2IntroductionComponent } from './exercise-2-introduction/exercise-2-introduction.component';
 // Servicios
 import { ExerciseNavigatorService } from '../../../../../shared/services/navigation/exercise-navigator.service';
 import { ExerciseStateService } from '../../../../../shared/services/state/exercise-state.service';
@@ -25,7 +24,7 @@ import { WordListOrchestratorService } from '../../../../../shared/services/orch
     ExerciseDobleVocalPresentationComponent,
     ExerciseNavigationComponent,
     ExerciseActionsComponent,
-    ExerciseHeaderComponent
+    Exercise2IntroductionComponent
   ],
   selector: 'app-exercise-doble-vocal-container',
   templateUrl: './exercise-doble-vocal-container.component.html',
@@ -40,7 +39,6 @@ export class ExerciseDobleVocalContainerComponent {
   private wordListOrchestrator = inject(WordListOrchestratorService);
 
   allExercises = signal<ExerciseData[]>(EXERCISES_DOBLE_VOCAL);
-  explanation = EXERCISE_INTRODUCTION_DOBLE_VOCAL;
 
   currentExercise = computed(() => {
     const index = this.navigatorService.currentIndex();

@@ -1,47 +1,29 @@
 <div class="animate-fadeInDown">
-    <h2 class="text-2xl font-bold text-center mb-4 text-white">
-      ¡ÚLTIMO PASO! 📝
-    </h2>
-  </div>
-  
-  <app-text-input
-    [control]="parentForm.controls['email']"
-    label="Email"
-    placeholder="Email"
-    type="email"
-  ></app-text-input>
-  
-  <app-text-input
-    [control]="parentForm.controls['password']"
-    label="Contraseña"
-    placeholder="Contraseña"
-    type="password"
-  ></app-text-input>
-  
-  <app-text-input
-    [control]="parentForm.controls['repeatPassword']"
-    label="Repetir Contraseña"
-    placeholder="Repetir Contraseña"
-    type="password"
-  ></app-text-input>
-  
-  <div class="flex justify-between gap-2">
-    <app-my-button
-      label="Atrás"
-      color="secondary"
-      (clicked)="goPrevious()"
-      class="w-1/2"
-    >
-      <i class="fa-solid fa-arrow-left"></i>
-    </app-my-button>
-  
-    <button
-      type="submit"
-      [disabled]="!parentForm.valid"
-      class="w-1/2 py-3 bg-teal-400 text-white hover:bg-teal-600 font-bold rounded-md flex items-center justify-center gap-2 transition-all duration-300 uppercase"
-    >
-      <span>Listo</span>
-      <i class="fa-solid fa-arrow-right"></i>
-    </button>
-  </div>
-  
+  <h2 class="text-2xl font-bold text-center mb-4 text-white">
+    ¡ÚLTIMO PASO! 📝
+  </h2>
+</div>
+
+<!-- Email -->
+<app-text-input
+  [control]="parentForm.controls['email']"
+  label="Email"
+  placeholder="Email"
+  type="email"
+></app-text-input>
+
+<!-- Password -->
+<app-text-input
+  [control]="parentForm.controls['password']"
+  label="Contraseña"
+  placeholder="Contraseña"
+  type="password"
+></app-text-input>
+
+<!-- Repeat Password -->
+<app-text-input
+  [control]="parentForm.controls['repeatPassword']"
+  label="Repetir Contraseña"
+  placeholder="Repetir Contraseña"
+  type="password"
+></app-text-input>
