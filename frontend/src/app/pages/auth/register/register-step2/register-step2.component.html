@@ -1,13 +1,23 @@
-<div class="animate-fadeInDown">
-  <h2 class="text-2xl font-bold text-center mb-4 text-white">
+<!-- Step 2: Age Info -->
+<div
+  class="animate-fadeInDown"
+  role="region"
+  aria-labelledby="step2-title"
+>
+  <!-- Title for Step 2 -->
+  <h2
+    id="step2-title"
+    class="text-2xl font-bold text-center mb-4 text-white"
+  >
     ¿CUÁNTOS AÑOS TIENES? 🎂
   </h2>
 </div>
 
-<!-- Age -->
+<!-- Age field -->
 <app-text-input
   [control]="parentForm.controls['age']"
   label="Edad"
   placeholder="Edad"
   type="number"
-></app-text-input>
+>
+</app-text-input>

@@ -1,15 +1,19 @@
-//Verificar si palabra actual termina en vocal y siguiente palabra empieza en vocal. -> marca en cada palabra si debe dibujarse el arco
+// Check if the current word ends with a vowel and the next word starts with a vowel.
+// If so, mark arcToNext = true for the current word.
 import { Injectable } from '@angular/core';
 import { WordItem } from '../../interfaces/word-item.interface';
 
 @Injectable({ providedIn: 'root' })
 export class ArcDetectionService {
 
-  private readonly vowels = ['a','e','i','o','u','á','é','í','ó','ú','h','y'];
+  private readonly vowels = ['a', 'e', 'i', 'o', 'u', 'á', 'é', 'í', 'ó', 'ú', 'h', 'y'];
 
-
+  /**
+   * Iterates through the list of words to determine whether an arc should be drawn
+   * from the current word to the next. Sets `arcToNext = true` if both words
+   * have vowel endings/beginnings.
+   */
   markArcToNext(wordList: WordItem[]): void {
-    
     for (let i = 0; i < wordList.length - 1; i++) {
       const currentWord = wordList[i];
       const nextWord = wordList[i + 1];

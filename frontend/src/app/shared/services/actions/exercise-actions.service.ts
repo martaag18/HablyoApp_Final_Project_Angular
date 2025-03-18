@@ -13,14 +13,14 @@ export class ExerciseActionsService {
 
   onComplete(currentExercise: ExerciseData) {
     this.validateArcMark();
-    this.validateTildeMark(currentExercise);
+    this.validateAccentMark(currentExercise);
     this.validatePMark(currentExercise);
     this.validateUnderlineMark(currentExercise);
   }
 
   onSolve(currentExercise: ExerciseData) {
-    const { tIndices, pIndices, vdobleIndices } = this.extractIndices(currentExercise);
-    const solution = this.generateSolution(tIndices, pIndices, vdobleIndices);
+    const { aIndices, pIndices, doubleVocalIndices } = this.extractIndices(currentExercise);
+    const solution = this.generateSolution(aIndices, pIndices, doubleVocalIndices);
     this.applySolution(solution);
   }
 
@@ -38,13 +38,13 @@ export class ExerciseActionsService {
     this.stateService.resultArc.set(arcValidation);
   }
 
-  private validateTildeMark(currentExercise: ExerciseData): void {
-    const tIndices = currentExercise.tildeIndices || [];
-    const tildeValidation = this.markingService.validateTildes(
-      this.stateService.tildeMark(),
-      tIndices
+  private validateAccentMark(currentExercise: ExerciseData): void {
+    const aIndices = currentExercise.accentIndices || [];
+    const accentValidation = this.markingService.validateAccents(
+      this.stateService.accentMark(),
+      aIndices
     );
-    this.stateService.resultTilde.set(tildeValidation);
+    this.stateService.resultAccent.set(accentValidation);
   }
 
   private validatePMark(currentExercise: ExerciseData): void {
@@ -58,35 +58,35 @@ export class ExerciseActionsService {
   }
 
   private validateUnderlineMark(currentExercise: ExerciseData): void {
-    const vdobleIndices = currentExercise.vdobleIndices || [];
+    const doubleVocalIndices = currentExercise.doubleVocalIndices || [];
     const underlineValidation = this.markingService.validateUnderlines(
-      vdobleIndices,
+      doubleVocalIndices,
       this.stateService.underlineMark()
     );
     this.stateService.resultUnderline.set(underlineValidation);
   }
 
-  // ================= Métodos privados para onSolve =================
+  // ================= Private methods for onSolve =================
 
 
   private extractIndices(currentExercise: ExerciseData) {
     return {
-      tIndices: currentExercise.tildeIndices || [],
+      aIndices: currentExercise.accentIndices || [],
       pIndices: currentExercise.pIndices || [],
-      vdobleIndices: currentExercise.vdobleIndices || [],
+      doubleVocalIndices: currentExercise.doubleVocalIndices || [],
     };
   }
 
  
   private generateSolution(
-    tIndices: number[],
+    aIndices: number[],
     pIndices: number[],
-    vdobleIndices: number[]
+    doubleVocalIndices: number[]
   ) {
     return this.solutionGeneratorService.generateSolution(
       this.stateService.wordList(),
-      vdobleIndices,
-      tIndices,
+      doubleVocalIndices,
+      aIndices,
       pIndices
     );
   }
@@ -94,12 +94,12 @@ export class ExerciseActionsService {
 
   private applySolution(solution: {
     arcMark: Array<'none' | 'arc'>;
-    tildeMark: Array<'none' | '´'>;
+    accentMark: Array<'none' | '´'>;
     pMark: Array<'none' | 'P'>;
     underlineMark: Array<'none' | 'underline'>;
   }) {
     this.stateService.arcMark.set(solution.arcMark);
-    this.stateService.tildeMark.set(solution.tildeMark);
+    this.stateService.accentMark.set(solution.accentMark);
     this.stateService.pMark.set(solution.pMark);
     this.stateService.underlineMark.set(solution.underlineMark);
   }

@@ -10,17 +10,19 @@ import { AuthService } from '../../../services/auth/auth.service';
 import { RouterLink } from '@angular/router';
 import { MyButtonComponent } from '../../../shared/ui/my-button/my-button.component';
 import { TextInputComponent } from '../../../shared/components/forms/text-input/text-input.component';
+import { NotificationService } from '../../../shared/services/notification-service.service';
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [ ReactiveFormsModule, RouterLink, MyButtonComponent, TextInputComponent],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  // styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
 
   private authService = inject(AuthService);
   private router = inject(Router);
+  private notificationService = inject(NotificationService)
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -38,12 +40,13 @@ export class LoginComponent {
       this.authService.login(loginData).subscribe({
         next: (res) => {
           console.log('Login exitoso:', res),
-          alert("Inicio de sesión exitoso!")
+          this.notificationService.success('¡Inicio de sesión exitoso!');
           this.router.navigate([""])
         },
         error: (err) => {
           console.error('Error al iniciar sesión:', err);
           this.loginError = err.error?.message || 'Error al iniciar sesión';
+          this.notificationService.error("Error al iniciar sesión", err);
         },
       });
     } 

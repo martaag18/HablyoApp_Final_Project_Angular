@@ -1,21 +1,32 @@
-<div class="animate-fadeInDown">
-  <h2 class="text-2xl font-bold text-center mb-4 text-white">
+<!-- Step 1: Basic User Info -->
+<div
+  class="animate-fadeInDown"
+  role="region"
+  aria-labelledby="step1-title"
+>
+  <!-- Title for Step 1 -->
+  <h2
+    id="step1-title"
+    class="text-2xl font-bold text-center mb-4 text-white"
+  >
     ¡EMPECEMOS! ✅
   </h2>
 </div>
 
-<!-- Name -->
+<!-- Name field -->
 <app-text-input
   [control]="parentForm.controls['name']"
   label="Nombre"
   placeholder="Nombre"
   type="text"
-></app-text-input>
+>
+</app-text-input>
 
-<!-- Surname -->
+<!-- Surname field -->
 <app-text-input
   [control]="parentForm.controls['surname']"
   label="Apellido"
   placeholder="Apellido"
   type="text"
-></app-text-input>
+>
+</app-text-input>

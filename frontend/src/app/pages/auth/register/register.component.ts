@@ -16,6 +16,7 @@ import { RegisterStep2Component } from './register-step2/register-step2.componen
 import { RegisterStep3Component } from './register-step3/register-step3.component';
 import { NgStyle } from '@angular/common';
 import { MyButtonComponent } from '../../../shared/ui/my-button/my-button.component';
+import { NotificationService } from '../../../shared/services/notification-service.service';
 
 @Component({
   selector: 'app-register',
@@ -35,6 +36,7 @@ export class RegisterComponent {
   private whitelistService = inject(WhitelistService);
   private registerService = inject(RegisterService);
   private router = inject(Router);
+  private notificationService = inject(NotificationService)
 
   currentStep: number = 1;
   emailNotAllowed = false;
@@ -136,7 +138,7 @@ export class RegisterComponent {
       error: (err) => {
         console.error('Error al registrar usuario', err);
         console.error('Mensajes de validación:', err.error.message);
-        alert(err.error.message || 'Registration failed');
+        this.notificationService.error("Error al registrarse", err.error.message);
       },
     });
   }

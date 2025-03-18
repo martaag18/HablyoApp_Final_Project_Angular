@@ -3,6 +3,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -11,6 +12,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }), //configura modo en que Angular detecta cambios a través de Zone.js
     provideRouter(routes), //Registramos Router de Angular usando las rutas definidas en app.routes.ts
     provideHttpClient(withFetch()), //Habilitamos HTTPClient en toda la aplicación
-    importProvidersFrom(BrowserAnimationsModule), //Habilitamos animaciones de Angular
+    importProvidersFrom(BrowserAnimationsModule, MatSnackBarModule), //Habilitamos animaciones de Angular
+    
   ]
 };

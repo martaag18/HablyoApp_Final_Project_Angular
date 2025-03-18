@@ -14,8 +14,8 @@ export class LetterContainerComponent {
   @Input() globalIndex: number = 0; //posicion absoluta de la letra
 
   // Tilde
-  @Input() resultStateTilde: ValidationState = null; //almacena estado validación tilde
-  @Input() hasTilde: boolean = false; //indica si se ha colocado tile en esa letra
+  @Input() resultStateAccent: ValidationState = null; //almacena estado validación tilde
+  @Input() hasAccent: boolean = false; //indica si se ha colocado tile en esa letra
 
   // P
   @Input() resultStateP: ValidationState = null; //almacena estado validación p
@@ -27,16 +27,16 @@ export class LetterContainerComponent {
   @Input() resultUnderline: ValidationState = null; //estado validación underline
 
 
-  @Output() droppedOnTilde = new EventEmitter<DragEvent>();
+  @Output() droppedOnAccent = new EventEmitter<DragEvent>();
   @Output() droppedOnP = new EventEmitter<DragEvent>();
   @Output() droppedOnUnderline = new EventEmitter<DragEvent>();
 
   get finalState(): ValidationState {
-    const t = this.resultStateTilde;
+    const a = this.resultStateAccent;
     const p = this.resultStateP;
-    if (t === 'wrong' || p === 'wrong') return 'wrong';
-    if (t === 'missed' || p === 'missed') return 'missed';
-    if (t === 'correct' || p === 'correct') return 'correct';
+    if (a === 'wrong' || p === 'wrong') return 'wrong';
+    if (a === 'missed' || p === 'missed') return 'missed';
+    if (a === 'correct' || p === 'correct') return 'correct';
     return null;
   }
 
@@ -48,7 +48,7 @@ export class LetterContainerComponent {
     event.preventDefault();
     const mark = event.dataTransfer?.getData('text/plain');
     if (mark === '´') {
-      this.droppedOnTilde.emit(event);
+      this.droppedOnAccent.emit(event);
     } else if (mark === 'P') {
       this.droppedOnP.emit(event);
     }

@@ -4,11 +4,13 @@ import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import { MAIN_LINKS, MOBILE_MENU_LINKS } from '../../shared/constants/navbar-links.constants';
+import { RouterModule } from '@angular/router';
+import { NotificationService } from '../../shared/services/notification-service.service';
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink],
+  imports: [RouterLink, RouterModule],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss'
+  // styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
 
@@ -17,8 +19,9 @@ export class NavbarComponent {
   mainLinks = MAIN_LINKS;
 
   private elementRef = inject(ElementRef);
-  private router = inject(Router);
+  router = inject(Router);
   authService = inject(AuthService);
+  private notificationService = inject(NotificationService)
 
   isMenuOpen = false;
 
@@ -40,8 +43,8 @@ export class NavbarComponent {
   logout() {
     this.authService.logout().subscribe({
       next: (res) => {
-        alert("Sesión cerrada");
         console.log('Sesión cerrada:', res.message);
+        this.notificationService.success('¡Sesión cerrada con éxito!');
         this.router.navigate([""]);
       },
       error: (err) => {

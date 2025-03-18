@@ -6,7 +6,7 @@ import { MyButtonComponent } from '../../../shared/ui/my-button/my-button.compon
   selector: 'app-motivational-section',
   imports: [MyButtonComponent],
   templateUrl: './motivational-section.component.html',
-  styleUrls: ['./motivational-section.component.scss'],
+  // styleUrls: ['./motivational-section.component.scss'],
   animations: [
     trigger('slideInLeft', [
       transition(':enter', [

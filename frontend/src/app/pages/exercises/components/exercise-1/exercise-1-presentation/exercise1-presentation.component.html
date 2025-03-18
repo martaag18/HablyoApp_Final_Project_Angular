@@ -1,0 +1,72 @@
+<article
+  class="exercise-wrapper bg-gray-50 w-full p-4 rounded shadow"
+  role="region"
+  aria-labelledby="exercise-title"
+>
+  <!-- Header with icons (Accent + Arc) -->
+  <header class="mb-4 flex items-center gap-4">
+    <!-- Accent Icon -->
+    <app-accent-icon
+      (dragStarted)="onDragStart($event, '´')"
+      aria-label="Icono para arrastrar y crear el acento"
+      role="button"
+    ></app-accent-icon>
+
+    <!-- Arc Icon -->
+    <app-arc-icon
+      (dragStarted)="onDragStart($event, 'arc')"
+      aria-label="Icono para arrastrar y crear arco"
+      role="button"
+    ></app-arc-icon>
+  </header>
+
+  <!-- Optional heading for the exercise (could be a hidden <h2> if needed) -->
+  <h2
+    id="exercise-title"
+    class="sr-only"
+  >
+    Ejercicio con marcas de acento y arco
+  </h2>
+
+  <!-- Main section -->
+  <section class="scroll-outer">
+    <div
+      class="letters-scale"
+      [ngClass]="{
+        'short-phrase': wordList.length <= 3,
+        'long-phrase': wordList.length > 3
+      }"
+    >
+      <!-- Word loop -->
+      @for (word of wordList; track $index) {
+        <!-- Letters block of each word -->
+        <span class="inline-flex items-end">
+          @for (letter of word.letters; track $index) {
+            <app-letter-container
+              [char]="letter.char"
+              [globalIndex]="letter.globalIndex"
+              [resultStateAccent]="resultAccent[letter.globalIndex]"
+              [hasAccent]="accentMark[letter.globalIndex] === '´'"
+              (droppedOnAccent)="onDropAccent($event, letter.globalIndex)"
+            ></app-letter-container>
+          }
+        </span>
+
+        <!-- Arc dropzone (if it's not the last word) -->
+        @if ($index < wordList.length - 1) {
+          <app-arc-dropzone
+            [arcValue]="arcMark[$index]"
+            [resultState]="resultArc[$index]"
+            (droppedOnArc)="onDropArc($event, $index)"
+            aria-label="Zona de drop para arco"
+          ></app-arc-dropzone>
+        }
+      }
+    </div>
+  </section>
+  
+  <!-- Footer with exercise instructions -->
+  <footer class="mt-4">
+    <app-instructions-footer></app-instructions-footer>
+  </footer>
+</article>

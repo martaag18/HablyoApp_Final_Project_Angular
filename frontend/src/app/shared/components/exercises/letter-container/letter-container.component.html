@@ -1,5 +1,7 @@
 <div
   class="letter-container"
+  role="region"
+  [attr.aria-label]="'Contenedor de la letra ' + char"
   (dragover)="onDragOver($event)"
   (drop)="onDrop($event)"
   [ngClass]="{
@@ -8,20 +10,26 @@
     'missed-letter': finalState === 'missed'
   }"
 >
-  <span class="the-letter"> {{ char }}</span>
+  <!-- Display the letter -->
+  <span class="the-letter">
+    {{ char }}
+  </span>
 
-  @if (hasTilde) {
+  <!-- Mark above if accent -->
+  @if (hasAccent) {
     <span class="mark-above">´</span>
   }
 
+  <!-- Mark above if P -->
   @if (hasP) {
     <span class="mark-above">P</span>
   }
 
-    <app-underline-dropzone
-      [underlineValue]="underlineValue"
-      [resultState]="resultUnderline"
-      (droppedOnUnderline)="onDropUnderline($event)"
-    ></app-underline-dropzone>
-  
+  <!-- Underline dropzone -->
+  <app-underline-dropzone
+    [underlineValue]="underlineValue"
+    [resultState]="resultUnderline"
+    (droppedOnUnderline)="onDropUnderline($event)"
+  >
+  </app-underline-dropzone>
 </div>

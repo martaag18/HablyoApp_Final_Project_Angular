@@ -13,27 +13,35 @@ export class AuthService {
   private http = inject(HttpClient);
   private API_URL = 'https://localhost:3000/auth';
 
- 
+  // Signal to track login status
   isLoggedSignal = signal(false);
 
+  /**
+   * Initiates the login process by sending a POST request with user credentials.
+   * If successful, sets `isLoggedSignal` to true.
+   */
   login(data: LoginData): Observable<any> {
-    console.log('AuthService: iniciando login...', data);
+    console.log('AuthService: initiating login...', data);
 
     return this.http.post(`${this.API_URL}/login`, data, {
-      withCredentials: true // para que el navegador acepte/envíe la cookie
+      withCredentials: true // include/send cookies with the request
     }).pipe(
       tap({
         next: (response) => {
-          console.log('AuthService: login() -> Respuesta exitosa:', response);
+          console.log('AuthService: login() -> successful response:', response);
           this.isLoggedSignal.set(true);
         },
         error: (err) => {
-          console.error('AuthService: login() -> Respuesta con error:', err);
+          console.error('AuthService: login() -> error response:', err);
         }
       })
     );
   }
   
+  /**
+   * Logs out the user by calling the logout endpoint and
+   * updates `isLoggedSignal` to false upon success.
+   */
   logout(): Observable<any> {
     return this.http.post(`${this.API_URL}/logout`, {}, {
       withCredentials: true
@@ -44,24 +52,27 @@ export class AuthService {
     );
   }
 
+  /**
+   * Checks if the user is currently logged in by calling the /check endpoint.
+   * Updates `isLoggedSignal` based on the response.
+   */
   checkLogin(): Observable<CheckLoginResponse> {
-    console.log('AuthService: llamando a checkLogin...');
+    console.log('AuthService: calling checkLogin...');
     return this.http.get<CheckLoginResponse>(`${this.API_URL}/check`, {
       withCredentials: true
     }).pipe(
       tap({
         next: (res) => {
-          console.log('AuthService: checkLogin respuesta:', res);
+          console.log('AuthService: checkLogin -> response:', res);
           this.isLoggedSignal.set(res.loggedIn);
         },
         error: (err) => {
-          console.error('AuthService: checkLogin error:', err);
+          console.error('AuthService: checkLogin -> error:', err);
         }
       })
     );
   }
   
-  
-  //pipe -> encadenar operadores de RxJS (tap, map, catchError..) -> transformar o interactuar con las emisiones del observable
-  //tap -> ejecutar efectos secundarios en cada emisión del observable SIN transformar valor
+  // pipe -> chains RxJS operators (tap, map, catchError, etc.) to transform or interact with observable emissions
+  // tap -> performs side effects for each emission without transforming the value
 }

@@ -1,46 +1,71 @@
-<section class="py-6 px-6">
-  <!-- Title block -->
+<!-- Reviews carousel section -->
+<section
+  class="py-6 px-6"
+  role="region"
+  aria-labelledby="user-reviews-heading"
+>
+  <!-- Heading for screen readers and sighted users -->
   <div class="max-w-6xl mx-auto">
     <h2
+      id="user-reviews-heading"
       class="text-5xl font-bold text-primary text-center tracking-widest mt-6"
     >
       Vuestras Experiéncias Practicando
     </h2>
-    <!-- Cards block -->
-    <div class="w-full  h-[500px] relative overflow-hidden">
-      @for (idx of visibleIndexes(); track idx) { @if (idx >= 0 && idx <
-      reviews().length) {
-      <div
-        class="carousel-item absolute top-1/2 left-1/2 md:w-[500px] w-full"
-        [ngClass]="getPositionClass(idx)"
 
-      >
-        <div
-          class="bg-gray-100 rounded-lg p-8 shadow flex flex-col transition-all duration-300 ease-in-out hover:shadow-2xl hover:bg-gray-50 hover:-translate-y-1 cursor-pointer text-center mx-auto"
-        >
-          <i class="fas fa-user-circle text-5xl text-primary mb-4"></i>
-          <div class="flex justify-center mb-2">
-            @for (star of [1,2,3,4,5]; track star) {
+    <!-- Carousel container -->
+    <div
+      class="w-full h-[500px] relative overflow-hidden"
+      role="list"
+      aria-label="Lista de reseñas de usuarios"
+    >
+      <!-- Loop through visibleIndexes() to display reviews -->
+      @for (idx of visibleIndexes(); track idx) {
+        @if (idx >= 0 && idx < reviews().length) {
+          <article
+            class="carousel-item absolute top-1/2 left-1/2 md:w-[500px] w-full
+                   transition-all duration-300 ease-in-out
+                   hover:shadow-2xl hover:bg-gray-50 hover:-translate-y-1 cursor-pointer
+                   text-center mx-auto bg-gray-100 rounded-lg p-8 shadow flex flex-col"
+            [ngClass]="getPositionClass(idx)"
+            role="listitem"
+            [attr.aria-labelledby]="'review-author-' + idx"
+            >
+            <!-- Icon representing user -->
             <i
-              class="fas fa-star"
-              [ngClass]="{
-                'text-yellow-400': star <= reviews()[idx].rating,
-                'text-gray-300': star > reviews()[idx].rating
-              }"
+              class="fas fa-user-circle text-5xl text-primary mb-4"
+              aria-hidden="true"
             ></i>
-            }
-          </div>
 
-          <p class="text-gray-600 italic mb-4 text-base md:text-lg">
-            {{ reviews()[idx].text }}
-          </p>
+            <!-- Star rating -->
+            <div class="flex justify-center mb-2">
+              @for (star of [1,2,3,4,5]; track star) {
+                <i
+                  class="fas fa-star"
+                  aria-hidden="true"
+                  [ngClass]="{
+                    'text-yellow-400': star <= reviews()[idx].rating,
+                    'text-gray-300': star > reviews()[idx].rating
+                  }"
+                ></i>
+              }
+            </div>
 
-          <h4 class="font-bold text-primary text-base md:text-lg">
-            {{ reviews()[idx].author }}
-          </h4>
-        </div>
-      </div>
-      } }
+            <!-- Review text -->
+            <p class="text-gray-600 italic mb-4 text-base md:text-lg">
+              {{ reviews()[idx].text }}
+            </p>
+
+            <!-- Review author -->
+            <h3
+              id="review-author-{{ idx }}"
+              class="font-bold text-primary text-base md:text-lg"
+            >
+              {{ reviews()[idx].author }}
+            </h3>
+          </article>
+        }
+      }
 
       <!-- Navigation buttons -->
       <div
@@ -52,18 +77,23 @@
           'justify-start': currentIndex() === reviews().length - 1
         }"
       >
+        <!-- Previous button -->
         @if (currentIndex() > 0) {
-        <app-my-button
-          [color]="'circle'"
-          (clicked)="prev()"
-          [label]="'❮'"
-        ></app-my-button>
-        } @if (currentIndex() < reviews().length - 1) {
-        <app-my-button
-          [color]="'circle'"
-          (clicked)="next()"
-          [label]="'❯'"
-        ></app-my-button>
+          <app-my-button
+            [color]="'circle'"
+            (clicked)="prev()"
+            [label]="'❮'"
+            aria-label="Anterior"
+          ></app-my-button>
+        }
+        <!-- Next button -->
+        @if (currentIndex() < reviews().length - 1) {
+          <app-my-button
+            [color]="'circle'"
+            (clicked)="next()"
+            [label]="'❯'"
+            aria-label="Siguiente"
+          ></app-my-button>
         }
       </div>
     </div>

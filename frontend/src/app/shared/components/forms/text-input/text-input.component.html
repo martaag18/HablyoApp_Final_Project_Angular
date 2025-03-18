@@ -1,24 +1,38 @@
+<!-- Container for the input and its validation messages -->
 <div class="mb-4">
+    <!-- Actual input control -->
     <input
       [type]="type"
       [formControl]="controlAsFormControl"
       [placeholder]="placeholder"
       class="form-control input input-bordered h-14 p-8 bg-white rounded-md w-full
              focus:ring-2 focus:ring-teal-400 focus:outline-none transition-all duration-200 text-2xl mb-6"
-    />
-    
-    @if(control.invalid && control.touched){
-        <div class="bg-red-50 border-l-4 border-red-400 text-red-700 p-2 rounded-md mt-1 text-xl font-semibold z-50">
-            @if(control.errors?.['required']){
-            {{ label }} es obligatorio
-            }
-            @if(control.errors?.['email']){
-            Ingresa un {{ label.toLowerCase() }} válido
-            }
-            @if(control.errors?.["misMatch"]){
-                Las contraseñas no coinciden
-            } 
-        </div>
+      [attr.aria-invalid]="control.invalid && control.touched ? 'true' : 'false'"
+      [attr.aria-describedby]="(control.invalid && control.touched) ? 'error-' + label : null"
+      />
+  
+    <!-- Error messages block (only if invalid and touched) -->
+    @if (control.invalid && control.touched) {
+      <div
+        class="bg-red-50 border-l-4 border-red-400 text-red-700 p-2 rounded-md mt-1 text-xl font-semibold z-50"
+        role="alert"
+        [attr.id]="'error-' + label"
+      >
+        <!-- Required error -->
+        @if (control.errors?.['required']) {
+          {{ label }} es obligatorio
+        }
+  
+        <!-- Email error -->
+        @if (control.errors?.['email']) {
+          Ingresa un {{ label.toLowerCase() }} válido
+        }
+  
+        <!-- Mismatch error -->
+        @if (control.errors?.['misMatch']) {
+          Las contraseñas no coinciden
+        }
+      </div>
     }
   </div>
   

@@ -5,7 +5,7 @@ import { MyButtonComponent } from '../../../ui/my-button/my-button.component';
   imports: [MyButtonComponent],
   selector: 'app-exercise-navigation',
   templateUrl: './exercise-navigation.component.html',
-  styleUrls: ['./exercise-navigation.component.scss']
+  // styleUrls: ['./exercise-navigation.component.scss']
 })
 export class ExerciseNavigationComponent {
   

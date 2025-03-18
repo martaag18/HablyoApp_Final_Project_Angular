@@ -1,90 +1,119 @@
-<nav class="bg-white px-6 py-4 border-b fixed top-0 left-0 w-full z-50">
-  <!-- Mobile screens -->
+<nav
+  class="bg-white px-6 py-4 border-b fixed top-0 left-0 w-full z-50"
+  aria-label="Main navigation"
+>
+  <!-- Mobile view -->
   <div class="flex w-full items-center lg:hidden">
     <!-- Hamburger menu -->
     <div class="mr-auto relative">
-      <!-- Button to open/close menu -->
-      <button (click)="toggleMenu()" class="btn bg-primary cursor-pointer hover:bg-teal-400">
-        <i class="fas fa-bars text-white"></i>
+      <!-- Button to open/close the mobile menu -->
+      <button
+        (click)="toggleMenu()"
+        class="btn bg-primary cursor-pointer hover:bg-teal-400"
+        aria-label="Toggle mobile menu"
+        [attr.aria-expanded]="isMenuOpen"
+        [attr.aria-controls]="'mobile-menu'"
+      >
+        <i class="fas fa-bars text-white" aria-hidden="true"></i>
       </button>
-      <!-- Dropdown menu -->
+
+      <!-- Dropdown menu for mobile -->
       @if(isMenuOpen){
-        <ul class="absolute bg-white rounded-box shadow p-4 w-52 mt-2 space-y-4">
-          @for(link of mobileMenuLinks; track $index){
-            <li>
-              <a
-                [routerLink]="link.routerLink"
-                class="title-link text-lg text-primary hover:border-b-2 hover:border-teal-400 pb-1 transition-all duration-100 cursor-pointer"
-              >
-                @if(link.icon){
-                  <i class="{{ link.icon }} mr-2"></i>
-                }
-                {{ link.label }}
-              </a>
-            </li>
-          }
-        </ul>
+      <ul
+        id="mobile-menu"
+        class="absolute bg-white rounded-box shadow p-4 w-52 mt-2 space-y-4"
+        role="menu"
+        aria-label="Mobile navigation"
+      >
+        @for(link of mobileMenuLinks; track $index){
+        <li role="none">
+          <a
+            [routerLink]="link.routerLink"
+            [routerLinkActive]="['active']"
+            [attr.aria-current]="
+              router.isActive(link.routerLink, true) ? 'page' : null
+            "
+            role="menuitem"
+            class="title-link text-lg text-primary hover:border-b-2 hover:border-teal-400 pb-1 transition-all duration-100 cursor-pointer"
+          >
+            @if(link.icon){
+            <i class="{{ link.icon }} mr-2" aria-hidden="true"></i>
+            }
+            {{ link.label }}
+          </a>
+        </li>
+        }
+      </ul>
       }
     </div>
-    <!-- Logo -->
+
+    <!-- Logo for mobile -->
     <div class="ml-auto">
-      <img
-        ngOptimizedImage
-        [src]="logoUrl"
-        alt="Hablyo Logo"
-        class="h-12"
-      />
+      <a [routerLink]="'/'" aria-label="Go to homepage">
+        <img ngOptimizedImage [src]="logoUrl" alt="Hablyo Logo" class="h-12" />
+      </a>
     </div>
   </div>
 
-  <!-- Large screens -->
+  <!-- Desktop view -->
   <div class="hidden lg:flex w-full items-center justify-between">
-    <!-- Main links -->
-    <div class="flex gap-10 text-2xl">
+    <!-- Main navigation links -->
+    <div class="flex gap-10 text-2xl" aria-label="Main links">
       @for(link of mainLinks; track $index){
-        <a
-          [routerLink]="link.routerLink"
-          class="title-link font-bold text-primary hover:border-b-2 hover:border-teal-400 pb-1 transition-all duration-100 cursor-pointer"
-        >
-          {{ link.label }}
-        </a>
+      <a
+        [routerLink]="link.routerLink"
+        [routerLinkActive]="['active']"
+        [attr.aria-current]="
+          router.isActive(link.routerLink, true) ? 'page' : null
+        "
+        class="title-link font-bold text-primary hover:border-b-2 hover:border-teal-400 pb-1 transition-all duration-100 cursor-pointer"
+      >
+        {{ link.label }}
+      </a>
       }
     </div>
-    <!-- Logo -->
+
+    <!-- Logo for desktop -->
     <div>
-      <img
-        ngOptimizedImage
-        [src]="logoUrl"
-        alt="Hablyo Logo"
-        class="h-24"
-      />
+      <a [routerLink]="'/'" aria-label="Go to homepage">
+        <img ngOptimizedImage [src]="logoUrl" alt="Hablyo Logo" class="h-24" />
+      </a>
     </div>
-    <!-- Auth links -->
-    <div class="flex gap-10 text-2xl">
+
+    <!-- Authentication links -->
+    <div class="flex gap-10 text-2xl" aria-label="Authentication links">
       @if(authService.isLoggedSignal()){
-        <a
-          (click)="logout()"
-          class="title-link font-bold text-primary hover:border-b-2 hover:border-teal-400 pb-1 transition-all duration-100 cursor-pointer"
-        >
-          CERRAR SESIÓN
-        </a>
+      <a
+        (click)="logout()"
+        class="title-link font-bold text-primary hover:border-b-2 hover:border-teal-400 pb-1 transition-all duration-100 cursor-pointer"
+      >
+        CERRAR SESIÓN
+      </a>
       } @else {
-        <a
-          routerLink="/login"
-          class="title-link font-bold text-primary hover:border-b-2 hover:border-teal-400 pb-1 transition-all duration-100 cursor-pointer"
-        >
-          <i class="fa-solid fa-arrow-right-to-bracket mr-2"></i> INICIAR SESIÓN
-        </a>
+      <a
+        routerLink="/login"
+        [routerLinkActive]="['active']"
+        [attr.aria-current]="router.isActive('/login', true) ? 'page' : null"
+        class="title-link font-bold text-primary hover:border-b-2 hover:border-teal-400 pb-1 transition-all duration-100 cursor-pointer"
+      >
+        <i
+          class="fa-solid fa-arrow-right-to-bracket mr-2"
+          aria-hidden="true"
+        ></i>
+        INICIAR SESIÓN
+      </a>
       }
       <a
         routerLink="/registro-usuario"
+        [routerLinkActive]="['active']"
+        [attr.aria-current]="
+          router.isActive('/registro-usuario', true) ? 'page' : null
+        "
         class="title-link font-bold text-primary hover:border-b-2 hover:border-teal-400 pb-1 transition-all duration-100 cursor-pointer"
       >
-        <i class="fas fa-user mr-2"></i> REGISTRO
+        <i class="fas fa-user mr-2" aria-hidden="true"></i>
+        REGISTRO
       </a>
     </div>
   </div>
 </nav>
-
-  
-  

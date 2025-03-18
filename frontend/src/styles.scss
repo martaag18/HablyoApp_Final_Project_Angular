@@ -1,21 +1,46 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 
 /* You can add global styles to this file, and also import other style files */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-html, body {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 400;
-    font-style: normal;
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
 }
 
+/* snackbar */
+
+.cdk-overlay-container {
+  z-index: 9999 !important;
+}
+
+.snackbar-success {
+  background-color: #90ce93 !important;
+  color: #fff !important;
+  font-size: 1.5rem !important;
+  padding: 0.5rem 0.75rem !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
+}
+
+
+.snackbar-error {
+  background-color: #f44336 !important; 
+  color: #fff !important;
+  font-size: 1.2rem !important;
+  padding: 0.5rem 0.75rem !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
+}

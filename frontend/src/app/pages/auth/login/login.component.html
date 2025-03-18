@@ -1,12 +1,21 @@
-<div class="flex flex-col items-center justify-center min-h-screen bg-white p-4">
-  <div class="w-full max-w-md sm:max-w-lg md:max-w-2xl bg-gradient-to-r from-primary to-red-300 rounded-3xl shadow-2xl overflow-hidden p-6 sm:p-8 md:p-12">
-    
-    <!-- Title -->
-    <h2 class="text-xl sm:text-2xl md:text-4xl font-bold text-center mb-12 text-white uppercase">
+<!-- Main container (role="main" to indicate primary content) -->
+<div
+  class="flex flex-col items-center justify-center min-h-screen bg-white p-4"
+  role="main"
+  aria-labelledby="login-title"
+>
+  <div
+    class="w-full max-w-md sm:max-w-lg md:max-w-2xl bg-gradient-to-r from-primary to-red-300 rounded-3xl shadow-2xl overflow-hidden p-6 sm:p-8 md:p-12"
+  >
+    <!-- Page title  -->
+    <h2
+      id="login-title"
+      class="text-xl sm:text-2xl md:text-4xl font-bold text-center mb-12 text-white uppercase"
+    >
       👤 Iniciar Sesión
     </h2>
 
-    <!-- Login form -->
+    <!-- Login form (submit is handled by (ngSubmit)) -->
     <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
       <!-- Email field -->
       <app-text-input
@@ -29,18 +38,23 @@
         label="ACCEDER"
         color="secondary"
         [disabled]="loginForm.invalid"
-        (clicked)="onSubmitLogin()"
-      ></app-my-button>
+        [buttonType]="'submit'"
+      >
+      </app-my-button>
     </form>
 
-    <!-- Error message (for example, wrong credentials) -->
-    @if(loginError){
-      <div class="bg-red-50 border-l-4 border-red-400 text-red-700 p-2 rounded-md mt-2">
+    <!-- Error message (role="alert" for immediate announcement) -->
+    @if (loginError) {
+      <div
+        class="bg-red-50 border-l-4 border-red-400 text-red-700 p-2 rounded-md mt-2"
+        role="alert"
+        aria-live="assertive"
+      >
         {{ loginError }}
       </div>
     }
 
-    <!-- Additional links -->
+    <!-- Additional links  -->
     <div class="mt-4 text-center">
       <a
         routerLink="/forgot-password"

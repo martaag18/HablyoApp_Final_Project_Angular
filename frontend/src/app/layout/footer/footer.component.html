@@ -1,8 +1,11 @@
-<footer class="bg-slate-700 text-white py-6 px-8">
+<footer class="bg-slate-700 text-white py-6 px-6" aria-label="Footer">
   <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
 
-    <!-- POLICY LINKS -->
-    <div class="order-3 md:order-3 flex flex-col gap-2 text-center md:text-left">
+    <!-- Policy Links (using <nav> for semantic navigation) -->
+    <nav
+      class="order-3 md:order-3 flex flex-col gap-2 text-center md:text-left"
+      aria-label="Policy links"
+    >
       @for(link of policyLinks; track $index){
         <a
           [routerLink]="link.url"
@@ -11,9 +14,9 @@
           {{ link.label }}
         </a>
       }
-    </div>
+    </nav>
 
-    <!-- LOGO + CONTACT INFO -->
+    <!-- Logo + Contact Information -->
     <div class="order-2 flex flex-col items-center gap-4">
       <img
         ngOptimizedImage
@@ -21,7 +24,7 @@
         alt="Hablyo Logo"
         class="h-20 cursor-pointer"
       />
-      <!-- CONTACT DETAILS -->
+      <!-- Contact details -->
       <p class="text-xl">
         <a
           [href]="websiteUrl"
@@ -40,13 +43,17 @@
       </p>
     </div>
 
-    <!-- SOCIAL MEDIA -->
-    <div class="order-1 flex items-center gap-3">
+    <!-- Social Media Links -->
+    <div
+      class="order-1 flex items-center gap-3"
+      aria-label="Social media links"
+    >
       <a
         [href]="instagramUrl"
         target="_blank"
         rel="noopener noreferrer"
         class="cursor-pointer flex items-center justify-center hover:scale-110 transition-transform duration-200"
+        aria-label="Instagram"
       >
         <i class="fab fa-instagram text-5xl text-pink-400 hover:text-pink-500"></i>
       </a>
@@ -54,3 +61,4 @@
 
   </div>
 </footer>
+

@@ -1,9 +1,20 @@
-<section class="py-12 px-6 min-h-[40vh] mt-9 bg-white">
-  <div class="max-w-6xl mx-auto text-center">
-    <h1 class="text-5xl md:text-5xl font-extrabold text-primary mb-8 tracking-widest">
+<section
+  class="py-12 px-6 min-h-[40vh] mt-9 bg-white"
+  role="region"
+  aria-labelledby="interactive-exercises-title"
+>
+  <!-- Main container for exercises heading and intro -->
+  <div class="max-w-7xl mx-auto text-center">
+    <!-- Primary heading for this section -->
+    <h1
+      id="interactive-exercises-title"
+      class="text-5xl md:text-5xl font-extrabold text-primary mb-8 tracking-widest"
+    >
       EJERCICIOS INTERACTIVOS
     </h1>
-    <p class="text-xl md:text-xl leading-relaxed tracking-wide text-gray-600 mb-6">
+
+    <!-- Introductory paragraph -->
+    <p class="text-xl md:text-2xl leading-relaxed tracking-wide text-gray-600 mb-6">
       Practica a tu propio ritmo con ejercicios diseñados por
       <strong>Savio Mascolo, ex-tartamudo</strong> que comparte sus
       <strong>técnicas</strong>
@@ -11,7 +22,8 @@
     </p>
   </div>
 
-  <div>
+  <!-- Container for the exercises cards -->
+  <div class="max-w-7xl mx-auto">
     <app-cards-exercises></app-cards-exercises>
   </div>
 </section>

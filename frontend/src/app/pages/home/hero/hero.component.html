@@ -1,10 +1,20 @@
 <section
   class="relative min-h-[45vh] bg-gradient-to-r from-primary to-red-300 text-white py-10 overflow-hidden"
+  role="region"
+  aria-labelledby="hero-heading"
 >
+  <!-- Hidden heading for screen readers to label this region -->
+  <h2
+    id="hero-heading"
+    class="sr-only"
+  >
+    Sección de portada
+  </h2>
+
   <div
     class="mx-auto w-full max-w-[1800px] p-6 flex flex-col md:flex-row items-center"
   >
-    <!-- Columna de texto -->
+    <!-- Text column -->
     <div class="md:w-3/5 text-center md:text-left md:mr-8">
       <h1 class="text-5xl md:text-6xl font-bold tracking-widest mb-14">
         {{ heroData.title }}
@@ -15,7 +25,7 @@
       </p>
     </div>
 
-    <!-- Columna de imagen -->
+    <!-- Image column -->
     <div class="md:w-2/5 mt-10 md:mt-0 flex justify-center md:justify-end">
       <img
         [ngSrc]="heroData.imageSrc"
@@ -28,9 +38,10 @@
     </div>
   </div>
 
-  <!-- Flecha scroll -->
+  <!-- Scroll arrow  -->
   <div
     class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce"
+    aria-hidden="true"
   >
     <i class="fa-solid fa-chevron-down text-white text-2xl"></i>
   </div>

@@ -1,15 +1,18 @@
 <span
   class="boundary-dropzone"
+  role="region"
   (dragover)="onDragOver($event)"
   (drop)="onDrop($event)"
+  [attr.aria-label]="'Zona de drop para arco'"
   [ngClass]="{
     'correct-arc': resultState === 'correct',
     'wrong-arc': resultState === 'wrong',
     'missed-arc': resultState === 'missed'
   }"
 >
+  <!-- If arcValue is 'arc', display an arc SVG -->
   @if (arcValue === 'arc') {
-    <svg class="arc-svg">
+    <svg class="arc-svg" aria-hidden="true">
       <path d="M0,0 Q30,30 60,0" stroke="black" stroke-width="3" fill="none" />
     </svg>
   }

@@ -7,7 +7,7 @@ import { AuthService } from '../../../../services/auth/auth.service';
   selector: 'app-cards-exercises',
   imports: [RouterLink],
   templateUrl: './cards-exercises.component.html',
-  styleUrls: ['./cards-exercises.component.scss']
+  // styleUrls: ['./cards-exercises.component.scss']
 })
 export class CardsExercisesComponent {
 

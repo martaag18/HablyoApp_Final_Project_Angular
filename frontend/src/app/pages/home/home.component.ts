@@ -7,7 +7,7 @@ import { MotivationalSectionComponent } from './motivational-section/motivationa
   selector: 'app-home',
   imports: [ReviewsComponent, ExercisesHomeComponent, HeroComponent, MotivationalSectionComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  // styleUrl: './home.component.scss'
 })
 export class HomeComponent {
 

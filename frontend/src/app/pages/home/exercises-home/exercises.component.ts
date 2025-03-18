@@ -5,7 +5,7 @@ import { CardsExercisesComponent } from './cards-exercises/cards-exercises.compo
   selector: 'app-exercises',
   imports: [CardsExercisesComponent],
   templateUrl: './exercises.component.html',
-  styleUrl: './exercises.component.scss'
+  // styleUrl: './exercises.component.scss'
 })
 export class ExercisesHomeComponent {
 

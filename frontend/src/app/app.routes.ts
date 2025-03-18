@@ -53,28 +53,28 @@ export const routes: Routes = [
             path: 'vocal-home',
             loadComponent: () =>
               import(
-                './pages/exercises/components/exercise-vocal/exercise-1-explanation/exercise-1-explanation.component'
+                './pages/exercises/components/exercise-1/exercise-1-explanation/exercise-1-explanation.component'
               ).then((c) => c.Exercise1ExplanationComponent),
           },
           {
             path: 'vocal-final-vocal-inicial',
             loadComponent: () =>
               import(
-                './pages/exercises/components/exercise-vocal/exercise-vocal-container/exercise-container.component'
-              ).then((c) => c.ExerciseContainerComponent),
+                './pages/exercises/components/exercise-1/exercise-1-container/exercise-container.component'
+              ).then((c) => c.Exercise1ContainerComponent),
           },
           {
             path: 'doble-vocal-home',
             loadComponent: () =>
               import(
-                './pages/exercises/components/exercise-doble-vocal/exercise-2-explanation/exercise-2-explanation.component'
+                './pages/exercises/components/exercise-2/exercise-2-explanation/exercise-2-explanation.component'
               ).then((c) => c.Exercise2ExplanationComponent),
           },
           {
             path: 'doble-vocal',
             loadComponent: () =>
               import(
-                "./pages/exercises/components/exercise-doble-vocal/exercise-doble-vocal-container/exercise-doble-vocal-container.component"
+                "./pages/exercises/components/exercise-2/exercise-2-container/exercise-2-container.component"
               ).then((c) => c.ExerciseDobleVocalContainerComponent),
           },
         ],

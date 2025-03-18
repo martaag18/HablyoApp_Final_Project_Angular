@@ -1,4 +1,4 @@
-//Validar si arcos que usuario coloca entre palabras son correctos o no. 
+// Validate if the arcs placed by the user between words are correct or not.
 import { Injectable } from '@angular/core';
 import { WordItem } from '../../interfaces/word-item.interface';
 import { ValidationState } from '../../types/validation-state.type';
@@ -8,27 +8,27 @@ import { ValidationState } from '../../types/validation-state.type';
 })
 export class ArcService {
 
-
   validateArcs(wordList: WordItem[], arcMark: Array<'none' | 'arc'>): ValidationState[] {
     const result: ValidationState[] = [];
 
     for (let i = 0; i < arcMark.length; i++) {
-      if (arcMark[i] === 'arc') { //marca de usuario
-        // El usuario puso un arco
-        if (wordList[i].arcToNext) { //necesidad arco
-          result[i] = 'correct'; 
+      if (arcMark[i] === 'arc') { 
+        // If the user placed an arc and the word item actually needs an arc
+        if (wordList[i].arcToNext) {
+          result[i] = 'correct';
         } else {
-          result[i] = 'wrong';   
+          result[i] = 'wrong';
         }
       } else {
-        // arcMark[i] === 'none'
+        // If the user did not place an arc, but the word item requires it
         if (wordList[i].arcToNext) {
-          result[i] = 'missed';  
+          result[i] = 'missed';
         } else {
-          result[i] = null;     
+          result[i] = null;
         }
       }
     }
+
     return result;
   }
 }

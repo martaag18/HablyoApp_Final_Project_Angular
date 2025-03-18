@@ -6,7 +6,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-my-button',
   imports: [RouterLink, NgClass],
   templateUrl: './my-button.component.html',
-  styleUrls: ['./my-button.component.scss']
+  // styleUrls: ['./my-button.component.scss']
 })
 export class MyButtonComponent {
   @Input() label: string = 'Click';
@@ -14,6 +14,8 @@ export class MyButtonComponent {
   @Input() disabled: boolean = false;
   @Input() routerLink?: string | any[];
   @Input() buttonType: 'button' | 'submit' | 'reset' = 'button';
+  @Input('aria-label') ariaLabel: string | null = null;
+
 
 
   

@@ -2,8 +2,8 @@ export interface ExerciseData {
     id: number;
     text: string;
     instructions?: string;
-    tildeIndices?: number[];
+    accentIndices?: number[];
     pIndices?: number[];
-    vdobleIndices?: number[];
+    doubleVocalIndices?: number[];
   }
   

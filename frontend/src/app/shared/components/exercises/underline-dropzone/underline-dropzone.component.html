@@ -1,5 +1,7 @@
 <span
   class="underline-dropzone"
+  role="region"
+  [attr.aria-label]="'Zona de drop para subrayado'"
   (dragover)="onDragOver($event)"
   (drop)="onDrop($event)"
   [ngClass]="{
@@ -8,6 +10,7 @@
     'missed-underline': resultState === 'missed'
   }"
 >
+  <!-- If underlineValue is 'underline', display a line -->
   @if (underlineValue === 'underline') {
     <div class="underline-line"></div>
   }

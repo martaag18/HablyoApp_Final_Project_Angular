@@ -1,32 +1,45 @@
 import { Injectable } from '@angular/core';
 import { WordItem } from '../../interfaces/word-item.interface';
 
+/**
+ * Generates the "solution" for a given exercise, indicating where arcs, accents, 'P', or underline marks
+ * should be placed based on the provided indices and word list.
+ */
 @Injectable({ providedIn: 'root' })
 export class SolutionGeneratorService {
 
+  /**
+   * Builds the final set of marks (arc, accent, P, underline) that represent the correct solution.
+   * @param wordList - The array of WordItem objects representing the words in the exercise.
+   * @param vdobleIndices - The indices where underline marks should appear.
+   * @param accentIndices - Optional indices where accents ('´') should appear.
+   * @param pIndices - Optional indices where 'P' should appear.
+   * @returns An object with arrays for arcMark, accentMark, pMark, and underlineMark.
+   */
   generateSolution(
     wordList: WordItem[],
     vdobleIndices: number[],
-    tildeIndices?: number[],
+    accentIndices?: number[],
     pIndices?: number[]
   ): {
     arcMark: Array<'none' | 'arc'>;
-    tildeMark: Array<'none' | '´'>;
+    accentMark: Array<'none' | '´'>;
     pMark: Array<'none' | 'P'>;
     underlineMark: Array<'none' | 'underline'>;
   } {
     const totalLetters = wordList.reduce((acc, w) => acc + w.letters.length, 0);
 
     const arcMark = this.generateArcMark(wordList);
-    const tildeMark = this.generateTildeMark(totalLetters, tildeIndices);
+    const accentMark = this.generateAccentMark(totalLetters, accentIndices);
     const pMark = this.generatePMark(totalLetters, pIndices);
     const underlineMark = this.generateUnderlineMark(totalLetters, vdobleIndices);
 
-    return { arcMark, tildeMark, pMark, underlineMark };
+    return { arcMark, accentMark, pMark, underlineMark };
   }
 
-
-  //Genera array de archMarc basándose en arcToNext en cada WordItem
+  /**
+   * Generates the arcMark array based on the arcToNext flag in each WordItem.
+   */
   private generateArcMark(wordList: WordItem[]): Array<'none' | 'arc'> {
     return wordList
       .map((w) => w.arcToNext)
@@ -34,22 +47,31 @@ export class SolutionGeneratorService {
       .map((flag) => (flag ? 'arc' : 'none'));
   }
 
-
-  //Genera el array de tildeMarc con base en los índices esperados de tilde.
-  private generateTildeMark(totalLetters: number, tildeIndices?: number[]): Array<'none' | '´'> {
-    const tildeMark = Array<'none' | '´'>(totalLetters).fill('none');
-    if (tildeIndices) {
-      for (const idx of tildeIndices) {
+  /**
+   * Generates the accentMark array based on the expected accent indices.
+   */
+  private generateAccentMark(
+    totalLetters: number,
+    accentIndices?: number[]
+  ): Array<'none' | '´'> {
+    const accentMark = Array<'none' | '´'>(totalLetters).fill('none');
+    if (accentIndices) {
+      for (const idx of accentIndices) {
         if (idx >= 0 && idx < totalLetters) {
-          tildeMark[idx] = '´';
+          accentMark[idx] = '´';
         }
       }
     }
-    return tildeMark;
+    return accentMark;
   }
 
-  //Genera el array de pMark con base en los ídices esperados de P.
-  private generatePMark(totalLetters: number, pIndices?: number[]): Array<'none' | 'P'> {
+  /**
+   * Generates the pMark array based on the expected P indices.
+   */
+  private generatePMark(
+    totalLetters: number,
+    pIndices?: number[]
+  ): Array<'none' | 'P'> {
     const pMark = Array<'none' | 'P'>(totalLetters).fill('none');
     if (pIndices) {
       for (const idx of pIndices) {
@@ -61,8 +83,13 @@ export class SolutionGeneratorService {
     return pMark;
   }
 
-  //Genera el array de underlineMarck con base a los índices esperados (vdobleIndices)
-  private generateUnderlineMark(totalLetters: number, vdobleIndices: number[]): Array<'none' | 'underline'> {
+  /**
+   * Generates the underlineMark array based on the expected vdobleIndices.
+   */
+  private generateUnderlineMark(
+    totalLetters: number,
+    vdobleIndices: number[]
+  ): Array<'none' | 'underline'> {
     const underlineMark = Array<'none' | 'underline'>(totalLetters).fill('none');
     for (const index of vdobleIndices) {
       if (index >= 0 && index < totalLetters) {

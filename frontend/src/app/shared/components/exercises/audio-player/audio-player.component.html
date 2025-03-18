@@ -1,14 +1,19 @@
-<!-- Botón para cargar / mostrar el audio -->
+<!-- Button to load/show audio -->
 <app-my-button
   label="ESCUCHAR EJEMPLO EN AUDIO 🔊"
   color="blue"
   (clicked)="onLoadAudio()"
+  [attr.aria-label]="'Reproducir un ejemplo de audio'"
 >
 </app-my-button>
 
-<!-- Reproductor (condicional) -->
+<!-- Conditional audio player -->
 @if (isAudioVisible()) {
-  <div class="text-center mt-6">
+  <div
+    class="text-center mt-6"
+    role="region"
+    aria-label="Reproductor de audio"
+  >
     <audio controls>
       <source [src]="audioSource" type="audio/mpeg" />
       Tu navegador no soporta el elemento de audio.

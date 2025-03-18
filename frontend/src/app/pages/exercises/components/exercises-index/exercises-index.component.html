@@ -1,33 +1,63 @@
-<section class="py-12 px-6 bg-white mt-20">
+<section
+  class="py-12 px-6 bg-white mt-20"
+  role="region"
+  aria-labelledby="exercises-choose-title"
+>
+  <!-- Hidden heading to label this region for screen readers -->
+  <h2
+    id="exercises-choose-title"
+    class="sr-only"
+  >
+    Selección de ejercicios
+  </h2>
+
+  <!-- Title block -->
   <div class="max-w-6xl mx-auto text-center">
     <h1
       [@funTitle]
-      class="text-4xl inline-block px-4 py-4 rounded-lg leading-relaxed  bg-slate-50 tracking-widest mb-20"
+      class="text-4xl inline-block px-4 py-4 rounded-lg leading-relaxed bg-slate-50 tracking-widest mb-20"
     >
-      ¿QUÉ <span class="text-primary font-bold">EJERCICIO</span> QUIERES <span class="text-primary font-bold">PRACTICAR?</span>
+      ¿QUÉ <span class="text-primary font-bold">EJERCICIO</span> QUIERES
+      <span class="text-primary font-bold">PRACTICAR?</span>
     </h1>
   </div>
 
+  <!-- Grid of exercises -->
   <div class="mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-    <!-- Array de ejercicios -->
-    @for(ex of exercises; track $index){
-    <div class="bg-gray-100 rounded-lg shadow flex flex-col">
-      <img
-        [src]="ex.image"
-        [alt]="ex.title"
-        class="w-full object-cover rounded-t-lg"
-      />
-      <div class="p-6 flex flex-col flex-1">
-        <h2 class="font-bold text-2xl text-primary mb-2">{{ ex.title }}</h2>
-        <p class="text-xl text-gray-600 flex-1 mt-6 mb-6">{{ ex.subtitle }}</p>
-        <app-my-button
-          label="¡PRACTICAR!"
-          color="secondary"
-          [routerLink]="['/ejercicios', ex.route]"
-          class="mt-4"
-        ></app-my-button>
-      </div>
-    </div>
+    <!-- Loop through exercises array -->
+    @for (ex of exercises; track $index) {
+      <article
+        class="bg-gray-100 rounded-lg shadow flex flex-col"
+        aria-labelledby="'exercise-title-'' + $index"
+      >
+        <img
+          [src]="ex.image"
+          [alt]="ex.title"
+          class="w-full object-cover rounded-t-lg"
+        />
+        <div class="p-6 flex flex-col flex-1">
+          <!-- Exercise title -->
+          <h3
+            id="exercise-title-{{ $index }}"
+            class="font-bold text-2xl text-primary mb-2"
+          >
+            {{ ex.title }}
+          </h3>
+          <!-- Subtitle or description -->
+          <p class="text-xl text-gray-600 flex-1 mt-6 mb-6">
+            {{ ex.subtitle }}
+          </p>
+          <!-- Practice button -->
+          <app-my-button
+            label="¡PRACTICAR!"
+            color="secondary"
+            [routerLink]="['/ejercicios', ex.route]"
+            class="mt-4"
+            aria-label="Practicar {{ ex.title }}"
+          >
+          </app-my-button>
+        </div>
+      </article>
     }
   </div>
 </section>

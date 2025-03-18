@@ -1,25 +1,24 @@
-//Validación de marcas
+// Validation of marks
 import { Injectable, inject } from '@angular/core';
 import { PService } from './p.service';
 import { UnderlineService } from './underline.service';
 import { WordItem } from '../../interfaces/word-item.interface';
 import { ValidationState } from '../../types/validation-state.type';
 import { ArcService } from './arc.service';
-import { TildeService } from './tilde.service';
-
-
+import { AccentService } from './accent.service';
 @Injectable({
   providedIn: 'root',
 })
 export class MarkingOrchestratorService {
   
   private arcService = inject(ArcService);
-  private tildeService = inject(TildeService);
+  private accentService = inject(AccentService);
   private pService = inject(PService);
   private underlineService = inject(UnderlineService); 
 
-  
-  //Valida arcMark => delega a ArcService
+  /**
+   * Validates arcMark by delegating to ArcService
+   */
   validateArcs(
     wordList: WordItem[],
     arcMark: Array<'none' | 'arc'>
@@ -27,15 +26,19 @@ export class MarkingOrchestratorService {
     return this.arcService.validateArcs(wordList, arcMark);
   }
 
-  //Valida tildeMark => delega a TildeService
-  validateTildes(
-    tildeMark: Array<'none' | '´'>,
-    tildeIndices?: number[]
+  /**
+   * Validates accentMark by delegating to AccentService
+   */
+  validateAccents(
+    accentMark: Array<'none' | '´'>,
+    accentIndices?: number[]
   ): ValidationState[] {
-    return this.tildeService.validateTildes(tildeMark, tildeIndices);
+    return this.accentService.validateAccents(accentMark, accentIndices);
   }
 
-  //Valida la marca "P" => delega a PService
+  /**
+   * Validates the "P" mark by delegating to PService
+   */
   validateP(
     wordList: WordItem[],
     pMark: Array<'none' | 'P'>,
@@ -44,7 +47,9 @@ export class MarkingOrchestratorService {
     return this.pService.validateP(pMark, pIndices);
   }
 
-  //Valida el underline
+  /**
+   * Validates the underline mark by delegating to UnderlineService
+   */
   validateUnderlines(
     vdobleIndices: number[],
     underlineMark: Array<'none' | 'underline'>
