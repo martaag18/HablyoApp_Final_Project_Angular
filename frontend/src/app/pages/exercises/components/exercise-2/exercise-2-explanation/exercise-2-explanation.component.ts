@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { AUDIO_FILES_2 } from '../data/mocks/audio-files_2.mock';
 import { AudioPlayerComponent } from '../../../../../shared/components/exercises/audio-player/audio-player.component';
 import { MyButtonComponent } from '../../../../../shared/ui/my-button/my-button.component';
@@ -8,6 +8,8 @@ import { MyButtonComponent } from '../../../../../shared/ui/my-button/my-button.
   imports: [AudioPlayerComponent, MyButtonComponent],
   templateUrl: './exercise-2-explanation.component.html',
   // styleUrl: './exercise-2-explanation.component.scss'
+  changeDetection: ChangeDetectionStrategy.OnPush 
+
 })
 export class Exercise2ExplanationComponent {
 

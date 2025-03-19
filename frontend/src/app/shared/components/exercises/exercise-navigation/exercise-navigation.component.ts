@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { MyButtonComponent } from '../../../ui/my-button/my-button.component';
 
 @Component({
@@ -6,6 +6,8 @@ import { MyButtonComponent } from '../../../ui/my-button/my-button.component';
   selector: 'app-exercise-navigation',
   templateUrl: './exercise-navigation.component.html',
   // styleUrls: ['./exercise-navigation.component.scss']
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class ExerciseNavigationComponent {
   

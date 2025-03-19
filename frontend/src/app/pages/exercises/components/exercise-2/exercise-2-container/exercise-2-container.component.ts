@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, inject, signal } from '@angular/core';
 import { Exercise2PresentationComponent } from '../exercise-2-presentation/exercise-2-presentation.component';
 
 // Mocks
@@ -29,6 +29,8 @@ import { WordListOrchestratorService } from '../../../../../shared/services/orch
   selector: 'app-exercise-doble-vocal-container',
   templateUrl: './exercise-2-container.component.html',
   // styleUrls: ['./exercise-doble-vocal-container.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush 
+
 })
 export class ExerciseDobleVocalContainerComponent {
 

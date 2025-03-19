@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -7,6 +7,8 @@ import { RouterLink } from '@angular/router';
   imports: [RouterLink, NgClass],
   templateUrl: './my-button.component.html',
   // styleUrls: ['./my-button.component.scss']
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class MyButtonComponent {
   @Input() label: string = 'Click';

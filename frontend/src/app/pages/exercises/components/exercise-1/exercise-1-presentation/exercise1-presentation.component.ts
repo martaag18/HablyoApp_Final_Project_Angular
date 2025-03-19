@@ -1,6 +1,6 @@
 // Responsibility -> display information and notify the parent component (emit events) or services when a user action occurs.
 
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { InstructionsFooterComponent } from '../../../../../shared/components/exercises/instructions-footer/instructions-footer.component';
 import { ArcDropzoneComponent } from '../../../../../shared/components/exercises/arc-dropzone/arc-dropzone.component';
 import { ArcIconComponent } from '../../../../../shared/components/exercises/arc-icon/arc-icon.component';
@@ -21,6 +21,8 @@ import { AccentIconComponent } from '../../../../../shared/components/exercises/
   selector: 'app-exercise1-presentation',
   templateUrl: './exercise1-presentation.component.html',
   styleUrls: ['./exercise1-presentation.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush 
+
 })
 export class Exercise1PresentationComponent {
   

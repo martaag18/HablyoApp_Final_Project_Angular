@@ -9,7 +9,6 @@ import { Component, Output, EventEmitter } from '@angular/core';
 export class UnderlineIconComponent {
   @Output() dragStarted = new EventEmitter<DragEvent>();
 
-  // Evento cuando se inicia el arrastre -> establece en dataTransfer el valor "underline"
   onDragStart(event: DragEvent) {
     event.dataTransfer?.setData('text/plain', 'underline');
     this.dragStarted.emit(event);

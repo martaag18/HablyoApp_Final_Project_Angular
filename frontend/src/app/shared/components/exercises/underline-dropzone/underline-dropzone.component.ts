@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { ValidationState } from '../../../types/validation-state.type';
 
 @Component({
@@ -7,7 +7,9 @@ import { ValidationState } from '../../../types/validation-state.type';
   imports: [NgClass],
   selector: 'app-underline-dropzone',
   templateUrl: './underline-dropzone.component.html',
-  styleUrls: ['./underline-dropzone.component.scss']
+  styleUrls: ['./underline-dropzone.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class UnderlineDropzoneComponent {
   @Input() underlineValue: 'none' | 'underline' = 'none';

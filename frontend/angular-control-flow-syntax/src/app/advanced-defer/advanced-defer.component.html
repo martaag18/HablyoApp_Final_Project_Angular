@@ -1,0 +1,78 @@
+<h3>when</h3>
+
+@defer (when dataReady) {
+    <p>Los datos han sido cargados</p>
+} @placeholder {
+    <p>Mientras los datos no están</p>
+}
+
+<h3>idle</h3>
+<!-- Queremos que suceda algo sobre otra cosa (en este caso cuando el browser este idle) -->
+@defer (on idle) {
+<p>
+    large component loaded after everything is loaded and the browser is idl
+</p>
+} @placeholder {
+    <p>Mientras los datos no están</p>
+}
+
+<h3>View Port</h3>
+<!-- Una vez que esto aparezca en el viewport se carga (hasta que no haga scroll hasta ahí, no se cargará) -->
+@defer (on viewport) {
+    <p>large component loaded after it appeared inside the viewport</p>
+
+}@placeholder {
+    <p>
+        Mientras los datos no están (con el tamaño del elemento a reemplazar)
+    </p>
+}
+
+<h3>triggerElement</h3>
+<div #triggerElement>Hello!</div>
+@defer (on viewport(triggerElement)){
+    <p>Me cargué porque triggerElement se ha aparecido en la vista</p>
+}
+
+<h3>Interaction</h3>
+@defer (on interaction){
+    <p>Me cargué porque interectuaron conmigo</p>
+} @placeholder {
+    <p>Mientras los datos no están</p>
+}
+
+<h3>InteractionElement</h3>
+<div #interactionElement>Hello!</div>
+@defer (on interaction(interactionElement)){
+    <p>Me cargué porque se ha interectuado con interactionElement</p>
+}
+
+<h3>Hover</h3>
+@defer (on hover){
+    <p>Me cargué porque me hicieron hover</p>
+}@placeholder {
+    <p>Oasame la manita</p>
+}
+
+<h3>specific hover</h3>
+<div #specificElement>Pasame la manita</div>
+
+@defer (on hover(specificElement)){
+    <p>Me cargué porque me hicieron hover</p>
+}@placeholder {
+    <p>Pasale la manita</p>
+}
+
+<h3>timer</h3>
+@defer (on timer(500ms)){
+<p>Me cargué pq se cumplio el timer</p>
+}@placeholder {
+    <p>Mientras los datos no están</p>
+}
+
+<h3>prefetch</h3>
+<!-- Permitirá cargar los recursos asociados al bloque defer especificando cual es el trigger para poder hacer este prefetch -->
+@defer (on interaction; prefetch on idle){
+    <p>Me cargué porque interactuaron conmigo o el browser ya está idl</p>
+}@placeholder {
+    <p>Interactua conmigo</p>
+}

@@ -1,5 +1,5 @@
 //Coordina (orquesta) la lógica del ejercicio -> delega el trabajo a los servicios
-import { Component, computed, effect, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, inject, signal } from '@angular/core';
 
 // Interfaces
 import { ExerciseData } from '../../../../../shared/interfaces/exercise-data.interface';
@@ -30,6 +30,8 @@ import { EXERCISES_1 } from '../data/mocks/exercise-1-examples.mock';
   selector: 'app-exercise-container',
   templateUrl: './exercise-container.component.html',
   // styleUrls: ['./exercise-container.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush 
+
 })
 export class Exercise1ContainerComponent {
 

@@ -1,0 +1,11 @@
+<!-- se hydrate cuando el elemento aparece en viewport -->
+@defer (hydrate on viewport){ 
+  <app-hydrate></app-hydrate>
+}
+<!-- Otro ejemplo: -->
+@defer(on idle; hydrate on hover){
+  <app-hydrate></app-hydrate>
+
+}
+
+<router-outlet />

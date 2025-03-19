@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { InstructionsFooterComponent } from '../../../../../shared/components/exercises/instructions-footer/instructions-footer.component';
 import { ArcDropzoneComponent } from '../../../../../shared/components/exercises/arc-dropzone/arc-dropzone.component';
@@ -25,7 +25,9 @@ export type ValidationState = 'correct' | 'wrong' | 'missed' | null;
     AccentIconComponent
   ],
   templateUrl: './exercise-2-presentation.component.html',
-  styleUrls: ['./exercise-2-presentation.component.scss']
+  styleUrls: ['./exercise-2-presentation.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush 
+
 })
 export class Exercise2PresentationComponent {
 

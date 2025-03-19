@@ -1,101 +1,94 @@
-<!-- Reviews carousel section -->
-<section
-  class="py-6 px-6"
-  role="region"
-  aria-labelledby="user-reviews-heading"
->
-  <!-- Heading for screen readers and sighted users -->
-  <div class="max-w-6xl mx-auto">
-    <h2
-      id="user-reviews-heading"
-      class="text-5xl font-bold text-primary text-center tracking-widest mt-6"
-    >
-      Vuestras Experiéncias Practicando
-    </h2>
-
-    <!-- Carousel container -->
-    <div
-      class="w-full h-[500px] relative overflow-hidden"
-      role="list"
-      aria-label="Lista de reseñas de usuarios"
-    >
-      <!-- Loop through visibleIndexes() to display reviews -->
-      @for (idx of visibleIndexes(); track idx) {
-        @if (idx >= 0 && idx < reviews().length) {
-          <article
-            class="carousel-item absolute top-1/2 left-1/2 md:w-[500px] w-full
-                   transition-all duration-300 ease-in-out
-                   hover:shadow-2xl hover:bg-gray-50 hover:-translate-y-1 cursor-pointer
-                   text-center mx-auto bg-gray-100 rounded-lg p-8 shadow flex flex-col"
-            [ngClass]="getPositionClass(idx)"
-            role="listitem"
-            [attr.aria-labelledby]="'review-author-' + idx"
-            >
-            <!-- Icon representing user -->
-            <i
-              class="fas fa-user-circle text-5xl text-primary mb-4"
-              aria-hidden="true"
-            ></i>
-
-            <!-- Star rating -->
-            <div class="flex justify-center mb-2">
-              @for (star of [1,2,3,4,5]; track star) {
-                <i
-                  class="fas fa-star"
-                  aria-hidden="true"
-                  [ngClass]="{
-                    'text-yellow-400': star <= reviews()[idx].rating,
-                    'text-gray-300': star > reviews()[idx].rating
-                  }"
-                ></i>
-              }
-            </div>
-
-            <!-- Review text -->
-            <p class="text-gray-600 italic mb-4 text-base md:text-lg">
-              {{ reviews()[idx].text }}
-            </p>
-
-            <!-- Review author -->
-            <h3
-              id="review-author-{{ idx }}"
-              class="font-bold text-primary text-base md:text-lg"
-            >
-              {{ reviews()[idx].author }}
-            </h3>
-          </article>
-        }
-      }
-
-      <!-- Navigation buttons -->
-      <div
-        class="flex w-full absolute top-[70%] z-50 mt-8"
-        [ngClass]="{
-          'justify-between':
-            currentIndex() > 0 && currentIndex() < reviews().length - 1,
-          'justify-end': currentIndex() === 0,
-          'justify-start': currentIndex() === reviews().length - 1
-        }"
+@defer (on viewport) {
+  <!-- Reviews carousel section -->
+  <section
+    class="py-6 px-6"
+    role="region"
+    aria-labelledby="user-reviews-heading"
+  >
+    <div class="max-w-6xl mx-auto">
+      <h2
+        id="user-reviews-heading"
+        class="text-5xl font-bold text-primary text-center tracking-widest mt-6"
       >
-        <!-- Previous button -->
-        @if (currentIndex() > 0) {
-          <app-my-button
-            [color]="'circle'"
-            (clicked)="prev()"
-            [label]="'❮'"
-            aria-label="Anterior"
-          ></app-my-button>
+        Vuestras Experiéncias Practicando
+      </h2>
+      <div
+        class="w-full h-[500px] relative overflow-hidden"
+        role="list"
+        aria-label="Lista de reseñas de usuarios"
+      >
+        @for (idx of visibleIndexes(); track idx) {
+          @if (idx >= 0 && idx < reviews().length) {
+            <article
+              class="carousel-item absolute top-1/2 left-1/2 md:w-[500px] w-full
+                     transition-all duration-300 ease-in-out
+                     hover:shadow-2xl hover:bg-gray-50 hover:-translate-y-1 cursor-pointer
+                     text-center mx-auto bg-gray-100 rounded-lg p-8 shadow flex flex-col"
+              [ngClass]="getPositionClass(idx)"
+              role="listitem"
+              [attr.aria-labelledby]="'review-author-' + idx"
+            >
+              <i
+                class="fas fa-user-circle text-5xl text-primary mb-4"
+                aria-hidden="true"
+              ></i>
+              <div class="flex justify-center mb-2">
+                @for (star of [1,2,3,4,5]; track star) {
+                  <i
+                    class="fas fa-star"
+                    aria-hidden="true"
+                    [ngClass]="{
+                      'text-yellow-400': star <= reviews()[idx].rating,
+                      'text-gray-300': star > reviews()[idx].rating
+                    }"
+                  ></i>
+                }
+              </div>
+              <p class="text-gray-600 italic mb-4 text-base md:text-lg">
+                {{ reviews()[idx].text }}
+              </p>
+              <h3
+                id="review-author-{{ idx }}"
+                class="font-bold text-primary text-base md:text-lg"
+              >
+                {{ reviews()[idx].author }}
+              </h3>
+            </article>
+          }
         }
-        <!-- Next button -->
-        @if (currentIndex() < reviews().length - 1) {
-          <app-my-button
-            [color]="'circle'"
-            (clicked)="next()"
-            [label]="'❯'"
-            aria-label="Siguiente"
-          ></app-my-button>
-        }
+        <div
+          class="flex w-full absolute top-[70%] z-50 mt-8"
+          [ngClass]="{
+            'justify-between':
+              currentIndex() > 0 && currentIndex() < reviews().length - 1,
+            'justify-end': currentIndex() === 0,
+            'justify-start': currentIndex() === reviews().length - 1
+          }"
+        >
+          @if (currentIndex() > 0) {
+            <app-my-button
+              [color]="'circle'"
+              (clicked)="prev()"
+              [label]="'❮'"
+              aria-label="Anterior"
+            ></app-my-button>
+          }
+          @if (currentIndex() < reviews().length - 1) {
+            <app-my-button
+              [color]="'circle'"
+              (clicked)="next()"
+              [label]="'❯'"
+              aria-label="Siguiente"
+            ></app-my-button>
+          }
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+} @placeholder {
+  <!-- Placeholder for reviews -->
+  <section class="py-6 px-6 flex justify-center items-center text-2xl h-80 gap-2">
+    <i class="fa-solid fa-spinner fa-spin text-4xl text-tertiary"></i>
+    <p>Cargando reseñas de los usuarios...</p>
+  </section>
+}

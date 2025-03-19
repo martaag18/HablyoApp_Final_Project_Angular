@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { MyButtonComponent } from '../../../shared/ui/my-button/my-button.component';
 import { REVIEWS } from './data/reviews.mock';
@@ -10,6 +10,8 @@ import { Review } from '../../../shared/interfaces/review.interface';
   imports: [NgClass, MyButtonComponent],
   templateUrl: './reviews.component.html',
   styleUrls: ['./reviews.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush 
+
 })
 export class ReviewsComponent {
   

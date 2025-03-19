@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { UnderlineDropzoneComponent } from '../underline-dropzone/underline-dropzone.component';
 import { ValidationState } from '../../../types/validation-state.type';
@@ -6,7 +6,9 @@ import { ValidationState } from '../../../types/validation-state.type';
   imports: [NgClass, UnderlineDropzoneComponent],
   selector: 'app-letter-container',
   templateUrl: './letter-container.component.html',
-  styleUrls: ['./letter-container.component.scss']
+  styleUrls: ['./letter-container.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class LetterContainerComponent {
 

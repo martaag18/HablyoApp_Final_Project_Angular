@@ -1,12 +1,14 @@
 import { NgClass } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { ValidationState } from '../../../types/validation-state.type';
 @Component({
   standalone: true,
   imports: [NgClass],
   selector: 'app-arc-dropzone',
   templateUrl: './arc-dropzone.component.html',
-  styleUrls: ['./arc-dropzone.component.scss']
+  styleUrls: ['./arc-dropzone.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class ArcDropzoneComponent {
   @Input() arcValue: 'none' | 'arc' = 'none';

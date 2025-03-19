@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
@@ -9,6 +9,8 @@ import {
   selector: 'app-text-input',
   imports: [ReactiveFormsModule],
   templateUrl: './text-input.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class TextInputComponent {
 
