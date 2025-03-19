@@ -18,6 +18,7 @@ export const routes: Routes = [
         path: 'home',
         loadComponent: () =>
           import('./pages/home/home.component').then((c) => c.HomeComponent),
+        data: { animation: 'HomePage' },
       },
       {
         path: 'login',
@@ -25,6 +26,7 @@ export const routes: Routes = [
           import('./pages/auth/login/login.component').then(
             (c) => c.LoginComponent
           ),
+        data: { animation: 'LoginPage' },
       },
       {
         path: 'registro-usuario',
@@ -32,12 +34,14 @@ export const routes: Routes = [
           import('./pages/auth/register/register.component').then(
             (c) => c.RegisterComponent
           ),
+        data: { animation: 'RegisterPage' },
       },
 
       // Ejercicios -> children
       {
         path: 'ejercicios',
         canActivate: [AuthGuard],
+        data: { animation: 'EjerciciosPage' }, 
         children: EXERCISES_ROUTES,
       },
     ],
