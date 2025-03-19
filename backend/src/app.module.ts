@@ -9,7 +9,6 @@ import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
-    // Cargar ConfigModule primero para que las variables de entorno estén disponibles
     ConfigModule.forRoot({
       envFilePath: '.env',
       isGlobal: true,

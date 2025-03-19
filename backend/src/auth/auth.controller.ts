@@ -6,12 +6,13 @@ import {
   Get,
   Req,
   HttpStatus,
-  UnauthorizedException,
+  UseGuards,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { JwtService } from '@nestjs/jwt';
 import { LoginDot } from './dto/login.dot/login.dot';
 import { Response, Request } from 'express';
+import { JwtCookieGuard } from 'src/guards/jwt-cookie.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -42,7 +43,7 @@ export class AuthController {
       httpOnly: true,
       secure: true,
       sameSite: 'none',
-      expires: new Date(0), // Expira inmediatamente
+      expires: new Date(0),
       path: '/',
     });
     console.log('Cookie de sesión eliminada en logout');
@@ -50,31 +51,17 @@ export class AuthController {
   }
 
   @Get('check')
+  @UseGuards(JwtCookieGuard)
   check(@Req() req: Request, @Res() res: Response) {
+    // Para propósitos de ejemplo, mostramos la cookie
     console.log('Cookies en /auth/check:', req.cookies);
-    try {
-      const token: string | undefined = req.cookies?.jwt;
-      console.log('Token recibido en /auth/check:', token);
 
-      if (!token) {
-        console.warn('No se recibió ninguna cookie JWT');
-        throw new UnauthorizedException('No hay cookie de sesión');
-      }
-
-      const payload = this.jwtService.verify(token); // Verifica el token
-
-      console.log('Token válido, usuario autenticado:', payload);
-      return res.status(HttpStatus.OK).json({
-        loggedIn: true,
-        userId: payload.sub,
-        email: payload.email,
-      });
-    } catch (err) {
-      console.error('Error al verificar token:', err.message);
-      return res.status(HttpStatus.UNAUTHORIZED).json({
-        message: 'Token inválido o expirado',
-      });
-    }
+    // Llegados aquí, el guard ya validó el token y asignó el payload a req.user
+    return res.status(HttpStatus.OK).json({
+      loggedIn: true,
+      userId: req.user?.sub,
+      email: req.user?.email,
+    });
   }
 }
 
