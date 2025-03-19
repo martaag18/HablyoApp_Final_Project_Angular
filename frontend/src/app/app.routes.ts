@@ -37,6 +37,7 @@ export const routes: Routes = [
       // Ejercicios -> children
       {
         path: 'ejercicios',
+        canActivate: [AuthGuard],
         children: EXERCISES_ROUTES,
       },
     ],

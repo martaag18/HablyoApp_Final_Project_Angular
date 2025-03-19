@@ -41,7 +41,7 @@ export class LoginComponent {
         next: (res) => {
           console.log('Login exitoso:', res),
           this.notificationService.success('¡Inicio de sesión exitoso!');
-          this.router.navigate([""])
+          this.router.navigate(['/ejercicios'])
         },
         error: (err) => {
           console.error('Error al iniciar sesión:', err);
