@@ -94,4 +94,15 @@ export class UsersService {
     const result = await this.userModel.deleteOne({ _id: userId });
     return { deleted: result.deletedCount > 0 };
   }
+
+  async updateUserPassword(
+    userId: string,
+    hashedPassword: string,
+  ): Promise<User | null> {
+    return this.userModel.findByIdAndUpdate(
+      userId,
+      { password: hashedPassword },
+      { new: true }, // para que retorne el user actualizado
+    );
+  }
 }

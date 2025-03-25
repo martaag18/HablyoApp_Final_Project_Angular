@@ -15,4 +15,6 @@ export class ExerciseNavigationComponent {
 
   @Output() next = new EventEmitter<void>();
   @Output() previous = new EventEmitter<void>();
+  @Output() firstExercise = new EventEmitter<void>();
+
 }

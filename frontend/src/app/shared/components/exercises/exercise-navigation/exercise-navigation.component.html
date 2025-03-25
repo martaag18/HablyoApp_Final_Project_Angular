@@ -4,21 +4,23 @@
   role="group"
   [attr.aria-label]="'Navegación del ejercicio'"
 >
+  <!-- Previous button (conditionally displayed) -->
+  @if (showPrevious) {
+  <app-my-button label="Anterior" color="secondary" (clicked)="previous.emit()">
+  </app-my-button>
+
+  }
   <!-- Next button -->
+  <app-my-button label="Siguiente" color="secondary" (clicked)="next.emit()">
+  </app-my-button>
+
+  @if (showPrevious) {
   <app-my-button
-    label="Siguiente"
-    color="secondary"
-    (clicked)="next.emit()"
+    label="Ir al primer ejercicio"
+    color="blue"
+    (clicked)="firstExercise.emit()"
   >
   </app-my-button>
 
-  <!-- Previous button (conditionally displayed) -->
-  @if (showPrevious) {
-    <app-my-button
-      label="Anterior"
-      color="secondary"
-      (clicked)="previous.emit()"
-    >
-    </app-my-button>
   }
 </div>

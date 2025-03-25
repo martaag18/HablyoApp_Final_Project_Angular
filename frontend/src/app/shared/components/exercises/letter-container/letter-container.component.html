@@ -15,14 +15,18 @@
     {{ char }}
   </span>
 
+  <!-- Overlay circular if circle -->
+  @if (hasCircle) {
+  <div class="circle-overlay"></div>
+  }
   <!-- Mark above if accent -->
   @if (hasAccent) {
-    <span class="mark-above">´</span>
+  <span class="mark-above">´</span>
   }
 
   <!-- Mark above if P -->
   @if (hasP) {
-    <span class="mark-above">P</span>
+  <span class="mark-above">P</span>
   }
 
   <!-- Underline dropzone -->

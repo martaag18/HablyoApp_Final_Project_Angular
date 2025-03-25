@@ -37,7 +37,7 @@
     <app-my-button
       [label]="sectionData.buttonLabel"
       color="primary"
-      [routerLink]="sectionData.buttonRoute"
+      [routerLink]="getLinkRoute()"
       [attr.aria-label]="'Ir a ' + sectionData.buttonLabel"
     >
     </app-my-button>

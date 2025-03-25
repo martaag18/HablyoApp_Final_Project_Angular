@@ -14,18 +14,23 @@ export class SolutionGeneratorService {
    * @param vdobleIndices - The indices where underline marks should appear.
    * @param accentIndices - Optional indices where accents ('´') should appear.
    * @param pIndices - Optional indices where 'P' should appear.
+   * @param circleIndices - Optional indices where 'circle' should appear.
    * @returns An object with arrays for arcMark, accentMark, pMark, and underlineMark.
    */
   generateSolution(
     wordList: WordItem[],
     vdobleIndices: number[],
     accentIndices?: number[],
-    pIndices?: number[]
+    pIndices?: number[],
+    circleIndices?: number[]
+
   ): {
     arcMark: Array<'none' | 'arc'>;
     accentMark: Array<'none' | '´'>;
     pMark: Array<'none' | 'P'>;
     underlineMark: Array<'none' | 'underline'>;
+    circleMark: Array<'none' | 'circle'>;
+
   } {
     const totalLetters = wordList.reduce((acc, w) => acc + w.letters.length, 0);
 
@@ -33,8 +38,10 @@ export class SolutionGeneratorService {
     const accentMark = this.generateAccentMark(totalLetters, accentIndices);
     const pMark = this.generatePMark(totalLetters, pIndices);
     const underlineMark = this.generateUnderlineMark(totalLetters, vdobleIndices);
+    const circleMark = this.generateCircleMark(totalLetters, circleIndices);
 
-    return { arcMark, accentMark, pMark, underlineMark };
+
+    return { arcMark, accentMark, pMark, underlineMark, circleMark };
   }
 
   /**
@@ -98,4 +105,22 @@ export class SolutionGeneratorService {
     }
     return underlineMark;
   }
+
+  /**
+   * Generates the circleMark array based on the expected circleIndices.
+   */
+    private generateCircleMark(
+      totalLetters: number,
+      circleIndices?: number[]
+    ): Array<'none' | 'circle'> {
+      const circleMark = Array<'none' | 'circle'>(totalLetters).fill('none');
+      if (circleIndices) {
+        for (const idx of circleIndices) {
+          if (idx >= 0 && idx < totalLetters) {
+            circleMark[idx] = 'circle';
+          }
+        }
+      }
+      return circleMark;
+    }
 }

@@ -45,8 +45,8 @@ export class LoginComponent {
         },
         error: (err) => {
           console.error('Error al iniciar sesión:', err);
-          this.loginError = err.error?.message || 'Error al iniciar sesión';
-          this.notificationService.error("Error al iniciar sesión", err);
+          this.loginError = 'Error al iniciar sesión, email o contraseña incorrecto';
+          this.notificationService.error("Error al iniciar sesión");
         },
       });
     } 

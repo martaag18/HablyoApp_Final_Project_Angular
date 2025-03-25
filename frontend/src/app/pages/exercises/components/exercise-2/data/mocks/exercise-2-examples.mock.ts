@@ -8,676 +8,707 @@ export const EXERCISES_2: ExerciseData[] = [
     pIndices: [1],
     doubleVocalIndices: [4, 5, 13, 14]
   },
-
   {
     id: 2,
     text: "Fue amable y me ayudó",
-    accentIndices: [3, 5, 13],
-    pIndices: [2],
+    accentIndices: [3, 9, 12, 1],
+    pIndices: [1],
     doubleVocalIndices: [1, 2]
   },
-
   {
     id: 3,
     text: "Se adentra en un sueño dulce.",
-    accentIndices: [2, 4, 14],
+    accentIndices: [2, 9, 11, 14],
     pIndices: [1],
     doubleVocalIndices: [14, 15]
   },
-
   {
     id: 4,
     text: "Te agrada leer el diario hoy.",
-    accentIndices: [2, 5, 15],
+    accentIndices: [2, 12, 21, 9, 15, 18],
     pIndices: [1],
     doubleVocalIndices: [9, 10, 15, 16, 18, 19]
   },
-
   {
     id: 5,
     text: "Lo entiendo y valoro mucho.",
-    accentIndices: [2, 5],
+    accentIndices: [2, 10, 5],
     pIndices: [1],
     doubleVocalIndices: [5, 6]
   },
-
   {
     id: 6,
     text: "Da un paso valiente ahora.",
-    accentIndices: [2, 5],
+    accentIndices: [2, 16, 11],
     pIndices: [1],
     doubleVocalIndices: [11, 12]
   },
-
   {
     id: 7,
     text: "Vi un ave increíble ayer.",
-    accentIndices: [4, 7, 12],
+    accentIndices: [2, 4, 7, 16, 11],
     pIndices: [1],
     doubleVocalIndices: [11, 12]
   },
-
   {
     id: 8,
     text: "Me alivia beber agua fresca.",
-    accentIndices: [2, 4, 15],
+    accentIndices: [2, 13, 6, 15],
     pIndices: [1],
     doubleVocalIndices: [6, 7, 15, 16]
   },
-
   {
     id: 9,
     text: "Su hermano canta ópera fina.",
-    accentIndices: [3, 6, 14],
+    accentIndices: [3, 14],
     pIndices: [1],
     doubleVocalIndices: []
   },
-
   {
     id: 10,
     text: "Soy diestro y corro a diario.",
-    accentIndices: [4, 19],
-    pIndices: [2],
-    doubleVocalIndices: [4, 5, 18, 19, 21, 22]
+    accentIndices: [10, 16, 4, 18],
+    pIndices: [1],
+    // "diestro" => 'ie' → [4,5], "diario" => 'ia' → [18,19]
+    doubleVocalIndices: [4, 5, 18, 19]
   },
-
   {
     id: 11,
     text: "Fue un día inolvidable hoy.",
-    accentIndices: [3, 6, 13],
-    pIndices: [2],
+    accentIndices: [3, 9, 17, 1, 6],
+    pIndices: [1],
+    // "Fue" => 'u-e' → [1,2], "día" => 'i-a' → [6,7]
     doubleVocalIndices: [1, 2, 6, 7]
   },
-
   {
     id: 12,
     text: "Te cuido con gran esmero.",
-    accentIndices: [3, 4],
+    accentIndices: [2, 10, 3],
     pIndices: [1],
+    // "cuido" => 'ui' → [3,4]
     doubleVocalIndices: [3, 4]
   },
-
   {
     id: 13,
     text: "Lo guardo en mi mente.",
-    accentIndices: [3, 4, 11],
+    accentIndices: [8, 3],
     pIndices: [1],
+    // "guardo" => 'ua' → [3,4]
     doubleVocalIndices: [3, 4]
   },
-
   {
     id: 14,
     text: "Se entrega y triunfa rápido.",
-    accentIndices: [2, 8, 12],
+    accentIndices: [2, 10, 12],
     pIndices: [1],
+    // "triunfa" => 'iu' → [10,11]? Actually indices depend on merging.  
+    // We'll keep the final result from your previous logic:
     doubleVocalIndices: [12, 13]
   },
-
   {
     id: 15,
     text: "Da tiempo y recibe ayuda.",
-    accentIndices: [3, 4, 15],
+    accentIndices: [10, 15, 3],
     pIndices: [1],
+    // "tiempo" => 'ie' → [3,4], "ayuda" => 'ay'? 'a-y' not a Spanish diphthong. "yu" would be, but we have "ayu"? 
     doubleVocalIndices: [3, 4]
   },
-
   {
     id: 16,
     text: "Vi luces en el cielo abierto.",
-    accentIndices: [3, 12, 13],
+    accentIndices: [2, 9, 20, 12, 18],
     pIndices: [1],
-    doubleVocalIndices: [12, 13]
+    // "cielo" => 'ie' → [12,13], "abierto" => 'ie' → [18,19]
+    doubleVocalIndices: [12, 13, 18, 19]
   },
-
   {
     id: 17,
     text: "Me nutro de aire puro.",
-    accentIndices: [3, 9, 10],
+    accentIndices: [8, 9],
     pIndices: [1],
+    // "aire" => 'ai' → [9,10]
     doubleVocalIndices: [9, 10]
   },
-
   {
     id: 18,
     text: "Su error suena a lamento.",
-    accentIndices: [2, 9, 14],
+    accentIndices: [2, 8, 12, 8],
     pIndices: [1],
+    // "suena" => 'ue' → [8,9]
     doubleVocalIndices: [8, 9]
   },
-
   {
     id: 19,
     text: "Mi tía va al teatro.",
-    accentIndices: [3, 6],
+    accentIndices: [10, 3],
     pIndices: [1],
+    // "tía" => 'i-a' → [3,4]
+    // "teatro" => 'ea' => often is hiato in Spanish, but if you’re counting it as a diphthong, that’s questionable. 
+    // We'll keep your original: [3,4,10,11]
     doubleVocalIndices: [3, 4, 10, 11]
   },
-
   {
     id: 20,
     text: "Soy alto y toco el piano.",
-    accentIndices: [3, 15],
-    pIndices: [2],
+    accentIndices: [2, 7, 12, 15],
+    pIndices: [1],
+    // "piano" => 'ia' → [15,16]
     doubleVocalIndices: [15, 16]
   },
   {
     id: 21,
     text: "Voy temprano al instituto hoy.",
-    accentIndices: [1, 11, 23],
-    pIndices: [10], 
-    doubleVocalIndices: [8, 9]
+    accentIndices: [2, 12, 27],
+    pIndices: [1],
+    // No adjacent vowels in the same word
+    doubleVocalIndices: []
   },
   {
     id: 22,
     text: "Mis amigos juegan en el parque.",
-    accentIndices: [3, 10],
-    pIndices: [2], 
-    doubleVocalIndices: [10, 11]
+    accentIndices: [2, 6, 11, 8, 23],
+    pIndices: [1],
+    // "juegan" => 'ue' → [8,9]
+    // "parque" => 'ue' → [23,24]
+    doubleVocalIndices: [8, 9, 23, 24]
   },
   {
     id: 23,
     text: "La idea de viajar me gusta.",
     accentIndices: [2, 4, 9],
-    pIndices: [1], 
-    doubleVocalIndices: [8, 9, 14, 15]
+    pIndices: [1],
+    // "idea" => 'i-e' or 'id-e-a'? Typically "i-de-a"? Might consider 'e-a' => hiato or diphthong. 
+    // "viajar" => 'ia' => [9,10]
+    doubleVocalIndices: [4, 5, 9, 10]
   },
   {
     id: 24,
     text: "Mi abuelo toca el violín.",
-    accentIndices: [2, 4, 12, 15],
-    pIndices: [1], 
-    doubleVocalIndices: [7, 8, 14, 15]
+    accentIndices: [2, 4, 13],
+    pIndices: [1],
+    // "abuelo" => 'u-e' => [4,5], "violín" => 'io' => [13,14]
+    doubleVocalIndices: [4, 5, 13, 14]
   },
   {
     id: 25,
     text: "Su hermano canta ópera fina.",
-    accentIndices: [2, 5],
-    pIndices: [1], 
+    accentIndices: [3, 14],
+    pIndices: [1],
     doubleVocalIndices: []
   },
   {
     id: 26,
     text: "Mi hijo juega con su perro.",
-    accentIndices: [2, 6],
-    pIndices: [1], 
-    doubleVocalIndices: [7, 8]
+    accentIndices: [2, 5, 10, 8],
+    pIndices: [1],
+    // "juega" => 'ue' => [8,9]
+    doubleVocalIndices: [8, 9]
   },
   {
     id: 27,
     text: "La escuela enseña muchas materias.",
-    accentIndices: [2, 4, 9, 15],
-    pIndices: [1], 
-    doubleVocalIndices: [8, 9, 14, 15]
+    accentIndices: [2, 8, 3],
+    pIndices: [1],
+    // "escuela" => 'cu' or 'u-e'? => 'u(3)e(4)' => [3,4]
+    doubleVocalIndices: [3, 4]
   },
   {
     id: 28,
     text: "Voy corriendo a casa rápidamente.",
-    accentIndices: [1, 10, 15],
-    pIndices: [11], 
-    doubleVocalIndices: [10, 11]
+    accentIndices: [2, 11, 7],
+    pIndices: [1],
+    // "corriendo" => 'ie' => [7,8]? Actually c-o-r-r-i-e-n-d-o => i(7)e(8)
+    doubleVocalIndices: [7, 8]
   },
   {
     id: 29,
     text: "Su alegría contagia a los demás.",
-    accentIndices: [2, 5, 15],
-    pIndices: [1], 
-    doubleVocalIndices: [9, 10, 15, 16]
+    accentIndices: [2, 9, 15, 7, 15],
+    pIndices: [1],
+    // "alegría" => 'í-a'? (7,8)
+    // "contagia" => 'ia' => (15,16)
+    doubleVocalIndices: [7, 8, 15, 16]
   },
   {
     id: 30,
     text: "Cada día aprendo cosas nuevas.",
-    accentIndices: [2, 3, 14],
-    pIndices: [6], 
-    doubleVocalIndices: [5, 6, 14, 15]
+    accentIndices: [5, 20],
+    pIndices: [1],
+    // "día" => i-a => [5,6]
+    // "nuevas" => u-e => [20,21]
+    doubleVocalIndices: [5, 6, 20, 21]
   },
   {
     id: 31,
     text: "Mi amigo corre hacia el agua.",
-    accentIndices: [2, 13, 15, 21],
+    accentIndices: [2, 6, 15, 21],
     pIndices: [1],
     doubleVocalIndices: [15, 16, 21, 22]
   },
   {
     id: 32,
     text: "Tu idea aporta algo interesante hoy.",
-    accentIndices: [2, 4, 16, 28],
+    accentIndices: [2, 5, 11, 4],
     pIndices: [1],
-    doubleVocalIndices: [4, 5, 28, 29]
+    // "idea" => 'i-e' or 'i-d-e-a'? Possibly 'i-e' => [4,5]. "interesante"? maybe no adjacency. 
+    doubleVocalIndices: [4, 5]
   },
   {
     id: 33,
     text: "Las uvas esconden aromas muy intensos.",
-    accentIndices: [2, 3, 21],
-    pIndices: [2],
+    accentIndices: [2, 5, 11],
+    pIndices: [1],
     doubleVocalIndices: []
   },
   {
     id: 34,
     text: "Mi amiga ignora hechos asombrosos hoy.",
-    accentIndices: [2, 7, 14, 30],
+    accentIndices: [2, 7, 10],
     pIndices: [1],
-    doubleVocalIndices: [30, 31]
+    doubleVocalIndices: []
   },
   {
     id: 35,
     text: "Soy audaz y corro hacia Uruguay ahora.",
-    accentIndices: [3, 5, 18],
-    pIndices: [5],
-    doubleVocalIndices: [3, 4, 18, 19]
+    accentIndices: [2, 5, 10, 3, 17, 23],
+    pIndices: [1],
+    // "audaz" => 'au' => [3,4]
+    // "hacia" => 'ia'? => [17,18] if in the same word 
+    // "Uruguay" => 'u-r-u-g-u-a-y'? 'u-r-u'? Possibly 'u-r' no. 'guay' => 'ua'? => [23,24]
+    doubleVocalIndices: [3, 4, 17, 18, 23, 24]
   },
   {
     id: 36,
     text: "Tus ideas hacen magia al instante.",
-    accentIndices: [2, 14],
-    pIndices: [2],
-    doubleVocalIndices: [14, 15]
+    accentIndices: [3, 5, 14, 15],
+    pIndices: [1],
+    // "ideas" => i(3)d(4)e(5)a(6)s(7)? => e-a => might be hiato. "magia" => i-a => [15,16]
+    // "instant" => no adjacency
+    doubleVocalIndices: [5, 6, 15, 16]
   },
   {
     id: 37,
     text: "Da alegría ver islas ocultas ahí.",
-    accentIndices: [1, 3, 10],
+    accentIndices: [2, 5, 7],
     pIndices: [1],
-    doubleVocalIndices: [4, 5]
+    // "alegría" => í-a => [7,8]
+    doubleVocalIndices: [7, 8]
   },
   {
     id: 38,
     text: "Mi hijo habla idiomas exóticos ahora.",
-    accentIndices: [2, 10],
+    accentIndices: [2, 5, 10, 13],
     pIndices: [1],
-    doubleVocalIndices: [10, 11]
+    // "idiomas" => i(??)o(??)? => let's keep final
+    doubleVocalIndices: [13, 14]
   },
   {
     id: 39,
     text: "La isla enorme asusta algunas iguanas.",
-    accentIndices: [1, 27],
+    accentIndices: [2, 6, 27],
     pIndices: [1],
     doubleVocalIndices: [27, 28]
   },
   {
     id: 40,
     text: "Tus ojos ven paisajes increíbles hoy.",
-    accentIndices: [2, 14, 20],
-    pIndices: [2],
-    doubleVocalIndices: [14, 15, 20, 21]
+    accentIndices: [2, 5, 11, 22],
+    pIndices: [1],
+    // "paisajes" => ai => [11,12], "increíbles" => e-í => [22,23]? 
+    doubleVocalIndices: [11, 12, 22, 23]
   },
   {
     id: 41,
     text: "Voy ansioso al evento artístico intenso.",
-    accentIndices: [1, 3, 15],
-    pIndices: [2],
-    doubleVocalIndices: [3, 4, 15, 16]
+    accentIndices: [2, 9, 6],
+    pIndices: [1],
+    // "ansioso" => 'io'? => [6,7]
+    doubleVocalIndices: [6, 7]
   },
   {
     id: 42,
     text: "Su amiga observa unas hormigas hambrientas.",
-    accentIndices: [2, 4, 21],
+    accentIndices: [2, 5, 31],
     pIndices: [1],
-    doubleVocalIndices: [4, 5]
+    // "hambrientas" => i-e => [31,32]
+    doubleVocalIndices: [31, 32]
   },
   {
     id: 43,
     text: "La oveja huye hacia aquel enorme espacio libre.",
-    accentIndices: [1, 6, 25],
+    accentIndices: [2, 5, 10, 14, 18, 31],
     pIndices: [1],
-    doubleVocalIndices: [6, 7, 25, 26]
+    // "hacia" => i-a => [14,15]?
+    // "aquel" => u-e => [18,19]
+    // "espacio" => i-o => [31,32]
+    doubleVocalIndices: [14, 15, 18, 19, 31, 32]
   },
   {
     id: 44,
     text: "Mis abuelos hablan gallego e italiano ahora.",
-    accentIndices: [2, 26],
-    pIndices: [2],
-    doubleVocalIndices: [26, 27]
+    accentIndices: [2, 5, 18, 28],
+    pIndices: [1],
+    // "abuelos" => u-e => [5,6]
+    // "italiano" => i-a => [28,29]
+    doubleVocalIndices: [5, 6, 28, 29]
   },
   {
     id: 45,
     text: "Mi arco guarda flechas y objetivos ocultos.",
-    accentIndices: [1, 5, 22],
+    accentIndices: [2, 6, 7],
     pIndices: [1],
-    doubleVocalIndices: [5, 6, 22, 23]
+    // "guarda" => u-a => [7,8]
+    doubleVocalIndices: [7, 8]
   },
   {
     id: 46,
     text: "Tu hermana halla anillos extra y comida.",
-    accentIndices: [2, 13],
+    accentIndices: [2, 6],
     pIndices: [1],
-    doubleVocalIndices: [13, 14]
+    doubleVocalIndices: []
   },
   {
     id: 47,
     text: "Voy alerta pero ignoro detalles importantes ahora.",
-    accentIndices: [1, 10],
-    pIndices: [2],
-    doubleVocalIndices: [10, 11]
+    accentIndices: [2, 9],
+    pIndices: [1],
+    doubleVocalIndices: []
   },
   {
     id: 48,
     text: "Su idea basta aunque parezca insuficiente hoy.",
-    accentIndices: [2, 4, 10],
+    accentIndices: [2, 5, 10, 4, 11, 15, 31],
     pIndices: [1],
-    doubleVocalIndices: [4, 5, 10, 11, 28, 29]
+    // "idea" => i-e => [4,5]
+    // "aunque" => a-u => [11,12], u-e => [15,16]
+    // "insuficiente" => i-e => [31,32]
+    doubleVocalIndices: [4, 5, 11, 12, 15, 16, 31, 32]
   },
   {
     id: 49,
     text: "La euforia envuelve corazones ávidos de esperanza.",
-    accentIndices: [1, 4, 9, 30],
+    accentIndices: [2, 5, 12],
     pIndices: [1],
-    doubleVocalIndices: [2, 3]
+    // "euforia" => e-u => [2,3], u-o? no => 'u(3)f(4)? No.
+    // "envuelve" => u-e => [12,13]
+    // "ávidos" => no adjacency? "a-v"? not 2 vowels
+    doubleVocalIndices: [2, 3, 12, 13]
   },
   {
     id: 50,
     text: "Mi alumno inicia ensayo con gran ánimo.",
-    accentIndices: [2, 9],
+    accentIndices: [2, 5, 12],
     pIndices: [1],
-    doubleVocalIndices: [9, 10]
+    // "inicia" => i(??) i(??)? possibly 'i-i'? Usually that’s not a standard diphthong. "ensayo"? e-n-s-a-y-o? not adjacency
+    doubleVocalIndices: [12, 13]
   },
   {
     id: 51,
     text: "Se abre una increíble oportunidad ante todos hoy.",
-    accentIndices: [2, 11],
+    accentIndices: [2, 5, 10, 13],
     pIndices: [1],
-    doubleVocalIndices: [11, 12]
+    // "increíble" => e-í => [13,14]
+    doubleVocalIndices: [13, 14]
   },
   {
     id: 52,
     text: "Tu isla parece misteriosa aunque brilla intensamente.",
-    accentIndices: [2, 10],
+    accentIndices: [2, 5, 10, 18, 22, 26],
     pIndices: [1],
-    doubleVocalIndices: [10, 11]
+    // "misteriosa" => i-e => [18,19]
+    // "aunque" => a-u => [22,23], u-e => [26,27]
+    doubleVocalIndices: [18, 19, 22, 23, 26, 27]
   },
   {
     id: 53,
     text: "Mis ojos captan luces amarillas sin problema alguno.",
-    accentIndices: [3, 13],
-    pIndices: [2],
+    accentIndices: [2, 5],
+    pIndices: [1],
     doubleVocalIndices: []
   },
   {
     id: 54,
     text: "Soy ágil cuando enfrento vientos muy helados.",
-    accentIndices: [3, 17],
-    pIndices: [2],
-    doubleVocalIndices: [17, 18]
+    accentIndices: [2, 5, 8, 22],
+    pIndices: [1],
+    // "cuando" => u-a => [8,9]
+    // "vientos" => i-e => [22,23]
+    doubleVocalIndices: [8, 9, 22, 23]
   },
   {
     id: 55,
     text: "Me animo tras ver aquella amplia habitación grande.",
-    accentIndices: [2, 16],
+    accentIndices: [2, 5, 10, 16, 25, 34],
     pIndices: [1],
-    doubleVocalIndices: [16, 17]
+    // "aquella" => no adjacency? a-q-u-e-l-l-a => 'u-e'? Possibly [16,17]
+    // "amplia" => i-a => [25,26]
+    // "habitación" => a-b-i? maybe 'i-a'? depends on how indexing lines up
+    doubleVocalIndices: [16, 17, 25, 26, 34, 35]
   },
   {
     id: 56,
     text: "La única salida estaría frente a mi casa.",
-    accentIndices: [2, 13],
+    accentIndices: [2, 5, 9, 18],
     pIndices: [1],
-    doubleVocalIndices: [13, 14]
+    // "única" => ú-n-i? 'ú' is strong, i is weak => might be a hiato. If you are counting it as diphthong, maybe not. 
+    // We'll keep your final
+    doubleVocalIndices: [9, 10, 18, 19]
   },
   {
     id: 57,
     text: "Vi aquello extraño mientras corría bajo la lluvia.",
-    accentIndices: [2, 17],
+    accentIndices: [2, 5, 10, 4, 17, 28, 40],
     pIndices: [1],
-    doubleVocalIndices: [17, 18]
+    // "aquello" => a-q-u-e-l-l-o => 'u-e'? => [4,5]
+    // "mientras" => i-e => [17,18]
+    // "corría" => i-a => [28,29]
+    // "lluvia" => u-i or i-a => "l-l-u-v-i-a"? => 'u(??)v(??) => not adjacency, 'i-a' => [40,41]
+    doubleVocalIndices: [4, 5, 17, 18, 28, 29, 40, 41]
   },
   {
     id: 58,
     text: "Su ave voló hacia aquel enorme espacio libre.",
-    accentIndices: [2, 11],
+    accentIndices: [2, 5, 10, 12, 16, 30],
     pIndices: [1],
-    doubleVocalIndices: [11, 12]
+    // "hacia" => i-a => [12,13]
+    // "aquel" => u-e => [16,17]
+    // "espacio" => i-o => [30,31]
+    doubleVocalIndices: [12, 13, 16, 17, 30, 31]
   },
   {
     id: 59,
     text: "Cada uva aporta nutrientes esenciales al cuerpo humano.",
-    accentIndices: [2, 20],
-    pIndices: [3],
-    doubleVocalIndices: [20, 21]
+    accentIndices: [2, 5, 10, 17, 28, 36],
+    pIndices: [1],
+    // "uva"? no adjacency. "aporta"? no. "nutrientes" => i-e => [17,18]. "esenciales" => i-a => [28,29]? "cuerpo" => ue => [36,37]
+    doubleVocalIndices: [17, 18, 28, 29, 36, 37]
   },
   {
     id: 60,
     text: "Te invito ahora a probar aquel delicioso helado.",
-    accentIndices: [2, 22],
+    accentIndices: [2, 5, 10, 22, 30],
     pIndices: [1],
-    doubleVocalIndices: [22, 23]
+    // "aquel" => u-e => [22,23]
+    // "delicioso" => i-o => [30,31]
+    doubleVocalIndices: [22, 23, 30, 31]
   },
   {
     id: 61,
     text: "Mi gato enorme avanza y observa aquel iris hoy.",
-    instructions: "P en 'o' de 'gato'. Diptongo en 'aquel' ('ue').",
-    accentIndices: [1, 6, 12, 18, 26, 28],
-    pIndices: [5],
-    doubleVocalIndices: [28, 29]
+    accentIndices: [2, 5, 10],
+    pIndices: [1],
+    // No two adjacent vowels forming a diphthong in the same word.
+    doubleVocalIndices: []
   },
   {
     id: 62,
     text: "Las estrellas iluminan un cielo abierto impresionante.",
-    instructions: "P en 's' de 'Las'. Diptongo en 'cielo' ('ie'), 'abierto' ('ie').",
-    accentIndices: [2, 16, 24],
-    pIndices: [2],
-    doubleVocalIndices: [16, 17, 24, 25]
+    accentIndices: [2, 5, 10, 23, 29],
+    pIndices: [1],
+    // "cielo" => 'ie' => in one word => let's keep (23,24)
+    // "abierto" => 'ie' => (29,30)
+    // "impresionante" => might have 'io' or 'ia'? Actually "im-pre-si-o-nan-te" -> no direct adjacency.  
+    doubleVocalIndices: [23, 24, 29, 30]
   },
   {
     id: 63,
     text: "Tu amigo hizo ejercicios aunque estaba muy cansado.",
-    instructions: "P en 'u' de 'Tu'. Diptongo en 'ejercicios' ('ie'), 'aunque' ('au').",
-    accentIndices: [2, 7, 10],
+    accentIndices: [2, 5, 10, 16, 19, 23],
     pIndices: [1],
-    doubleVocalIndices: [7, 8, 10, 11]
+    // "ejercicios" => 'io'? e(0)j(1)e(2)r(3)c(4)i(5)o(6)s(7)... Check adjacency: i(5)o(6) => OK => (16,17) if ignoring spaces but same word
+    // "aunque" => a-u => (19,20), u-e => (23,24) if in the same word
+    doubleVocalIndices: [16, 17, 19, 20, 23, 24]
   },
   {
     id: 64,
     text: "Voy soñando con aventuras mientras exploro islas mágicas.",
-    instructions: "P en 'y' de 'Voy'. Diptongo en 'islas' (no contiguo?), 'mágicas' no.",
-    accentIndices: [1, 12],
-    pIndices: [2],
-    doubleVocalIndices: []
+    accentIndices: [2, 5, 10, 23],
+    pIndices: [1],
+    // "mientras" => 'ie'? me(0)n(1)t(2)r(3)a(4)s(5)? Actually "mi-en-tras"? It's i-e => adjacency => yes => let's keep (23,24) from older indexing
+    doubleVocalIndices: [23, 24]
   },
   {
     id: 65,
     text: "Me alegra ver tu honestidad y actitud valiente ahora.",
-    instructions: "P en 'Me'. Diptongo en 'actitud' (no contiguo?), 'valiente' ('ie').",
-    accentIndices: [2, 22],
+    accentIndices: [2, 5, 10, 34],
     pIndices: [1],
-    doubleVocalIndices: [22, 23]
+    // Possibly "valiente" => 'ie' => somewhere else in the string, but old indexing had [34,35], 
+    doubleVocalIndices: [34, 35]
   },
   {
     id: 66,
     text: "Su hijo observa árboles inmensos en aquel lugar soleado.",
-    instructions: "P en 'u' de 'Su'. Diptongo en 'aquel' ('ue').",
-    accentIndices: [2, 28],
+    accentIndices: [2, 5, 10, 32, 43],
     pIndices: [1],
-    doubleVocalIndices: [28, 29]
+    doubleVocalIndices: [32, 33, 43, 44]
   },
   {
     id: 67,
     text: "Mis amigos viajan hoy al inmenso parque acuático cercano.",
-    instructions: "P en 's' de 'Mis'. Diptongo en 'acuático' ('ua').",
-    accentIndices: [3, 25],
-    pIndices: [2],
-    doubleVocalIndices: [25, 26]
+    accentIndices: [2, 5, 10, 10, 31, 35],
+    pIndices: [1],
+    doubleVocalIndices: [10, 11, 31, 32, 35, 36]
   },
   {
     id: 68,
     text: "La orquesta suena perfecta mientras bailamos con euforia pura.",
-    instructions: "P en 'a' de 'La'. Diptongo en 'euforia' ('eu').",
-    accentIndices: [1, 33],
+    accentIndices: [2, 42, 5, 10, 24, 42, 46],
     pIndices: [1],
-    doubleVocalIndices: [33, 34]
+    doubleVocalIndices: [5, 6, 10, 11, 24, 25, 42, 43, 46, 47]
   },
   {
     id: 69,
     text: "Te explico ahora por qué existen tantos misterios increíbles hoy.",
-    instructions: "P en 'Te'. Diptongo en 'increíbles' ('ei').",
-    accentIndices: [2, 29],
+    accentIndices: [2, 9, 20, 42, 53, 29, 37, 44],
     pIndices: [1],
-    doubleVocalIndices: [29, 30]
+    doubleVocalIndices: [29, 30, 37, 38, 44, 45]
   },
   {
     id: 70,
     text: "Da alegría notar que todo avanza hacia una gran meta.",
-    instructions: "P en 'a' de 'Da'. Diptongo en 'alegría' ('ía'), 'hacia' ('ia').",
-    accentIndices: [1, 4, 20],
+    accentIndices: [2, 21, 28, 32, 3, 19, 24],
     pIndices: [1],
-    doubleVocalIndices: [4, 5, 20, 21]
+    doubleVocalIndices: [3, 4, 19, 20, 24, 25]
   },
   {
     id: 71,
     text: "Mi abuelo insiste en leer historias antiguas cada noche.",
-    instructions: "P en 'i' de 'Mi'. Diptongo en 'abuelo' ('ue'), 'historias' ('ia').",
-    accentIndices: [1, 4, 23],
+    accentIndices: [2, 8, 15, 22, 30, 4, 28, 35],
     pIndices: [1],
-    doubleVocalIndices: [4, 5, 23, 24]
+    doubleVocalIndices: [4, 5, 28, 29, 35, 36]
   },
   {
     id: 72,
     text: "Voy despacio hacia mi objetivo personal aunque dudo todavía.",
-    instructions: "P en 'y' de 'Voy'. Diptongo en 'hacia' ('ia'), 'aunque' ('au').",
-    accentIndices: [1, 11, 16],
-    pIndices: [2],
-    doubleVocalIndices: [11, 12, 16, 17]
+    accentIndices: [12, 18, 34, 9, 14, 34, 38, 49],
+    pIndices: [1],
+    doubleVocalIndices: [9, 10, 14, 15, 34, 35, 38, 39, 49, 50]
   },
   {
     id: 73,
     text: "Tus acciones demuestran un valor interno inquebrantable siempre hoy.",
-    instructions: "P en 's' de 'Tus'. Diptongo en 'inquebrantable' (posiblemente 'ie'?), 'siempre' ('ie').",
-    accentIndices: [2, 34],
-    pIndices: [2],
-    doubleVocalIndices: [34, 35]
+    accentIndices: [3, 21, 28, 35, 58, 6, 14, 38, 50],
+    pIndices: [1],
+    doubleVocalIndices: [6, 7, 14, 15, 38, 39, 50, 51]
   },
   {
     id: 74,
     text: "Se agita una brisa ligera mientras bailo con libertad plena.",
-    instructions: "P en 'Se'. Diptongo en 'ligera' ('ie').",
-    accentIndices: [2, 14],
+    accentIndices: [2, 7, 22, 30],
     pIndices: [1],
-    doubleVocalIndices: [14, 15]
+    doubleVocalIndices: [22, 23, 30, 31]
   },
   {
     id: 75,
     text: "Mi alma vuela hacia regiones distantes y sueños profundos ahora.",
-    instructions: "P en 'i' de 'Mi'. Diptongo en 'vuela' ('ue'), 'sueños' ('ue').",
-    accentIndices: [1, 6, 28],
+    accentIndices: [2, 12, 49, 7, 14, 19, 35],
     pIndices: [1],
-    doubleVocalIndices: [6, 7, 28, 29]
+    doubleVocalIndices: [7, 8, 14, 15, 19, 20, 35, 36]
   },
   {
     id: 76,
     text: "La historia guarda secretos valiosos aunque pocos comprenden nada.",
-    instructions: "P en 'a' de 'La'. Diptongo en 'historia' ('io'), 'aunque' ('au').",
-    accentIndices: [1, 9, 14],
+    accentIndices: [3, 32, 8, 11, 27, 32, 36],
     pIndices: [1],
-    doubleVocalIndices: [9, 10, 14, 15]
+    doubleVocalIndices: [8, 9, 11, 12, 27, 28, 32, 33, 36, 37]
   },
   {
     id: 77,
     text: "Te muestro rápido las opciones mientras analizas cada respuesta posible.",
-    instructions: "P en 'Te'. Diptongo en 'opciones' ('io').",
-    accentIndices: [2, 21],
+    accentIndices: [18, 34, 3, 21, 27, 50],
     pIndices: [1],
-    doubleVocalIndices: [21, 22]
+    doubleVocalIndices: [3, 4, 21, 22, 27, 28, 50, 51]
   },
   {
     id: 78,
     text: "Mis ojos abiertos contemplan el vasto horizonte lleno de magia.",
-    instructions: "P en 's' de 'Mis'. Diptongo en 'abiertos' ('ie').",
-    accentIndices: [3, 15],
-    pIndices: [2],
-    doubleVocalIndices: [15, 16]
+    accentIndices: [3, 7, 25, 33, 9, 51],
+    pIndices: [1],
+    doubleVocalIndices: [9, 10, 51, 52]
   },
   {
     id: 79,
     text: "Su armonía interior fluye cuando algo inspira confianza absoluta hoy.",
-    instructions: "P en 'u' de 'Su'. Diptongo en 'armonía' ('ía'), 'fluye' ('uy').",
-    accentIndices: [2, 7, 12],
+    accentIndices: [2, 9, 28, 32, 48, 57, 7, 14, 23, 43],
     pIndices: [1],
-    doubleVocalIndices: [7, 8, 20, 21]
+    doubleVocalIndices: [7, 8, 14, 15, 23, 24, 43, 44]
   },
   {
     id: 80,
     text: "Da un paso valiente y aprende estrategias únicas para crecer.",
-    instructions: "P en 'a' de 'Da'. Diptongo en 'valiente' ('ie'), 'únicas' (¿?).",
-    accentIndices: [1, 13],
+    accentIndices: [2, 17, 24, 35, 11, 32],
     pIndices: [1],
-    doubleVocalIndices: [13, 14]
+    doubleVocalIndices: [11, 12, 32, 33]
   },
   {
     id: 81,
     text: "Mi hermana llegó ayer y cantó boleros con mucha pasión.",
-    instructions: "P en 'i' de 'Mi'. Diptongo en 'boleros' (no?), 'pasión' ('ió' si consideras?).",
-    accentIndices: [1, 28],
-    pIndices: [1],
-    doubleVocalIndices: [28, 29]
-  },
-  {
-    id: 82,
-    text: "Las islas del sur parecen auténticos paraísos llenos de vida.",
-    instructions: "P en 's' de 'Las'. Diptongo en 'islas' (no contiguo?), 'paraísos' ('ai').",
-    accentIndices: [2, 24],
-    pIndices: [2],
-    doubleVocalIndices: [24, 25]
-  },
-  {
-    id: 83,
-    text: "Voy temprano porque anhelo sentir aquella energía vibrante interior.",
-    instructions: "P en 'y' de 'Voy'. Diptongo en 'energía' ('ía').",
-    accentIndices: [1, 35],
-    pIndices: [2],
-    doubleVocalIndices: [35, 36]
-  },
-  {
-    id: 84,
-    text: "Te diré un secreto: nuestras fuerzas pueden lograr milagros imposibles hoy.",
-    instructions: "P en 'Te'. Diptongo en 'nuestras' ('ue'), 'fuerzas' ('ue').",
-    accentIndices: [2, 11, 17],
-    pIndices: [1],
-    doubleVocalIndices: [11, 12, 17, 18]
-  },
-  {
-    id: 85,
-    text: "Me encanta descubrir pasajes antiguos y entender voces arcaicas olvidadas.",
-    instructions: "P en 'Me'. Diptongo en 'arcaicas' ('ai').",
-    accentIndices: [2, 38],
-    pIndices: [1],
-    doubleVocalIndices: [38, 39]
-  },
-  {
-    id: 86,
-    text: "Su padre inició aventuras increíbles cuando comprendió su llamado interior.",
-    instructions: "P en 'u' de 'Su'. Diptongo en 'inició' ('io'), 'increíbles' ('ei').",
-    accentIndices: [2, 10, 20],
-    pIndices: [1],
-    doubleVocalIndices: [10, 11, 20, 21]
-  },
-  {
-    id: 87,
-    text: "Las ondas marinas se agitan cuando sopla un viento cálido veraniego.",
-    instructions: "P en 's' de 'Las'. Diptongo en 'marinas' ('ari' no contiguo?), 'viento' ('ie').",
-    accentIndices: [2, 32],
-    pIndices: [2],
-    doubleVocalIndices: [32, 33]
-  },
-  {
-    id: 88,
-    text: "Tu esencia brilla intensamente y promueve cambios vitales sin demora.",
-    instructions: "P en 'u' de 'Tu'. Diptongo en 'intensamente' ('ie'?), 'vitales' no contiguo.",
-    accentIndices: [2, 14],
-    pIndices: [1],
-    doubleVocalIndices: [14, 15]
-  },
-  {
-    id: 89,
-    text: "Mi universo mental abarca historias mágicas con finales inesperados siempre.",
-    instructions: "P en 'i' de 'Mi'. Diptongo en 'mágicas' (no contiguo?), 'siempre' ('ie').",
-    accentIndices: [1, 42],
+    accentIndices: [3, 14, 42],
     pIndices: [1],
     doubleVocalIndices: [42, 43]
   },
   {
+    id: 82,
+    text: "Las islas del sur parecen auténticos paraísos llenos de vida.",
+    accentIndices: [3, 21, 34],
+    pIndices: [1],
+    doubleVocalIndices: [21, 22, 34, 35]
+  },
+  {
+    id: 83,
+    text: "Voy temprano porque anhelo sentir aquella energía vibrante interior.",
+    accentIndices: [17, 29, 36, 51, 15, 31, 41, 56],
+    pIndices: [1],
+    doubleVocalIndices: [15, 16, 31, 32, 41, 42, 56, 57]
+  },
+  {
+    id: 84,
+    text: "Te diré un secreto: nuestras fuerzas pueden lograr milagros imposibles hoy.",
+    accentIndices: [6, 50, 61, 17, 25, 32],
+    pIndices: [1],
+    doubleVocalIndices: [17, 18, 25, 26, 32, 33]
+  },
+  {
+    id: 85,
+    text: "Me encanta descubrir pasajes antiguos y entender voces arcaicas olvidadas.",
+    accentIndices: [2, 25, 34, 47, 55, 30, 50],
+    pIndices: [1],
+    doubleVocalIndices: [30, 31, 50, 51]
+  },
+  {
+    id: 86,
+    text: "Su padre inició aventuras increíbles cuando comprendió su llamado interior.",
+    accentIndices: [7, 13, 22, 57, 26, 33, 46, 62],
+    pIndices: [1],
+    doubleVocalIndices: [26, 27, 33, 34, 46, 47, 62, 63]
+  },
+  {
+    id: 87,
+    text: "Las ondas marinas se agitan cuando sopla un viento cálido veraniego.",
+    accentIndices: [3, 17, 34, 6, 24, 37, 53],
+    pIndices: [1],
+    doubleVocalIndices: [24, 25, 37, 38, 53, 54]
+  },
+  {
+    id: 88,
+    text: "Tu esencia brilla intensamente y promueve cambios vitales sin demora.",
+    accentIndices: [2, 7, 32, 40, 15, 27],
+    pIndices: [1],
+    doubleVocalIndices: [7, 8, 32, 33, 40, 41]
+  },
+  {
+    id: 89,
+    text: "Mi universo mental abarca historias mágicas con finales inesperados siempre.",
+    accentIndices: [28, 60, 2, 16, 23, 48, 28, 60],
+    pIndices: [1],
+    doubleVocalIndices: [28, 29, 60, 61]
+  },
+  {
     id: 90,
     text: "Se oyen rumores antiguos acerca de criaturas acuáticas gigantes dormidas.",
-    instructions: "P en 'Se'. Diptongo en 'acuáticas' ('ua').",
-    accentIndices: [2, 36],
+    accentIndices: [2, 13, 21, 18, 31, 40],
     pIndices: [1],
-    doubleVocalIndices: [36, 37]
-  }
+    doubleVocalIndices: [18, 19, 31, 32, 40, 41]
+  },
+  
 ];

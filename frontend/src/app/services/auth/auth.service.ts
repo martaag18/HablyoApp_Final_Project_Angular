@@ -72,7 +72,17 @@ export class AuthService {
       })
     );
   }
+
+  forgotPassword(email: string): Observable<any> {
+    return this.http.post(`${this.API_URL}/forgot-password`, { email }, {
+      withCredentials: true
+    });
+  }
+
+  resetPassword(token: string, newPassword: string): Observable<any> {
+    return this.http.post(`${this.API_URL}/reset-password`, { token, newPassword }, {
+      withCredentials: true
+    });
+  }
   
-  // pipe -> chains RxJS operators (tap, map, catchError, etc.) to transform or interact with observable emissions
-  // tap -> performs side effects for each emission without transforming the value
 }

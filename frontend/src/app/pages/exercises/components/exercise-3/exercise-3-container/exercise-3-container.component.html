@@ -1,0 +1,104 @@
+<main
+  class="w-full p-4 mx-auto mt-6"
+  aria-labelledby="exercise2-main-title"
+>
+  <!-- Hidden heading for screen readers, labeling the main content -->
+  <h1
+    id="exercise2-main-title"
+    class="sr-only"
+  >
+    Ejercicio Interactivo 2
+  </h1>
+
+  <!-- Introduction section -->
+  <section
+    class="mb-16 mt-10"
+    aria-label="Introducción al ejercicio 2"
+  >
+    <div class="bg-gray-100 p-4 rounded shadow text-xl">
+      <app-exercise-3-introduction></app-exercise-3-introduction>
+    </div>
+  </section>
+
+  <!-- Title and instructions -->
+  <section
+    class="mb-4"
+    aria-labelledby="exercise-info-title"
+  >
+    <!-- Screen-reader-only heading for the info block -->
+    <h2
+      id="exercise-info-title"
+      class="sr-only"
+    >
+      Información del ejercicio
+    </h2>
+    <h3 class="text-2xl font-bold mb-2">
+      Ejercicio número: {{ currentExercise().id }}
+    </h3>
+    <p class="text-sm text-gray-600">
+      {{ currentExercise().instructions }}
+    </p>
+  </section>
+
+  <!-- Exercise presentation -->
+  <section
+    class="mb-6"
+    aria-label="Presentación del ejercicio"
+  >
+    <app-exercise-3-presentation
+      [wordList]="stateService.wordList()"
+      [accentMark]="stateService.accentMark()"
+      [arcMark]="stateService.arcMark()"
+      [pMark]="stateService.pMark()"
+      [underlineMark]="stateService.underlineMark()"
+      [circleMark]="stateService.circleMark()"
+      [resultAccent]="stateService.resultAccent()"
+      [resultArc]="stateService.resultArc()"
+      [resultP]="stateService.resultP()"
+      [resultUnderline]="stateService.resultUnderline()"
+      [resultCircle]="stateService.resultCircle()"
+      [doubleVocalIndices]="doubleVocalIndices"
+      (accentDropped)="onAccentDropped($event)"
+      (arcDropped)="onArcDropped($event)"
+      (pDropped)="onPDropped($event)"
+      (underlineDropped)="onUnderlineDropped($event)"
+      (circleDropped)="onCircleDropped($event)"
+
+    >
+    </app-exercise-3-presentation>
+  </section>
+
+  <!-- Actions and navigation -->
+  <section aria-label="Acciones y navegación del ejercicio">
+    <div class="flex flex-wrap gap-4 items-start">
+
+      <!-- Action block -->
+      <div
+        class="flex flex-wrap gap-2 sm:flex-col sm:items-stretch"
+        aria-label="Acciones disponibles"
+      >
+        <app-exercise-actions
+          (complete)="onComplete()"
+          (solve)="onSolve()"
+          (restart)="onRestart()"
+        >
+        </app-exercise-actions>
+      </div>
+
+      <!-- Navigation -->
+      <nav
+        class="flex flex-wrap gap-2 sm:flex-col sm:items-stretch"
+        aria-label="Navegación del ejercicio"
+      >
+        <app-exercise-navigation
+          [showPrevious]="navigatorService.currentIndex() > 0"
+          (previous)="onPreviousExercise()"
+          (next)="onNextExercise()"
+          (firstExercise)="onFirstExercise()"
+        >
+        </app-exercise-navigation>
+      </nav>
+
+    </div>
+  </section>
+</main>

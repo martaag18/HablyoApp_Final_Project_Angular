@@ -12,4 +12,5 @@ export class ExerciseActionsComponent {
   @Output() complete = new EventEmitter<void>();
   @Output() solve = new EventEmitter<void>();
   @Output() restart = new EventEmitter<void>();
+  
 }

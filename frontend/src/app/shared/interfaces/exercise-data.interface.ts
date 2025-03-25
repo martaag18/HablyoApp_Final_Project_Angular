@@ -5,5 +5,6 @@ export interface ExerciseData {
     accentIndices?: number[];
     pIndices?: number[];
     doubleVocalIndices?: number[];
+    circleIndices?: number[];
   }
   

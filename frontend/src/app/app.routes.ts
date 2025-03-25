@@ -36,6 +36,46 @@ export const routes: Routes = [
           ),
         data: { animation: 'RegisterPage' },
       },
+      {
+        path: 'forgot-password',
+        loadComponent: () =>
+          import('./pages/auth/forgot-password/forgot-password.component').then(
+            (c) => c.ForgotPasswordComponent
+          ),
+        data: { animation: 'ForgotPasswordPage' }
+      },
+      {
+        path: 'reset-password',
+        loadComponent: () =>
+          import('./pages/auth/reset-password/reset-password.component').then(
+            (m) => m.ResetPasswordComponent
+          ),
+        data: { animation: 'ResetPasswordPage' }
+      },
+      {
+        path: 'politica-privacidad',
+        loadComponent: () =>
+          import('./pages/legal-pages/privacy-policy/privacy-policy.component').then(
+            (m) => m.PrivacyPolicyComponent
+          ),
+        data: { animation: 'PrivacyPolicyPage' }
+      },
+      {
+        path: 'aviso-legal',
+        loadComponent: () =>
+          import('./pages/legal-pages/legal-notice/legal-notice.component').then(
+            (m) => m.LegalNoticeComponent
+          ),
+        data: { animation: 'LegalNoticePage' }
+      },
+      {
+        path: 'politica-cookies',
+        loadComponent: () =>
+          import('./pages/legal-pages/cookie-policy/cookie-policy.component').then(
+            (m) => m.CookiePolicyComponent
+          ),
+        data: { animation: 'ResetPasswordPage' }
+      },
 
       // Ejercicios -> children
       {
@@ -44,6 +84,10 @@ export const routes: Routes = [
         data: { animation: 'EjerciciosPage' }, 
         children: EXERCISES_ROUTES,
       },
+      // Ejercicios -> not found page
+
+      { path: '**', loadComponent: () => import('./pages/not-found/not-found.component').then(m => m.NotFoundComponent) }
+
     ],
   },
 ];

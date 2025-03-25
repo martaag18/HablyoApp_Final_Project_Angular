@@ -15,12 +15,15 @@ export class ExerciseStateService {
   arcMark = signal<Array<'none' | 'arc'>>([]);
   pMark = signal<Array<'none' | 'P'>>([]);
   underlineMark = signal<Array<'none' | 'underline'>>([]);
+  circleMark = signal<Array<'none' | 'circle'>>([]);
 
   // Arrays holding the validation result for each mark.
   resultAccent = signal<ValidationState[]>([]);
   resultArc = signal<ValidationState[]>([]);
   resultP = signal<ValidationState[]>([]);
   resultUnderline = signal<ValidationState[]>([]);
+  resultCircle = signal<ValidationState[]>([]);
+
 
   /**
    * Prepares the accent arrays (mark and result) based on the total number of letters.
@@ -77,6 +80,19 @@ export class ExerciseStateService {
   }
 
   /**
+   * Prepares the circle arrays (mark and result) for the given total letters.
+   */
+    private initializeCircleState(totalLetters: number): {
+      circleMark: Array<'none' | 'circle'>;
+      resultCircle: ValidationState[];
+    } {
+      return {
+        circleMark: Array<'none' | 'circle'>(totalLetters).fill('none'),
+        resultCircle: Array<ValidationState>(totalLetters).fill(null)
+      };
+    }
+
+  /**
    * Orchestrates the creation of mark and result arrays for the exercise.
    * @param wordList - The list of words (and letters) for the exercise.
    * @param includeP - Whether to include arrays for the 'P' mark.
@@ -85,7 +101,8 @@ export class ExerciseStateService {
   initializeExerciseState(
     wordList: WordItem[],
     includeP: boolean = false,
-    includeUnderline: boolean = false
+    includeUnderline: boolean = false,
+    includeCircle: boolean = false
   ): void {
     // Mandatory initialization for accent and arc
     const { accentMark, resultAccent } = this.initializeAccentState(wordList);
@@ -102,6 +119,11 @@ export class ExerciseStateService {
       ? this.initializeUnderlineState(totalLetters)
       : { underlineMark: [], resultUnderline: [] };
 
+    // Initialize 'Circle' if required; otherwise, keep empty arrays
+    const { circleMark, resultCircle } = includeCircle
+    ? this.initializeCircleState(totalLetters)
+    : { circleMark: [], resultCircle: [] };
+
     // Assign values to the corresponding signals
     this.wordList.set(wordList);
     this.accentMark.set(accentMark);
@@ -112,6 +134,8 @@ export class ExerciseStateService {
     this.resultP.set(resultP);
     this.underlineMark.set(underlineMark);
     this.resultUnderline.set(resultUnderline);
+    this.circleMark.set(circleMark);
+    this.resultCircle.set(resultCircle);
   }
 
   /**
@@ -123,11 +147,15 @@ export class ExerciseStateService {
     this.resultArc.set(this.resultArc().map(() => null));
     this.resultP.set(this.resultP().map(() => null));
     this.resultUnderline.set(this.resultUnderline().map(() => null));
+    this.resultCircle.set(this.resultCircle().map(() => null)); 
+
 
     // Reset marks to 'none'
     this.accentMark.set(this.accentMark().map(() => 'none'));
     this.arcMark.set(this.arcMark().map(() => 'none'));
     this.pMark.set(this.pMark().map(() => 'none'));
     this.underlineMark.set(this.underlineMark().map(() => 'none'));
+    this.circleMark.set(this.circleMark().map(() => 'none')); 
+
   }
 }

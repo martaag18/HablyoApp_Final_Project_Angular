@@ -32,7 +32,7 @@ import { WordListOrchestratorService } from '../../../../../shared/services/orch
   changeDetection: ChangeDetectionStrategy.OnPush 
 
 })
-export class ExerciseDobleVocalContainerComponent {
+export class Exercise2ContainerComponent {
 
   navigatorService = inject(ExerciseNavigatorService);
   stateService = inject(ExerciseStateService);
@@ -99,6 +99,10 @@ export class ExerciseDobleVocalContainerComponent {
 
   onPreviousExercise(): void {
     this.navigatorService.previous();
+  }
+  
+  onFirstExercise(){
+    this.navigatorService.firstExercise();
   }
 
   showPreviousButton = computed(() => this.navigatorService.currentIndex() > 0);

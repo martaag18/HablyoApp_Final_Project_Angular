@@ -7,7 +7,6 @@ import { ExerciseStateService } from '../state/exercise-state.service';
  */
 @Injectable({ providedIn: 'root' })
 export class DragDropService {
-
   private state = inject(ExerciseStateService); // service that stores (via signals) the marks (accent, P, arc, underline)
 
   /**
@@ -52,6 +51,17 @@ export class DragDropService {
     const underlineMark = [...this.state.underlineMark()];
     underlineMark[underlineIndex] = mark; // 'underline'
     this.state.underlineMark.set(underlineMark);
+  }
+
+  /**
+   * Updates the circle mark at the specified letter index.
+   * @param letterIndex - The position of the letter where 'circle' is dropped.
+   * @param mark - The circle mark ('circle').
+   */
+  dropCircle(letterIndex: number, mark: 'circle') {
+    const circleMark = [...this.state.circleMark()];
+    circleMark[letterIndex] = mark; // 'circle'
+    this.state.circleMark.set(circleMark);
   }
 }
 

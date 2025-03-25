@@ -13,6 +13,9 @@ import { JwtService } from '@nestjs/jwt';
 import { LoginDot } from './dto/login.dot/login.dot';
 import { Response, Request } from 'express';
 import { JwtCookieGuard } from 'src/guards/jwt-cookie.guard';
+import { ForgotPasswordDto } from './dto/forgot-password.dto';
+import { ResetPasswordDto } from './dto/reset-password.dto';
+import { UnauthorizedException } from '@nestjs/common';
 
 @Controller('auth')
 export class AuthController {
@@ -30,7 +33,7 @@ export class AuthController {
       httpOnly: true,
       secure: true,
       sameSite: 'none',
-      maxAge: 24 * 60 * 60 * 1000, // 1 día
+      maxAge: 24 * 60 * 60 * 1000, // 1 day
     });
 
     console.log('Cookie de sesión JWT establecida correctamente');
@@ -63,8 +66,35 @@ export class AuthController {
       email: req.user?.email,
     });
   }
-}
 
-//payload - inf que ponemos en el token
-//token - cadena de caracteres que contiene información del usuario como el ID,email...
-//En autenticación, la cookie se utiliza para almacenar el token
+  @Post('forgot-password')
+  async forgotPassword(
+    @Body() forgotPasswordDto: ForgotPasswordDto,
+    @Res() res: Response,
+  ) {
+    const { email } = forgotPasswordDto;
+    await this.authService.handleForgotPassword(email);
+
+    return res.status(HttpStatus.OK).json({
+      message:
+        'Si existe un usuario con ese email, se ha enviado un enlace de recuperación.',
+    });
+  }
+
+  @Post('reset-password')
+  async resetPassword(
+    @Body() resetPasswordDto: ResetPasswordDto,
+    @Res() res: Response,
+  ) {
+    const { token, newPassword } = resetPasswordDto;
+    try {
+      await this.authService.handleResetPassword(token, newPassword);
+      return res.status(HttpStatus.OK).json({
+        message: 'Contraseña actualizada con éxito',
+      });
+    } catch (err) {
+      console.error(err);
+      throw new UnauthorizedException('Token inválido o expirado');
+    }
+  }
+}

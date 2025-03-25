@@ -6,7 +6,7 @@ import { TextInputComponent } from '../../../../shared/components/forms/text-inp
   selector: 'app-register-step3',
   imports: [TextInputComponent],
   templateUrl: './register-step3.component.html',
-  styleUrl: './register-step3.component.scss'
+  // styleUrl: './register-step3.component.scss'
 })
 export class RegisterStep3Component {
 

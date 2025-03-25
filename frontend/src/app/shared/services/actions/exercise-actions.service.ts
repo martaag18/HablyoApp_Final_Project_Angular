@@ -11,16 +11,20 @@ export class ExerciseActionsService {
   private markingService = inject(MarkingOrchestratorService);
   private solutionGeneratorService = inject(SolutionGeneratorService);
 
+  
+
   onComplete(currentExercise: ExerciseData) {
     this.validateArcMark();
     this.validateAccentMark(currentExercise);
     this.validatePMark(currentExercise);
     this.validateUnderlineMark(currentExercise);
+    this.validateCircleMark(currentExercise);
+
   }
 
   onSolve(currentExercise: ExerciseData) {
-    const { aIndices, pIndices, doubleVocalIndices } = this.extractIndices(currentExercise);
-    const solution = this.generateSolution(aIndices, pIndices, doubleVocalIndices);
+    const { aIndices, pIndices, doubleVocalIndices, circleIndices } = this.extractIndices(currentExercise);
+    const solution = this.generateSolution(aIndices, pIndices, doubleVocalIndices, circleIndices);
     this.applySolution(solution);
   }
 
@@ -66,6 +70,17 @@ export class ExerciseActionsService {
     this.stateService.resultUnderline.set(underlineValidation);
   }
 
+  private validateCircleMark(currentExercise: ExerciseData): void {
+    const circleIndices = currentExercise.circleIndices || [];
+    const circleValidation = this.markingService.validateCircle(
+      this.stateService.circleMark(),
+      circleIndices
+    );
+      this.stateService.resultCircle.set(circleValidation);
+  }
+
+  
+
   // ================= Private methods for onSolve =================
 
 
@@ -74,6 +89,8 @@ export class ExerciseActionsService {
       aIndices: currentExercise.accentIndices || [],
       pIndices: currentExercise.pIndices || [],
       doubleVocalIndices: currentExercise.doubleVocalIndices || [],
+      circleIndices: currentExercise.circleIndices || [] 
+
     };
   }
 
@@ -81,13 +98,16 @@ export class ExerciseActionsService {
   private generateSolution(
     aIndices: number[],
     pIndices: number[],
-    doubleVocalIndices: number[]
+    doubleVocalIndices: number[],
+    circleIndices: number[]
+
   ) {
     return this.solutionGeneratorService.generateSolution(
       this.stateService.wordList(),
       doubleVocalIndices,
       aIndices,
-      pIndices
+      pIndices,
+      circleIndices
     );
   }
 
@@ -97,10 +117,14 @@ export class ExerciseActionsService {
     accentMark: Array<'none' | '´'>;
     pMark: Array<'none' | 'P'>;
     underlineMark: Array<'none' | 'underline'>;
+    circleMark: Array<'none' | 'circle'>;
+
   }) {
     this.stateService.arcMark.set(solution.arcMark);
     this.stateService.accentMark.set(solution.accentMark);
     this.stateService.pMark.set(solution.pMark);
     this.stateService.underlineMark.set(solution.underlineMark);
+    this.stateService.circleMark.set(solution.circleMark);
+
   }
 }

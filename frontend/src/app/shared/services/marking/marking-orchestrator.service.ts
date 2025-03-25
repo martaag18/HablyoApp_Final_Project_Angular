@@ -6,6 +6,7 @@ import { WordItem } from '../../interfaces/word-item.interface';
 import { ValidationState } from '../../types/validation-state.type';
 import { ArcService } from './arc.service';
 import { AccentService } from './accent.service';
+import { CircleService } from './circle.service';
 @Injectable({
   providedIn: 'root',
 })
@@ -15,6 +16,7 @@ export class MarkingOrchestratorService {
   private accentService = inject(AccentService);
   private pService = inject(PService);
   private underlineService = inject(UnderlineService); 
+  private circleService = inject(CircleService);
 
   /**
    * Validates arcMark by delegating to ArcService
@@ -56,5 +58,15 @@ export class MarkingOrchestratorService {
   ): ValidationState[] {
     return this.underlineService.validateUnderlines(vdobleIndices, underlineMark);
   }
+
+  /**
+   * Validates the "Circle" mark by delegating to CircleService
+   */
+    validateCircle(
+      circleMark: Array<'none' | 'circle'>,
+      circleIndices?: number[]
+    ): ValidationState[] {
+      return this.circleService.validateCircle(circleMark, circleIndices);
+    }
 
 }

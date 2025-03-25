@@ -138,7 +138,7 @@ export class RegisterComponent {
       error: (err) => {
         console.error('Error al registrar usuario', err);
         console.error('Mensajes de validación:', err.error.message);
-        this.notificationService.error("Error al registrarse", err.error.message);
+        this.notificationService.error("Error al registrarse");
       },
     });
   }

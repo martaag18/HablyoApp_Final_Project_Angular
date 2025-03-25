@@ -37,7 +37,7 @@ export class ExercisesIndexComponent {
       title: 'R con consonante',
       subtitle: 'Mejora la pronunciación de “R” precedida de consonante',
       image: 'assets/Images/savio_webinar.jpg',
-      route: 'r-por-consonante-explicacion'
+      route: 'r-prececida-por-consonante-explicacion'
     },
   ];
 }

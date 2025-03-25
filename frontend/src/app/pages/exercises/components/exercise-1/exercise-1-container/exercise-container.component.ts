@@ -93,6 +93,10 @@ export class Exercise1ContainerComponent {
     this.navigatorService.previous();
   }
 
+  onFirstExercise(){
+    this.navigatorService.firstExercise();
+  }
+
   showPreviousButton = computed(() => this.navigatorService.currentIndex() > 0);
 
   onAccentDropped(payload: { letterIndex: number; mark: '´' }) {

@@ -80,8 +80,9 @@
       >
         <app-exercise-navigation
           [showPrevious]="navigatorService.currentIndex() > 0"
-          (next)="onNextExercise()"
           (previous)="onPreviousExercise()"
+          (next)="onNextExercise()"
+          (firstExercise)="onFirstExercise()"
         >
         </app-exercise-navigation>
       </nav>

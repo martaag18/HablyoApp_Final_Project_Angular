@@ -20,4 +20,11 @@ export class ExerciseNavigatorService {
       this.currentIndex.update(value => value - 1);
     }
   }
+
+  firstExercise(){
+    const idx = this.currentIndex();
+    if (idx > 0) {
+      this.currentIndex.set(0);
+    }
+  }
 }

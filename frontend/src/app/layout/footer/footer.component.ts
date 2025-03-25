@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-footer',
   imports: [RouterLink],
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+  // styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
 
@@ -18,8 +18,8 @@ export class FooterComponent {
   // links
   policyLinks = [
     { label: 'Aviso Legal', url: '/aviso-legal' },
-    { label: 'Política de Cookies', url: '/cookies' },
-    { label: 'Política de Privacidad', url: '/privacidad' }
+    { label: 'Política de Cookies', url: '/politica-cookies' },
+    { label: 'Política de Privacidad', url: '/politica-privacidad' }
   ];
 }
 

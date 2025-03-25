@@ -25,7 +25,7 @@ import {
         query(
           ':leave',
           animate(
-            '500ms ease',
+            '600ms ease',
             style({
               opacity: 0
             })
@@ -35,7 +35,7 @@ import {
         query(
           ':enter',
           animate(
-            '500ms ease',
+            '600ms ease',
             style({
               opacity: 1
             })

@@ -15,7 +15,7 @@ export class LetterContainerComponent {
   @Input() char: string = ''; //Almacena caracter que se muestra en el contenedor
   @Input() globalIndex: number = 0; //posicion absoluta de la letra
 
-  // Tilde
+  // Accent
   @Input() resultStateAccent: ValidationState = null; //almacena estado validación tilde
   @Input() hasAccent: boolean = false; //indica si se ha colocado tile en esa letra
 
@@ -28,17 +28,23 @@ export class LetterContainerComponent {
   @Input() underlineValue: 'none' | 'underline' = 'none'; //Indica si letra está subrayada o no
   @Input() resultUnderline: ValidationState = null; //estado validación underline
 
+  //Circle
+  @Input() resultStateCircle: ValidationState = null; 
+  @Input() hasCircle: boolean = false; 
 
   @Output() droppedOnAccent = new EventEmitter<DragEvent>();
   @Output() droppedOnP = new EventEmitter<DragEvent>();
   @Output() droppedOnUnderline = new EventEmitter<DragEvent>();
+  @Output() droppedOnCircle = new EventEmitter<DragEvent>();
 
   get finalState(): ValidationState {
     const a = this.resultStateAccent;
     const p = this.resultStateP;
-    if (a === 'wrong' || p === 'wrong') return 'wrong';
-    if (a === 'missed' || p === 'missed') return 'missed';
-    if (a === 'correct' || p === 'correct') return 'correct';
+    const c = this.resultStateCircle;
+
+    if (a === 'wrong' || p === 'wrong' || c === 'wrong') return 'wrong';
+    if (a === 'missed' || p === 'missed' || c === 'missed') return 'missed';
+    if (a === 'correct' || p === 'correct' || c === 'correct') return 'correct';
     return null;
   }
 
@@ -46,13 +52,17 @@ export class LetterContainerComponent {
     event.preventDefault();
   }
 
+ 
   onDrop(event: DragEvent) {
     event.preventDefault();
     const mark = event.dataTransfer?.getData('text/plain');
+
     if (mark === '´') {
       this.droppedOnAccent.emit(event);
     } else if (mark === 'P') {
       this.droppedOnP.emit(event);
+    } else if (mark === 'circle') {
+      this.droppedOnCircle.emit(event);
     }
   }
 

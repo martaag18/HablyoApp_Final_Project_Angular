@@ -17,17 +17,17 @@ export class CardsExercisesComponent {
     {
       level: 1,
       title: 'Vocal Final - Vocal Inicial',
-      route: 'vocal-home'
+      route: 'vocal-final-inicial-explicacion'
     },
     {
       level: 2,
       title: 'Doble Vocal',
-      route: 'doble-vocal-home'
+      route: 'doble-vocal-explicacion'
     },
     {
       level: 3,
       title: '“R” Precedida Por Consonante',
-      route: 'r-por-consonante'
+      route: 'r-por-consonante-explicacion'
     }
   ];
 

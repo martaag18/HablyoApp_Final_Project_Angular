@@ -34,4 +34,17 @@
   .missed-letter {
     background-color: #fff8c5; 
   }
+
+.circle-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 55px; 
+  height: 90px; 
+  border: 4px solid black; 
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10;         
+}
+
   
