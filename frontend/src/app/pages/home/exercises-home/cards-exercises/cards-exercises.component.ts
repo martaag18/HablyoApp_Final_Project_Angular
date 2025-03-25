@@ -27,7 +27,7 @@ export class CardsExercisesComponent {
     {
       level: 3,
       title: '“R” Precedida Por Consonante',
-      route: 'r-por-consonante-explicacion'
+      route: 'r-precedida-por-consonante-explicacion'
     }
   ];
 
